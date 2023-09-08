@@ -63,6 +63,7 @@ import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
 
 type Props = {
   planData: Plan;
+
 };
 
 enum Day {
@@ -121,7 +122,7 @@ const WorkoutForm = ({ planData }: Props) => {
     } catch (error) {
       console.error("Could not create workout:", error);
     }
-    router.push("/plannerDashboard");
+    router.refresh()
   };
 
   return (
@@ -130,7 +131,10 @@ const WorkoutForm = ({ planData }: Props) => {
         <div className="flex flex-col items-start justify-start">
           <AlertDialogTrigger className="text-black text-lg flex items-center gap-2 ">
             {/* <p className=" w-fit">CREATE NEW WORKOUT</p> */}
-            <Image alt="add" src="/addworkout.png" width={30} height={30} />
+            <Button variant={'secondary'} className="flex gap-2 ">
+              <h2>Create new workout</h2>
+              <Image alt="add" src="/addworkout.png" width={25} height={30} />
+            </Button>
           </AlertDialogTrigger>
         </div>
         <Form {...form}>

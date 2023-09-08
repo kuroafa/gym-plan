@@ -84,7 +84,10 @@ const PlanForm = (prop: Props) => {
         <AlertDialog>
           <div className="flex flex-col items-start justify-start">
             <AlertDialogTrigger className="text-black text-xl flex items-center gap-2 ">
-              <Image alt="add" src="/post.png" width={30} height={30}/>
+              <Button variant={'secondary'} className="flex gap-5 p-5">
+                 <h2>Create new plan</h2>
+                <Image alt="add" src="/post.png" width={30} height={30}/>
+              </Button>
             </AlertDialogTrigger>
           </div>
           <Form {...form}>
