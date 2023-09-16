@@ -1,0 +1,2 @@
+public/lunges.mp4 filter=lfs diff=lfs merge=lfs -text
+public/SquatsWoman.mp4 filter=lfs diff=lfs merge=lfs -text

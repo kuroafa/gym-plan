@@ -8,110 +8,81 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { Avatar, Divider, List, Skeleton } from "antd";
 import Link from "next/link";
 import WorkoutForm from "@/components/WorkoutForm";
+import { Card, CardDescription, CardTitle } from "@/components/ui/card";
+import { styled } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
+import Grid from "@mui/material/Grid";
+import { Carousel } from "antd";
+import { Button } from "@/components/ui/button";
+import RandomWorkout from "@/components/RandomWorkout";
+import BMIcalculator from "@/components/BMIcalculator";
+
 type Props = {
   workoutData: Pick<
     Workout,
-    "workOutName" | "id" | "numberPerSet" | "sets" | "planId"| 'day'
+    "workOutName" | "id" | "numberPerSet" | "sets" | "planId" | "day"
   >[];
 };
 
-interface DataType {
-  gender: string;
-  name: {
-    title: string;
-    first: string;
-    last: string;
-  };
-  email: string;
-  picture: {
-    large: string;
-    medium: string;
-    thumbnail: string;
-  };
-  nat: string;
-}
+const contentStyle: React.CSSProperties = {
+  height: "150px",
+  color: "#fff",
+  lineHeight: "160px",
+  textAlign: "center",
+  background: "black",
+};
+
+
 
 const Workouts = ({ workoutData }: Props) => {
-  const [loading, setLoading] = useState(false);
-  const [data, setData] = useState<DataType[]>([]);
 
-  const loadMoreData = () => {
-    if (loading) {
-      return;
-    }
-    setLoading(true);
-    fetch(
-      "https://randomuser.me/api/?results=10&inc=name,gender,email,nat,picture&noinfo"
-    )
-      .then((res) => res.json())
-      .then((body) => {
-        setData([...data, ...body.results]);
-        setLoading(false);
-      })
-      .catch(() => {
-        setLoading(false);
-      });
+
+  const onChange = (currentSlide: number) => {
+    console.log(currentSlide);
   };
-
-  useEffect(() => {
-    loadMoreData();
-  }, []);
-
   return (
-    <div>
-      <Divider orientation="left">
-        <h1 className="text-2xl ">Workout&apos;s</h1>
-      </Divider>
-      <div
-        id="scrollableDiv"
-        style={{
-          height: 400,
-          overflow: "auto",
-          padding: "0 20px",
-          border: "1px solid rgba(140, 140, 140, 0.35)",
-        }}
-      >
-        <InfiniteScroll
-          dataLength={data.length}
-          next={loadMoreData}
-          hasMore={data.length < 50}
-          loader={<Skeleton avatar paragraph={{ rows: 1 }} active />}
-          endMessage={<Divider plain>That is all the workouts created without a plan</Divider>}
-          scrollableTarget="scrollableDiv"
-        >
-          <List
-            dataSource={workoutData}
-            renderItem={(item) => (
-              <List.Item key={item.id}>
-                <List.Item.Meta
-                  avatar={<Avatar src="/weightlift.png" />}
-                  title={
-                    <Link
-                      className="text-lg font-semibold"
-                      href={`/planProfile/${item.id}`}
-                    >
-                      {item.workOutName?.toLocaleUpperCase()}
-                    </Link>
-                  }
-                  description={
-                    item.day ? (
-                      <p className="text-[16px]">{item.day}</p>
-                    ) : (
-                      <p>No Days</p>
-                    )
-                  }
-                />
-                <div className="flex gap-1 items-center">
-                  <div className="ml-3">
-                  </div>
-                  <div>Edit |</div>
-
-                  <DeleteButton id={item.id} />
-                </div>
-              </List.Item>
-            )}
-          />
-        </InfiniteScroll>
+    <div className="p-1 ml-3">
+          <div className="grid grid-cols-1 mb-5">
+        <Carousel autoplay>
+          <div>
+            <h3 style={contentStyle}>1</h3>
+          </div>
+          <div>
+            <h3 style={contentStyle}>2</h3>
+          </div>
+          <div>
+            <h3 style={contentStyle}>3</h3>
+          </div>
+          <div>
+            <h3 style={contentStyle}>4</h3>
+          </div>
+        </Carousel>
+      </div>
+      <div className="grid lg:grid-cols-3  grid-cols-1  gap-2">
+        <div className="col-span-2 flex md:flex-row flex-col gap-3 items-center justify-center  rounded-lg p-2">
+          <div className="flex flex-col gap-5 items-start">
+            <h1 className="xl:text-5xl text-3xl">
+              Don&apos;t Give up on your dreams, 
+              Becoming a better version of yourself.
+            </h1>
+            <Button className="text-xl m-2">View Workouts</Button>
+          </div>
+          <div className="">
+          <img className=""  alt="girl image" src="/gymgirl.png" />
+        </div>
+        </div>
+        <div className="flex flex-col gap-3 ">
+          <div className="border border-black p-2 rounded-lg">
+            <h2 className="text-2xl font-medium">Today&apos;s workouts</h2>
+            <div className="pl-2">
+              <h2>Plan: Build Muscle</h2>
+              <p>Workouts: Sit up, Push up, Bench press</p>
+            </div>
+          </div>
+          <RandomWorkout/>
+          <BMIcalculator/>
+        </div>
       </div>
     </div>
   );

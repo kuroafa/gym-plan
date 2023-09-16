@@ -10,11 +10,11 @@ import { redirect } from 'next/navigation'
 export default async function Home() {
   const session = await getAuthSession()
   if (session?.user) {
-    return redirect("/planner");
+    return redirect("/Dashboard");
   }
   return (
   <div className=''>
-       <div className=" grid xl:grid-cols-2 md:grid-cols-1 gap-5 xl:px-40 py-20 ">
+       <div className=" grid xl:grid-cols-2 md:grid-cols-1 gap-5 xl:px-40 py-20 h-[750px]   ">
         <div className="flex flex-col gap-20">
           <div className=" flex flex-col px-5 gap-2">
             
@@ -30,9 +30,9 @@ export default async function Home() {
         <div className="">
           <img alt="girl image" src="/gymgirl.png" />
         </div>
-         <Footer/>
+        
       </div>
-    
+     <Footer/>
   </div>
   )
 }

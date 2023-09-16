@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import AllPlans from "./AllPlans";
 import FavePlans from "./Workouts";
@@ -9,35 +10,20 @@ import PlanForm from "@/components/PlanForm";
 import { redirect } from "next/navigation";
 
 type Props = {
-  planData: Pick<Plan, "planName" | "id" | "isFave" | "userId">;
+  planData: Plan[]
   workoutData: Pick<
     Workout,
     "id" | "day" | "numberPerSet" | "planId" | "sets" | "workOutName"
   >;
 };
 
-const PlanHero = async ({ planData, workoutData }: Props) => {
-  const session = await getAuthSession();
-  const fetchPlans = await prisma.plan.findMany({
-    where: {
-      userId: session?.user.id,
-    },
-  });
-  const fetchWorkouts = await prisma.workout.findMany({
-    where: {
-      planId: session?.user.id,
-    },
-  });
+const PlanHero =  ({ planData, workoutData }: Props) => {
+
   return (
     <div className="">
-      <div className=" ">
-        <div className=" ">
-          <AllPlans planData={fetchPlans} />
-        </div>
+      <div>
+       
       </div>
-      {/* <div>
-        <Workouts workoutData={fetchWorkouts} />
-      </div> */}
     </div>
   );
 };

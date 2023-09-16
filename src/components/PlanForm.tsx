@@ -56,7 +56,6 @@ const PlanForm = (prop: Props) => {
     defaultValues: {
       planName: "",
       description: '',
-      isFave: true,
     },
   });
   const onSubmit = async (data: PlanCreation) => {
@@ -119,19 +118,6 @@ const PlanForm = (prop: Props) => {
                         <FormLabel>Description</FormLabel>
                         <FormControl>
                           <Input placeholder="Describe this plan..." {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="isFave"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className='pr-2'>Add this plan to favorites?</FormLabel>
-                        <FormControl >
-                          <Checkbox  placeholder="false..." {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>

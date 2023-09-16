@@ -46,6 +46,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   plan          Plan[]
+  hasCompletedSetup Boolean?  
 }
 enum Day {
   MONDAY
@@ -57,24 +58,68 @@ enum Day {
   SUNDAY
 }
 
+enum ExerciseType {
+  CARDIO
+  STRENGTH_TRAINING
+  YOGA
+  PILATES
+  CROSSFIT
+  RUNNING
+  WALKING
+  AGILITY_TRAINING
+  SPORTS
+  BODYWEIGHT_EXERCISES
+  WEIGHTLIFTING
+  RESISTANCE_TRAINING
+  CALISTHENICS
+  FLEXIBILITY_TRAINING
+  CORE_STRENGTHENING
+  STRETCHING
+}
+enum FitnessGoalWorkout {
+  LOSE_FAT
+  BUILD_MUSCLE
+  INCREASE_STAMINA
+  INCREASE_AGILITY
+  INCREASE_EXPLOSIVE_POWER
+  INCREASE_CARDIO
+  REDUCE_STRESS
+}
+
+
 model Workout {
-  id         String   @id @default(cuid())
-  workOutName       String?
-  sets       Int?
-  numberPerSet  Int?
-  day        Day?
-  planId     String
-  plan       Plan     @relation(fields: [planId], references: [id])
+  id             String   @id @default(cuid())
+  workOutName    String?
+  sets           Int?
+  numberPerSet   Int?
+  day            Day?
+  planId         String
+  fitnessGoalWorkout  FitnessGoalWorkout
+  image          String
+  description    String @db.VarChar(255)
+  exerciseType   ExerciseType  
+  plan           Plan @relation(fields: [planId], references: [id])
+}
+
+enum FitnessGoal {
+LOSE_FAT
+  BUILD_MUSCLE
+  INCREASE_STAMINA
+  INCREASE_AGILITY
+  INCREASE_EXPLOSIVE_POWER
+  INCREASE_CARDIO
+  REDUCE_STRESS
+  INCREASE_STRENGTH
 }
 
 model Plan {
   id           String    @id @default(cuid())
   planName     String?
-  isFave       Boolean?
   description  String?
   user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId       String
   workouts     Workout[]
+  fitnessGoal  FitnessGoal   
 }
 
 

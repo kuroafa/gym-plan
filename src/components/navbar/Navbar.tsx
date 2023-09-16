@@ -13,9 +13,10 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { Button } from "../ui/button";
 
 type Props = {
-  planData: Pick<Plan, "planName" | "userId" | "description" | "id" | "isFave">;
+  planData: Pick<Plan, "planName" | "userId" | "description" | "id" >;
 };
 
 const Navbar = async ({ planData }: Props) => {
@@ -37,17 +38,11 @@ const Navbar = async ({ planData }: Props) => {
               </h1>
             </div> */}
         </div>
+       
         <div className="flex gap-5 pr-5 items-center">
           {session?.user ? (
             <div className="flex items-center gap-2">
-              <Popover >
-                <PopoverTrigger>Actions</PopoverTrigger>
-                <PopoverContent className=" flex justify-center flex-col items-center bg-gray-300 gap-2 sm:mr-[100px] mr-[75px]">
-                  <WorkoutForm planData={getAllPlan} />
-                  <PlanForm />
-                </PopoverContent>
-              </Popover>
-              <UserAccountNav user={session?.user} />
+              
             </div>
           ) : (
             <SignInButton text="Sign In" />
