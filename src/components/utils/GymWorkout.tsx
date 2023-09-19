@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 
 import { Button } from "../ui/button";
 import { GymBuildingWorkouts } from "./Data";
+import Image from "next/image";
 
 type Props = {};
 
@@ -120,7 +121,7 @@ const GymWorkout = (props: Props) => {
           </Box>
         </Fade>
       </Modal>
-      <Button onClick={handleOpen}>Start Workout</Button>
+      <button  className=" rounded-full bg-gray-300 font-medium text-xl whitespace-nowrap"   onClick={handleOpen}><Image width={30} height={30} alt="play" src='/play-button.png'/></button>
     </div>
   );
 };

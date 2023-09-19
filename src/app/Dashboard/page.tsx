@@ -1,16 +1,16 @@
 import Dashboard from "@/components/Dashboard";
+import LatestPlan from "@/components/LatestPlan";
 import { prisma } from "@/lib/db";
 import { getAuthSession } from "@/lib/nextauth";
-import { Plan, Workout } from "@prisma/client";
+import { Plan, } from "@prisma/client";
 import { redirect, useRouter } from "next/navigation";
 import React from "react";
 
 type Props = {
-  planData: Plan;
-  workOutdata: Workout
+  planData: Pick<Plan, 'day'|'description'|'fitnessGoals'|'id'| 'planName'| 'userId'>;
 };
 
-const page = async ({ planData, workOutdata }: Props) => {
+const page = async ({ planData }: Props) => {
   const session = await getAuthSession();
   if (!session) {
     redirect("/");
@@ -20,14 +20,13 @@ const page = async ({ planData, workOutdata }: Props) => {
       userId: session.user.id,
     },
   });
-  const getWorkoutData = await prisma.workout.findMany({
-    
-  });
-  //  await prisma.plan.deleteMany({})
-  //  await prisma.workout.deleteMany({})
+
+
   return(
     <div className="">
-      <Dashboard workoutData={getWorkoutData} planData={getPlanData} />
+      
+      <Dashboard  planData={getPlanData} />
+      
     </div>
   ) 
 };

@@ -3,8 +3,6 @@ import { useForm } from "react-hook-form";
 import {
   PlanCreation,
   PlanCreationSchema,
-  WorkOutCreationSchema,
-  WorkoutCreation,
 } from "@/lib/type";
 import { custom, z } from "zod";
 import { cn } from "@/lib/utils";
@@ -58,7 +56,7 @@ import { Button } from "@/components/ui/button";
 
 import Image from "next/image";
 import { enumUtil } from "zod/lib/helpers/enumUtil";
-import { Plan, Workout } from "@prisma/client";
+import { Plan} from "@prisma/client";
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
 
 type Props = {
@@ -192,32 +190,7 @@ const WorkoutForm = ({ planData }: Props) => {
                     </FormItem>
                   )}
                 />
-                <FormField
-                  name="day"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Select a day</FormLabel>
-                      <Select
-                        onValueChange={handleDaySelect}
-                        defaultValue={selectedDay}
-                      >
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select a day for this workout" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          {Object.values(Day).map((day) => (
-                            <SelectItem key={day} value={day}>
-                              {day}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+               
                    <FormField
                   control={form.control}
                   name="planId"

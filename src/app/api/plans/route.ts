@@ -4,11 +4,6 @@ import { DeletionSchema, PlanCreationSchema } from "@/lib/type";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
-type Data = {
-  input: string;
-  name: string;
-};
-
 export async function POST(req: Request, res: Response) {
   try {
     const session = await getAuthSession();
@@ -22,23 +17,23 @@ export async function POST(req: Request, res: Response) {
       );
     }
     const body = await req.json();
-    const { planName, age, gender, weight, height, fitnessGoal, description } =
+    const { planName, fitnessGoals, description, day } =
       PlanCreationSchema.parse(body);
 
+    // Create the Plan and associate it with FitnessGoals
     const client = await prisma.plan.create({
       data: {
-        age: age,
-        gender: gender,
-        weight: weight,
-        height: height,
-        fitnessGoal: fitnessGoal,
         planName: planName,
+        day: day,
         description: description,
         userId: session?.user.id,
+        fitnessGoals: fitnessGoals
       },
+     
     });
 
     console.log("Plan record created:", client);
+    return NextResponse.json(client);
   } catch (error) {
     console.error("Error creating a plan record:", error);
     if (error instanceof z.ZodError) {
@@ -51,6 +46,7 @@ export async function POST(req: Request, res: Response) {
     }
   }
 }
+
 export async function DELETE(req: Request, res: Response) {
   try {
     const body = await req.json();
@@ -61,10 +57,12 @@ export async function DELETE(req: Request, res: Response) {
       },
     });
     console.log("plan deleted: ", deleteClient);
+    return NextResponse.json({ message: "Plan deleted" });
   } catch (error) {
     console.log("error deleting plan", error);
   }
 }
+
 export async function GET(req: Request, res: Response) {
   try {
     const session = await getAuthSession();
@@ -78,15 +76,8 @@ export async function GET(req: Request, res: Response) {
       );
     }
 
- 
-
+    // Handle your GET logic here.
   } catch (error) {
     console.error("Error checking user plan:", error);
-    return NextResponse.json(
-      { error: "An error occurred while checking the plan" },
-      {
-        status: 500,
-      }
-    );
   }
 }

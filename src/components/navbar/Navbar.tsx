@@ -16,10 +16,10 @@ import {
 import { Button } from "../ui/button";
 
 type Props = {
-  planData: Pick<Plan, "planName" | "userId" | "description" | "id" >;
+  
 };
 
-const Navbar = async ({ planData }: Props) => {
+const Navbar = async (props: Props) => {
   const session = await getAuthSession();
   const getAllPlan = await prisma.plan.findMany();
 
@@ -28,8 +28,8 @@ const Navbar = async ({ planData }: Props) => {
       <div className="flex lg:px-10 px-3 items-center justify-between h-full mt-5  w-full ">
         <div className="flex items-center  gap-5">
           <Link href="/" className="items-center flex ">
-            <img src="/muscle.png" alt="muscle" className="w-[50px]" />
-            <h1 className="rounde-lg text-5xl font-light italic p-4">Gymify</h1>
+            <img src="/muscle.png" alt="muscle" className="w-[50px] bg-green-300 rounded-full p-2" />
+            <h1 className="rounde-lg text-5xl font-bold italic p-4 ">Gymify</h1>
           </Link>
           {/* <div>
               <h1 className="text-xl font-normal ">

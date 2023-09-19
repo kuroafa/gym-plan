@@ -30,10 +30,10 @@ const DeleteButton = ({ id }: Props) => {
         body: JSON.stringify({
           id: AppointmentId,
         }),
-      });
-      router.replace("/planner");
+      }); 
       router.refresh();
-      router.push("/");
+      router.push("/planPage");
+      
       
     } catch (error) {
       console.log(`${error} deleting appointment`);
@@ -44,7 +44,7 @@ const DeleteButton = ({ id }: Props) => {
     <>
       <Dialog>
         <DialogTrigger>
-          <h1>Delete</h1>
+          <h1 className="text-xl font-medium italic hover:bg-gray-200  shadow-lg shadow-lime-500 px-5 py-2 rounded-xl">Delete</h1>
         </DialogTrigger>
         <DialogContent className="flex flex-col items-start">
           <DialogTitle>Are you sure?</DialogTitle>

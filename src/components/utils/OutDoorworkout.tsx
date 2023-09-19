@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 
 import { Button } from "../ui/button";
 import { LongListOutdoorParkWorkouts } from "./Data";
+import Image from "next/image";
 
 type Props = {};
 
@@ -120,7 +121,7 @@ const OutDoorWorkout = (props: Props) => {
           </Box>
         </Fade>
       </Modal>
-      <Button onClick={handleOpen}>Start Workout</Button>
+      <button  className="text-xl bg-gray-300 rounded-full"  onClick={handleOpen}><Image width={30} height={30} alt="play" src='/play-button.png'/></button>
     </div>
   );
 };

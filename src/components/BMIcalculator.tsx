@@ -7,7 +7,7 @@ type Props = {};
 
 const BMIcalculator = (props: Props) => {
   return (
-    <div className="bg-gray-400 rounded-lg p-2 ">
+    <div className="bg-gray-400 rounded-lg p-3 m-3 ">
       {/* <h2 className="text-2xl text-white font-medium">BMI Calculator</h2>
       <div className="flex justify-between pl-2 ">
         <div>

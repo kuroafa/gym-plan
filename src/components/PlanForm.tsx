@@ -1,3 +1,6 @@
+
+
+
 "use client";
 import { useForm } from "react-hook-form";
 import { PlanCreation, PlanCreationSchema } from "@/lib/type";
@@ -36,36 +39,83 @@ import {
 
 import * as React from "react";
 
-import { cn } from "@/lib/utils";
+
 import { Button } from "@/components/ui/button";
 
-import { Plan } from "@prisma/client";
-import { Checkbox } from "./ui/checkbox";
-import HoverNavbar from "./HoverNavbar";
+
 import Image from "next/image";
+import { Space, Tag } from 'antd';
+
+const { CheckableTag } = Tag;
 
 type Props = {};
+enum FitnessGoals {
+  LEG_DAY = "LEG_DAY",
+  BACK_DAY = "BACK_DAY",
+  SHOULDERS_DAY = "SHOULDERS_DAY",
+  CHEST_DAY = "CHEST_DAY",
+  ARMS_DAY = "ARMS_DAY",
+  CARDIO = "CARDIO",
+  STRENGTH_TRAINING = "STRENGTH_TRAINING",
+  FLEXIBILITY = "FLEXIBILITY",
+  BALANCE_TRAINING = "BALANCE_TRAINING",
+}
+
+enum Day {
+  MONDAY = "MONDAY",
+  TUESDAY = "TUESDAY",
+  WEDNESDAY = "WEDNESDAY",
+  THURSDAY = "THURSDAY",
+  FRIDAY = "FRIDAY",
+  SATURDAY = "SATURDAY",
+  SUNDAY = "SUNDAY",
+}
 
 const PlanForm = (prop: Props) => {
-  const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
-  const router = useRouter();
+  const [selectedDay, setSelectedDay] = React.useState<Day>(Day.MONDAY);
+  const [selectedFitnessGoal, setSelectedFitnessGoal] = React.useState<FitnessGoals | null>(FitnessGoals.ARMS_DAY);
+const [selectedTags, setSelectedTags] = React.useState([]);
+  const handleDaySelect = (day: Day) => {
+    setSelectedDay(day);
+  };
 
+  const handleFitnessGoalToggle = (goal: FitnessGoals) => {
+    if (selectedFitnessGoal === goal) {
+      setSelectedFitnessGoal(null);
+    } else {
+      setSelectedFitnessGoal(goal);
+    }
+  };
+  
+
+  const router = useRouter();
+  const {
+    reset,
+    formState: { errors, isLoading },
+  } = useForm();
   const form = useForm<PlanCreation>({
     resolver: zodResolver(PlanCreationSchema),
     defaultValues: {
       planName: "",
-      description: '',
+      description: "",
+      day: "FRIDAY",
+      fitnessGoals: 'ARMS_DAY' // Use an array with the selectedFitnessGoal if it's not null
     },
   });
+  
   const onSubmit = async (data: PlanCreation) => {
     try {
+      const completeData = {
+        ...data,
+        day: selectedDay,
+        fitnessGoals: selectedFitnessGoal
+      };
       const response = await fetch("/api/plans", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(completeData),
       });
 
       if (!response.ok) {
@@ -74,64 +124,115 @@ const PlanForm = (prop: Props) => {
     } catch (error) {
       console.error("Could not create Plan:", error);
     }
-    router.push("/planner");
-    router.refresh;
+    
+    router.push("/Dashboard");
+    router.refresh();
   };
 
   return (
     <div className="flex items-center justify-between  ">
-        <AlertDialog>
-          <div className="flex flex-col items-start justify-start">
-            <AlertDialogTrigger className="text-black text-xl flex items-center gap-2 ">
-              <Button variant={'secondary'} className="flex gap-5 p-5">
-                 <h2>Create new plan</h2>
-                <Image alt="add" src="/post.png" width={30} height={30}/>
-              </Button>
-            </AlertDialogTrigger>
-          </div>
-          <Form {...form}>
-            <AlertDialogContent>
-              <form
-                onSubmit={form.handleSubmit(onSubmit)}
-                className="z-[-1] space-y-8"
-              >
-                <div className="flex flex-col gap-[10px] flex-wrap">
-                  <FormField
-                    control={form.control}
-                    name="planName"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Plan Name</FormLabel>
+      <AlertDialog>
+        <div className="flex flex-col items-start justify-start">
+          <AlertDialogTrigger className=" text-xl flex items-center gap-2 ">
+            <button variant={"secondary"} className="flex gap-2 ">
+             
+              <Image alt="add" src="/post.png" width={60} height={30} />
+            </button>
+          </AlertDialogTrigger>
+        </div>
+        <Form {...form}>
+          <AlertDialogContent>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="z-[-1] space-y-8"
+            >
+              <div className="flex flex-col gap-[10px] flex-wrap">
+                <FormField
+                  control={form.control}
+                  name="planName"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Plan Name</FormLabel>
+                      <FormControl>
+                        <Input placeholder="plan name..." {...field} />
+                      </FormControl>
+                      <FormDescription>this is the plan name</FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="description"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Description</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Describe this plan..." {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  name="day"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Select a day</FormLabel>
+                      <Select
+                        onValueChange={handleDaySelect}
+                        defaultValue={selectedDay}
+                      >
                         <FormControl>
-                          <Input placeholder="plan name..." {...field} />
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select a day for this workout" />
+                          </SelectTrigger>
                         </FormControl>
-                        <FormDescription>this is the plan name</FormDescription>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                     <FormField
-                    control={form.control}
-                    name="description"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Description</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Describe this plan..." {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
-                <Button type="submit">Submit</Button>
-                <AlertDialogCancel>Cancel</AlertDialogCancel>
-              </form>
-            </AlertDialogContent>
-          </Form>
-        </AlertDialog>
-
-     
+                        <SelectContent>
+                          {Object.values(Day).map((day) => (
+                            <SelectItem key={day} value={day}>
+                              {day}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              <FormField
+          name="fitnessGoals"
+          
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Fitness Goals</FormLabel>
+              <FormControl>
+                <Space size={[0, 8]} wrap>
+                {Object.values(FitnessGoals).map((goal) => (
+                      <CheckableTag
+                        key={goal}
+                        checked={selectedFitnessGoal === goal}
+                        onChange={() => handleFitnessGoalToggle(goal)}
+                        
+                      >
+                        
+                        {goal}
+                      </CheckableTag>
+                    ))}
+                </Space>
+              </FormControl>
+              <FormDescription>Select one or more fitness goals</FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+              </div>
+              <Button type="submit">Submit</Button>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+            </form>
+          </AlertDialogContent>
+        </Form>
+      </AlertDialog>
     </div>
   );
 };
