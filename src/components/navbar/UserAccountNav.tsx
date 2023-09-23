@@ -18,51 +18,11 @@ import { useRouter } from "next/navigation";
 
 
 type Props = {
-  user: Pick<User, "name" | "image" | "email">;
+  user: Pick<User, "name" | "image" | "email"  >;
 };
 
 const UserAccountNav = ({ user }: Props) => {
-    const [isGenerating, setIsGenerating] = useState(false);
-  const [workouts, setWorkouts] = useState([]);
-  const [hasFetchedData, setHasFetchedData] = useState(false); // Track whether data has been fetched
-  const [isDeleting, setIsDeleting] = useState(false);
-  const router = useRouter();
-  const getWorkouts = async () => {
-    try {
-      setIsGenerating(true);
-      const response = await fetch("api/workouts", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await response.json();
-      setWorkouts(data);
-    } catch (error) {
-      console.error("Error fetching workouts", error); // Fix the error message here
-    } finally {
-      setIsGenerating(false);
-    }
-    
-  };
-  const clearUsers = async () => {
-    try {
-      setIsDeleting(true);
-      const response = await fetch("api/workouts", {
-        method: "DELETE",
-      });
-      const clearResult = await response.json();
-      router.refresh();
-      setIsDeleting(false);
-      if (clearResult.message === "Data cleared successfully") {
-        
-      }
-    } catch (error) {
-      if (error) {
-       
-      }
-    }
-  };
+
   return (
     <div className="flex items-center  gap-5">
       <DropdownMenu>
@@ -76,7 +36,7 @@ const UserAccountNav = ({ user }: Props) => {
         >
           <div className="flex items-center justify-start gap-2 p-2 ">
             <div className="flex flex-col space-y-1 leading-none">
-              {user.name && <p className="font-medium">{user.name}</p>}
+              {user?.name && <p className="font-medium">{user.name}</p>}
               {user.email && (
                 <p className="w-[200px truncate text-sm text-zinc-700">
                   {user.email}

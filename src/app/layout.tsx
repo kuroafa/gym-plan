@@ -66,16 +66,18 @@ export default async function RootLayout({
                 
               </div>
 
-              <div className="pr-5 flex items-center gap-2 ">
-                <PlanForm />
+              <div className="">
+               
 
-                {/* {session ?
-                  
-                    <UserAccountNav user={session?.user} />
-                  : null} */}
+                {session ?
+                   <div className="pr-5 mt-1 flex items-center gap-2 ">
+                     <PlanForm />
+                      {/* <UserAccountNav user={session?.user} /> */}
+                   </div>
+                  : null}
               </div>
             </div>
-            <div className={`${!!session?.user ? " " : " "} md:mt-10 p-4  mt-[43px] `}>
+            <div className={`${!!session?.user ? " " : " "} md:mt-5 md:p-4 p-0 mt-[43px] `}>
               {children}
             </div>
           </div>

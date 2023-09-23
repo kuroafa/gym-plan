@@ -1,13 +1,21 @@
+"use client";
 import React, { useState } from "react";
-import { RandomWorkouts } from "./utils/Data";
-import { Button } from "./ui/button";
+import { RandomWorkouts, allWorkouts } from "./utils/Data";
 import Image from "next/image";
+import { Button } from "@mui/material";
+import Map from "./Map";
+import RecommendedWorkouts from "./RecommendedWorkouts";
+import { Plan } from "@prisma/client";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 
 type Workout = {
   exercise: string;
   sets: number;
   reps: number;
   image: string;
+};
+type Props = {
+  planData: Plan[];
 };
 
 const initialWorkout: Workout = {
@@ -17,7 +25,7 @@ const initialWorkout: Workout = {
   image: "/situp.png",
 };
 
-const RandomWorkout = () => {
+const RandomWorkout = ({ planData }: Props) => {
   const [randomWorkout, setRandomWorkout] = useState<Workout>(initialWorkout);
 
   const generateRandomWorkout = () => {
@@ -31,45 +39,49 @@ const RandomWorkout = () => {
     left: 0,
     width: "100%",
     height: "100%",
-    backgroundColor: "rgba(0, 0, 0, 0.6)", // Adjust the opacity as needed (0.5 is semi-transparent)
+    backgroundColor: "rgba(29 ,78 ,216,0.8)", // Adjust the opacity as needed (0.5 is semi-transparent)
     zIndex: 1, // Place the overlay above the background image
-  
   };
 
   return (
-    <div className="rounded-xl relative flex-col md:flex-row justify-between p-1 shadow-2xl shadow-black">
-       <div className="rounded-xl" style={overlayStyle}></div>
-      <div className="pl-3 pt-2 relative z-[200]">
-        <div className="flex justify-between items-center px-1">
-          <h2 className="text-2xl font-medium text-white ">Random <span className="font-bold">Workout</span></h2>
-          <button type="button" className="pr-6" onClick={generateRandomWorkout}>
-            <Image
-              src="/refresh.png"
-              width={40}
-              height={40}
-              alt="refresh"
-              className="bg-gray-300 hover:bg-lime-500 rounded-full p-2"
-            />
-          </button>
-         
-        </div>
-        <div className="px-2">
-          <p className="md:text-4xl text-4xl font-medium text-gray-300">Workout: {randomWorkout.exercise}</p>
-          <div className="flex gap-2">
-            <p className="md:text-2xl text-xl font-medium text-gray-200">Sets: {randomWorkout.sets}</p>
-            <p className="md:text-2xl text-xl font-medium text-gray-200">Reps: {randomWorkout.reps}</p>
+    <div className=" pl-2  mt-5">
+      <h2 className="text-4xl font-normal border-b border-orange-500 w-fit ">
+        Random <span className="font-bold  text-lime-500">Workout</span>
+      </h2>
+
+      <div className="rounded-xl  pb-4    relative grid md:grid-cols-2 grid-cols-1 p-1 ">
+        <div className=" pt-2 ">
+          <div className="">
+            <p className="md:text-2xl text-4xl font-medium  ">
+              Workout: {randomWorkout.exercise}
+            </p>
+            <div className="flex gap-2">
+              <p className="md:text-2xl text-xl font-medium ">
+                Sets: {randomWorkout.sets}
+              </p>
+              <p className="md:text-2xl text-xl font-medium ">
+                Reps: {randomWorkout.reps}
+              </p>
+            </div>
+            <Button
+              variant="outlined"
+              type="button"
+              className="mt-5  border-blue-700 hover:border-lime-500"
+              onClick={generateRandomWorkout}
+            >
+              Generate
+            </Button>
           </div>
         </div>
+
+        <div className="">
+          <img
+            className="w-[100%] mt-20"
+            alt={randomWorkout.exercise}
+            src={randomWorkout.image}
+          />
+        </div>
       </div>
-      
-      <div className="z-[200] relative">
-        <img
-          className=""
-          alt={randomWorkout.exercise}
-          src={randomWorkout.image}
-        />
-      </div>
-     
     </div>
   );
 };

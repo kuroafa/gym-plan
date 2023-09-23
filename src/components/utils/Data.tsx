@@ -103,26 +103,28 @@ const muscleBuildingWorkouts = [
   ];
 // gym workout
   const GymBuildingWorkouts = [
-    {
-      exercise: "Bench Press",
-      description:
-        "The bench press is a classic chest exercise. Lie on a bench, lower the barbell to your chest, and push it back up. It targets your chest, shoulders, and triceps.",
-      sets: 4,
-      reps: 12,
-      restTime: 60,
-      atHome: false,
-    },
-    {
-      exercise: "Leg Press",
-      description:
-        "The leg press machine is excellent for working your lower body, especially your quadriceps, hamstrings, and glutes. Load the machine and press the weight upward with your legs.",
-      sets: 4,
-      reps: 10,
-      restTime: 60,
-      atHome: false,
-    },
+    // {
+    //   exercise: "Bench Press",
+     
+    //   description:
+    //     "The bench press is a classic chest exercise. Lie on a bench, lower the barbell to your chest, and push it back up. It targets your chest, shoulders, and triceps.",
+    //   sets: 4,
+    //   reps: 12,
+    //   restTime: 60,
+    //   atHome: false,
+    // },
+    // {
+    //   exercise: "Leg Press",
+    //   description:
+    //     "The leg press machine is excellent for working your lower body, especially your quadriceps, hamstrings, and glutes. Load the machine and press the weight upward with your legs.",
+    //   sets: 4,
+    //   reps: 10,
+    //   restTime: 60,
+    //   atHome: false,
+    // },
     {
       exercise: "Lat Pulldown",
+      image:'latpulldown.png',
       description:
         "The lat pulldown machine targets your back and biceps. Sit down, grab the bar, and pull it down to your chest. Slowly release the bar upward.",
       sets: 4,
@@ -132,6 +134,7 @@ const muscleBuildingWorkouts = [
     },
     {
       exercise: "Leg Curl Machine",
+      image:'legcurl.png',
       description:
         "The leg curl machine is great for isolating your hamstrings. Lie face down on the machine, curl your legs upward, and then lower them back down.",
       sets: 4,
@@ -141,6 +144,7 @@ const muscleBuildingWorkouts = [
     },
     {
       exercise: "Seated Row Machine",
+      image:'seatedrow.png',
       description:
         "The seated row machine works your back and biceps. Sit down, grab the handles, and pull them towards your torso. Slowly release the handles forward.",
       sets: 4,
@@ -150,6 +154,7 @@ const muscleBuildingWorkouts = [
     },
     {
       exercise: "Shoulder Press Machine",
+      image:'shoulderpress.png',
       description:
         "The shoulder press machine targets your shoulders and triceps. Sit down, grab the handles, and press the weight upward. Slowly lower it back down.",
       sets: 4,
@@ -159,6 +164,7 @@ const muscleBuildingWorkouts = [
     },
     {
       exercise: "Leg Extension Machine",
+      image:'legextention.webp',
       description:
         "The leg extension machine isolates your quadriceps. Sit down, place your legs under the pads, and extend them outward. Slowly return to the starting position.",
       sets: 4,
@@ -168,6 +174,7 @@ const muscleBuildingWorkouts = [
     },
     {
       exercise: "Cable Bicep Curls",
+      image:'cablebicepscurls.png',
       description:
         "Cable bicep curls are great for targeting your biceps. Attach a straight bar to the cable machine, grab it, and curl it upward. Slowly lower it back down.",
       sets: 4,
@@ -177,6 +184,7 @@ const muscleBuildingWorkouts = [
     },
     {
       exercise: "Tricep Pushdown Machine",
+      image:'tricepspushdown.png',
       description:
         "The tricep pushdown machine works your triceps. Attach a V-bar to the cable machine, grab it, and push it downward. Slowly release it upward.",
       sets: 4,

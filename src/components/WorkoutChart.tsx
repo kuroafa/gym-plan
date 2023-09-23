@@ -53,7 +53,7 @@ const WorkoutChart = (props: Props) => {
 
   return (
     <>
-      <div className="h-80  p-2 relative ">
+      <div className="h-80   relative ">
         <Doughnut data={chartData} options={chartOptions} />
       </div>
     </>

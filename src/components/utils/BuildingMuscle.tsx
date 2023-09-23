@@ -6,21 +6,21 @@ import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Typography from "@mui/material/Typography";
 import GymWorkout from "@/components/utils/GymWorkout";
-import { Button } from "../ui/button";
+
 import { muscleBuildingWorkouts } from "./Data";
 import Image from "next/image";
+import { Button } from "@mui/material";
 
+type Props = {
+  onClose: () => void;
+  open: boolean;
+};
 
-type Props = {};
-
-const BuildingMuscle = (props: Props) => {
+const BuildingMuscle: React.FC<Props> = ({ onClose, open }) => {
   const [currentWorkoutIndex, setCurrentWorkoutIndex] = useState(0);
   const [currentSet, setCurrentSet] = useState(1);
   const [timer, setTimer] = useState<number>(0); // Ensure timer is treated as a number
   const [isResting, setIsResting] = useState(false);
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
 
   const style = {
     position: "absolute",
@@ -78,25 +78,47 @@ const BuildingMuscle = (props: Props) => {
   }, [currentWorkoutIndex, currentSet, isResting]);
 
   const currentWorkout = muscleBuildingWorkouts[currentWorkoutIndex];
-
+  const ModelStyles = {
+    position: "fixed",
+    top: "20%",
+    left: "0",
+    borderRadius: "10px",
+    overflow: "auto",
+    width: "100%",
+    height: "100%",
+    backgroundColor: "#FFF",
+    padding: "50px",
+    zIndex: 500,
+  };
+  const OverlayStyle = {
+    position: "fixed",
+    top: "0",
+    bottom: 0,
+    right: 0,
+    left: 0,
+    backgroundColor: "rgba(0,0,0,0.7)",
+    padding: "50px",
+    zIndex: 400,
+  };
   return (
-    <div>
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        open={open}
-        onClose={handleClose}
-        closeAfterTransition
-        slots={{ backdrop: Backdrop }}
-        slotProps={{
-          backdrop: {
-            timeout: 500,
-          },
-        }}
-      >
-        <Fade in={open}>
-          <Box sx={style}>
-            {currentWorkout ? (
+    <>
+      <div>
+        {open && (
+          <div>
+            <div onClick={onClose} style={OverlayStyle} />
+            <div style={ModelStyles}>
+              home
+            </div>
+          </div>
+        )}
+      </div>
+    </>
+  );
+};
+
+export default BuildingMuscle;
+{
+  /* {currentWorkout ? (
               <div className="flex flex-col text-center gap-10">
                 <div className=" flex flex-col gap-1">
                   <h2 className="text-5xl">{currentWorkout.exercise}</h2>
@@ -115,13 +137,5 @@ const BuildingMuscle = (props: Props) => {
               <div>
                 <p className="text-xl font-bold">Take a 15-Second Break</p>
               </div>
-            )}
-          </Box>
-        </Fade>
-      </Modal>
-      <button   className=" text-xl whitespace-nowrap bg-gray-300 rounded-full"  onClick={handleOpen}><Image width={30} height={30} alt="play" src='/play-button.png'/></button>
-    </div>
-  );
-};
-
-export default BuildingMuscle;
+            )} */
+}

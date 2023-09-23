@@ -1,23 +1,54 @@
 import React from "react";
 import BMIform from "./BMIform";
+import { getAuthSession } from "@/lib/nextauth";
+import UserAccountNav from "./navbar/UserAccountNav";
+import Map from "./Map";
+import { User } from "@prisma/client";
 
-type Props = {};
+type Props = {
+  
+};
 
+const BMIcalculator = async (props: Props) => {
+  const session = await getAuthSession();
+  console.log(session?.user?.age);
 
-
-const BMIcalculator = (props: Props) => {
   return (
-    <div className="bg-gray-400 rounded-lg p-3 m-3 ">
-      {/* <h2 className="text-2xl text-white font-medium">BMI Calculator</h2>
-      <div className="flex justify-between pl-2 ">
-        <div>
-          <p className="text-white ">Weight:</p>
-          <p className="text-white ">Height:</p>
-          <p className="text-white ">Age:</p>
+    <div className=" rounded-lg p-3   mb-10">
+      <div className="flex gap-2 items-center mb-1 ">
+        <div className="">
+          <div>
+            <p className="text-5xl font-medium">
+              {session?.user?.name?.toUpperCase()}
+            </p>
+            <p className="text-xl font-medium">@{session?.user?.username}</p>
+            <p className="text-2xl font-medium"></p>
+          </div>
         </div>
-        <div className="text-white">Result</div>
-      </div> */}
-      <BMIform/>
+      </div>
+      <div className="rounded-lg  ">
+        {/* <h2 className="text-5xl  font-bold">
+          <span className="font-normal">BMI</span> Calculator
+        </h2> */}
+        <div className="grid md:grid-cols-3 mt-2 gap-3 grid-cols-3 ">
+          <div className="text-lg font-medium flex flex-col items-center  rounded-lg p-1">
+            <p className="text-gray-400 italic text-xl font-semi-bold">
+              Weight
+            </p>
+            <p>{session?.user?.weight}lb</p>
+          </div>
+          <div className="text-lg font-medium flex flex-col items-center  rounded-lg p-1">
+            <p className=" text-xl text-gray-400 italic font-semi-bold">
+              Height
+            </p>
+            <p>{session?.user?.height}in</p>
+          </div>
+          <div className="text-lg font-medium flex flex-col items-center rounded-lg p-1">
+            <p className=" text-xl text-gray-400 italic font-semi-bold">Age</p>
+            <p>{session?.user?.age}</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

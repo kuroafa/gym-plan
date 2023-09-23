@@ -36,19 +36,19 @@ const Workouts = ({ planData }: Props) => {
 
   return (
     <div
-      className="grid rounded-xl p-2 h-[350px] bg-center  bg-black shadow-black shadow-2xl  gap-3 grid-cols-1"
+      className="grid rounded-xl p-2 h-[270px] bg-center  bg-black shadow-black shadow-2xl  gap-3 grid-cols-1"
       style={containerStyle} 
     >
 
       <div className="rounded-xl" style={overlayStyle}></div>
 
-      <div className="flex flex-col pl-5 items-start gap-2 w-fit relative z-10"> 
+      <div className="flex flex-col md:pl-5 pl-2 items-start gap-2 w-fit relative z-10"> 
         <h1 className="xl:text-7xl text-4xl text-white font-medium">
           Become a better
           version of<br /> <span className="font-bold text-gray-300">YOURSELF.</span>
         </h1>
         <p className="text-2xl font-medium text-white">Workout & Plan in one place</p>
-        <Button variant="outlined" className=" hover:border-lime-500 ">Start Workout</Button>
+        <Button variant="outlined" className="text-white border-orange-500 hover:border-lime-500 ">Start Workout</Button>
       </div>
     </div>
   );

@@ -13,8 +13,9 @@ const UserAvatar = ({ user }: Props) => {
       {user.image ? (
         <div className="relative w-full h-full aspect-square">
           <Image
+          
             fill
-            src={user.image}
+            src='/'
             alt="profile image"
             referrerPolicy="no-referrer"
           />

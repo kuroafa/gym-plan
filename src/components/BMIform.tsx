@@ -49,7 +49,7 @@ const BMIform = (props: Props) => {
   };
 
   return (
-    <div>
+    <div className="mt-3">
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -89,7 +89,7 @@ const BMIform = (props: Props) => {
       </Modal>
       <div className="flex items-center gap-2">
           <Button onClick={handleOpen}>Calculate BMI</Button>
-          {result ? <h1 className="text-xl font-medium flex gap-1">BMI: {result}</h1> : <h1>Get Your BMI</h1> }
+         
       </div>
     </div>
   );

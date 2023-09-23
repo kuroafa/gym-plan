@@ -4,7 +4,6 @@ import { DeleteSchema } from "@/lib/type";
 import { useRouter } from "next/navigation";
 import { GrClose } from "react-icons/gr";
 import React from "react";
-import { Button } from "../ui/button";
 import axios from "axios";
 import {
   Dialog,
@@ -13,6 +12,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Button } from "@mui/material";
 
 type Props = {
   id: string;
@@ -44,9 +44,9 @@ const DeleteButton = ({ id }: Props) => {
     <>
       <Dialog>
         <DialogTrigger>
-          <h1 className="text-xl font-medium italic hover:bg-gray-200  shadow-lg shadow-lime-500 px-5 py-2 rounded-xl">Delete</h1>
+         <Button className="border-blue-700 hover:border-orange-500 text-black font-medium" variant="outlined">Delete</Button>
         </DialogTrigger>
-        <DialogContent className="flex flex-col items-start">
+        <DialogContent className="flex flex-col items-start z-[500000000]">
           <DialogTitle>Are you sure?</DialogTitle>
           <DialogDescription>
             You are deleting this plan forever

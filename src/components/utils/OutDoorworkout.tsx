@@ -5,10 +5,9 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Typography from "@mui/material/Typography";
-
-import { Button } from "../ui/button";
 import { LongListOutdoorParkWorkouts } from "./Data";
 import Image from "next/image";
+import { Button } from "@mui/material";
 
 type Props = {};
 
@@ -121,7 +120,7 @@ const OutDoorWorkout = (props: Props) => {
           </Box>
         </Fade>
       </Modal>
-      <button  className="text-xl bg-gray-300 rounded-full"  onClick={handleOpen}><Image width={30} height={30} alt="play" src='/play-button.png'/></button>
+      <Button variant="outlined"   className="border-blue-700 hover:border-orange-500 text-black  text-lg whitespace-nowrap "  onClick={handleOpen}>Start Workout</Button>
     </div>
   );
 };

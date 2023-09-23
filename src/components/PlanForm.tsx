@@ -1,6 +1,3 @@
-
-
-
 "use client";
 import { useForm } from "react-hook-form";
 import { PlanCreation, PlanCreationSchema } from "@/lib/type";
@@ -39,12 +36,10 @@ import {
 
 import * as React from "react";
 
-
 import { Button } from "@/components/ui/button";
 
-
 import Image from "next/image";
-import { Space, Tag } from 'antd';
+import { Space, Tag } from "antd";
 
 const { CheckableTag } = Tag;
 
@@ -73,8 +68,9 @@ enum Day {
 
 const PlanForm = (prop: Props) => {
   const [selectedDay, setSelectedDay] = React.useState<Day>(Day.MONDAY);
-  const [selectedFitnessGoal, setSelectedFitnessGoal] = React.useState<FitnessGoals | null>(FitnessGoals.ARMS_DAY);
-const [selectedTags, setSelectedTags] = React.useState([]);
+  const [selectedFitnessGoal, setSelectedFitnessGoal] =
+    React.useState<FitnessGoals | null>(FitnessGoals.ARMS_DAY);
+  const [selectedTags, setSelectedTags] = React.useState([]);
   const handleDaySelect = (day: Day) => {
     setSelectedDay(day);
   };
@@ -86,7 +82,6 @@ const [selectedTags, setSelectedTags] = React.useState([]);
       setSelectedFitnessGoal(goal);
     }
   };
-  
 
   const router = useRouter();
   const {
@@ -99,16 +94,16 @@ const [selectedTags, setSelectedTags] = React.useState([]);
       planName: "",
       description: "",
       day: "FRIDAY",
-      fitnessGoals: 'ARMS_DAY' // Use an array with the selectedFitnessGoal if it's not null
+      fitnessGoals: "ARMS_DAY", // Use an array with the selectedFitnessGoal if it's not null
     },
   });
-  
+
   const onSubmit = async (data: PlanCreation) => {
     try {
       const completeData = {
         ...data,
         day: selectedDay,
-        fitnessGoals: selectedFitnessGoal
+        fitnessGoals: selectedFitnessGoal,
       };
       const response = await fetch("/api/plans", {
         method: "POST",
@@ -123,10 +118,10 @@ const [selectedTags, setSelectedTags] = React.useState([]);
       }
     } catch (error) {
       console.error("Could not create Plan:", error);
+    } finally {
     }
-    
-    router.push("/Dashboard");
-    router.refresh();
+    form.reset();
+    window.location.reload(true);
   };
 
   return (
@@ -134,18 +129,14 @@ const [selectedTags, setSelectedTags] = React.useState([]);
       <AlertDialog>
         <div className="flex flex-col items-start justify-start">
           <AlertDialogTrigger className=" text-xl flex items-center gap-2 ">
-            <button variant={"secondary"} className="flex gap-2 ">
-             
+            <button className="flex gap-2 ">
               <Image alt="add" src="/post.png" width={60} height={30} />
             </button>
           </AlertDialogTrigger>
         </div>
         <Form {...form}>
-          <AlertDialogContent>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="z-[-1] space-y-8"
-            >
+          <AlertDialogContent className="z-[50000]">
+            <form onSubmit={form.handleSubmit(onSubmit)} className=" space-y-8">
               <div className="flex flex-col gap-[10px] flex-wrap">
                 <FormField
                   control={form.control}
@@ -188,7 +179,7 @@ const [selectedTags, setSelectedTags] = React.useState([]);
                             <SelectValue placeholder="Select a day for this workout" />
                           </SelectTrigger>
                         </FormControl>
-                        <SelectContent>
+                        <SelectContent className="z-[50000]">
                           {Object.values(Day).map((day) => (
                             <SelectItem key={day} value={day}>
                               {day}
@@ -200,32 +191,31 @@ const [selectedTags, setSelectedTags] = React.useState([]);
                     </FormItem>
                   )}
                 />
-              <FormField
-          name="fitnessGoals"
-          
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Fitness Goals</FormLabel>
-              <FormControl>
-                <Space size={[0, 8]} wrap>
-                {Object.values(FitnessGoals).map((goal) => (
-                      <CheckableTag
-                        key={goal}
-                        checked={selectedFitnessGoal === goal}
-                        onChange={() => handleFitnessGoalToggle(goal)}
-                        
-                      >
-                        
-                        {goal}
-                      </CheckableTag>
-                    ))}
-                </Space>
-              </FormControl>
-              <FormDescription>Select one or more fitness goals</FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+                <FormField
+                  name="fitnessGoals"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Fitness Goals</FormLabel>
+                      <FormControl>
+                        <Space size={[0, 8]} wrap>
+                          {Object.values(FitnessGoals).map((goal) => (
+                            <CheckableTag
+                              key={goal}
+                              checked={selectedFitnessGoal === goal}
+                              onChange={() => handleFitnessGoalToggle(goal)}
+                            >
+                              {goal}
+                            </CheckableTag>
+                          ))}
+                        </Space>
+                      </FormControl>
+                      <FormDescription>
+                        Select one or more fitness goals
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
               </div>
               <Button type="submit">Submit</Button>
               <AlertDialogCancel>Cancel</AlertDialogCancel>
