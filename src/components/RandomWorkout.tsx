@@ -45,11 +45,11 @@ const RandomWorkout = ({ planData }: Props) => {
 
   return (
     <div className=" pl-2  mt-5">
-      <h2 className="text-4xl font-normal border-b border-orange-500 w-fit ">
+      <h2 className="text-6xl font-normal w-fit ">
         Random <span className="font-bold  text-lime-500">Workout</span>
       </h2>
 
-      <div className="rounded-xl  pb-4    relative grid md:grid-cols-2 grid-cols-1 p-1 ">
+      <div className="rounded-xl      relative grid md:grid-cols-2 grid-cols-1 p-1 ">
         <div className=" pt-2 ">
           <div className="">
             <p className="md:text-2xl text-4xl font-medium  ">

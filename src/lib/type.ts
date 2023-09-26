@@ -49,8 +49,27 @@ export const PlanCreationSchema = z.object({
   ]),
 });
 
+export const TrainerCreationSchema = z.object({
+  workOutDuration: z.string().min(1, 'Duration is required'),
+  client: z.string().min(1, 'Client name is required'),
+  date: z.string().min(1, 'Date is required'),
+  time: z.string().min(1, 'Time is required'),
+  fitnessGoals: z.enum([
+    "LEG_DAY",
+    "BACK_DAY",
+    "SHOULDERS_DAY",
+    "CHEST_DAY",
+    "ARMS_DAY",
+    "CARDIO",
+    "STRENGTH_TRAINING",
+    "FLEXIBILITY",
+    "BALANCE_TRAINING",
+  ]),
+})
+
 export const GoalSchema = z.object({
   goal: z.string(),
+  calories: z.string(),
   isCompleted: z.boolean()
 })
 
@@ -64,7 +83,7 @@ export type UserSchema = z.infer<typeof UserCreationSchema>;
 export type SigninType = z.infer<typeof SigninSchema>
 
 export type DeleteSchema = z.infer<typeof DeletionSchema>;
-
+export type TrainerSchema = z.infer<typeof TrainerCreationSchema>;
 export type GoalCreation= z.infer<typeof GoalSchema>;
 
 export type PlanCreation = z.infer<typeof PlanCreationSchema>;

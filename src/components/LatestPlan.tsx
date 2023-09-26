@@ -3,19 +3,23 @@ import { prisma } from "@/lib/db";
 import { getAuthSession } from "@/lib/nextauth";
 import { PlanCreation } from "@/lib/type";
 import { Button } from "@mui/material";
-import { Plan } from "@prisma/client";
+import { Plan, Trainer, User } from "@prisma/client";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { fitnessGoalTips } from "./utils/Data";
 
 type Props = {
   planData: Plan[];
+  trainerData: Pick<Trainer, 'client'|'date'|'fitnessGoals'|'id'|'time'|'userId'|'workOutDuration'>;
+  userData: User;
 };
 
-const LatestPlan = ({ planData }: Props) => {
+const LatestPlan = ({ planData, trainerData, userData }: Props) => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [tip, setTip] = useState("");
   const router = useRouter();
 
   const getUsers = async (data: PlanCreation) => {
@@ -38,33 +42,77 @@ const LatestPlan = ({ planData }: Props) => {
     }
   };
   const lessPlans = planData.slice(0, 4);
-  const handleLatest = () => {};
+
+
+
+  
+    useEffect(() => {
+      if (planData.length > 0) {
+        const today = new Date();
+        const dayName = today.toLocaleDateString("en-US", { weekday: "long" }).toUpperCase();
+        
+        // Find the first plan for today (if any) and set the tip based on its fitness goal
+        const todaysPlan = planData.find((plan) => plan.day === dayName);
+        if (todaysPlan) {
+          const tipForToday = fitnessGoalTips[todaysPlan.fitnessGoals];
+          if (tipForToday) {
+            setTip(tipForToday);
+          } else {
+            setTip("Remember to stay hydrated!");
+          }
+        } else {
+          setTip("No workout scheduled for today.");
+        }
+      } else {
+        setTip("No workout data available.");
+      }
+    }, [planData]);
+  
+
+  const today = new Date();
+  const dayName = today
+    .toLocaleDateString("en-US", { weekday: "long" })
+    .toUpperCase();
+ 
 
   return (
-    <div className="  rounded-xl  sm:mt-0 mt-5">
-      <h1 className="text-4xl pb-2   font-medium">
-        <span className="text-orange-500">Upcoming</span> Workout
+    <div className="flex flex-col gap-1  rounded-xl mb-4 md:mb-0 sm:mt-0 mt-5">
+      {planData.map((plan) => {
+        return (
+          <>
+            <div key={plan.id}>
+              {plan.day === dayName && (
+                <p className="md:text-xl text-lg mt-5 font-medium">
+                 You have{" "}
+                  <span className="bg-indigo-200 rounded-xl p-1">{plan.fitnessGoals.replace("day", "").replace('_', ' ')}</span> Workout today, {tip}
+                </p>
+              )}
+            </div>
+          </>
+        );
+      })}
+      <h1 className="text-xl pb-3  whitespace-nowrap font-medium">
+        <span className=" ">Upcoming</span> Workout
       </h1>
       <div>
         {planData.length !== 0 ? (
-          <div className="  grid md:grid-cols-2  sm:grid-cols-3 grid-cols-2 gap-x-10">
+          <div className="  grid xl:grid-cols-3 gap-y-3  grid-cols-2 gap-x-2 mt-5">
             {lessPlans.map((plan) => {
               return (
                 <>
                   <div
                     key={plan.id}
-                    className="p-2 rounded-md  mb-5  cursor-pointer  flex flex-col gap-2 border-l"
+                    className="rounded-[40px]  mb-5 relative cursor-pointer  flex items-center  py-2    gap-2 "
                   >
-                    <div className="flex items-center  justify-between">
-                      <h2 className="text-lg ">
-                        <span className="text-3xl font-semibold">
-                          {plan.day}
-                        </span>
+                    <div className="rounded-full bg-lime-200 left-0 absolute px-6 py-4">
+                      <h2 className="text-2xl font-bold">
+                        <span className="xl:text-xl text-lg">{plan.day.slice(0,1)}</span>
                       </h2>
                     </div>
-                    <div className="pl-2 flex flex-col gap-1">
-                      <p className="text-xl font-medium ">
-                        {plan.fitnessGoals.replace("_", " ")}
+                    <div className="pl-[70px] flex flex-col justify-end items-end gap-1">
+                      <p className=" text-md font-bold pr-3">
+                      
+                        {plan.fitnessGoals.replace('_TRAINING', '').replace('_', ' ')}
                       </p>
                     </div>
                   </div>
@@ -78,7 +126,9 @@ const LatestPlan = ({ planData }: Props) => {
               Not sure where to start? Click generate & start your gains!
             </h2>
             <Button
-              onClick={() =>{getUsers(planData)}}
+              onClick={() => {
+                getUsers(planData);
+              }}
               variant="outlined"
               className="text-black"
             >

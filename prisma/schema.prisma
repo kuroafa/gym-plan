@@ -48,19 +48,20 @@ model User {
   name              String?
   email             String?   @unique
   emailVerified     DateTime?
-  username           String @unique
+  username          String    @unique
   age               String
   gender            Gender
   weight            String
   height            String
-  password           String 
-  createdAt          DateTime  @default(now())
-  updateAt            DateTime  @updatedAt
+  password          String
+  createdAt         DateTime  @default(now())
+  updateAt          DateTime  @updatedAt
   accounts          Account[]
   sessions          Session[]
   plan              Plan[]
   hasCompletedSetup Boolean?
   Goal              Goal[]
+  Trainer           Trainer[]
 }
 
 enum Day {
@@ -95,10 +96,22 @@ model Plan {
   fitnessGoals FitnessGoal
 }
 
-model Goal {
+model Trainer {
   id     String @id @default(cuid())
-  goal   String
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String
-  createdAt     DateTime       @default(now())
+  workOutDuration   String
+  client        String
+  date          String
+  time          String
+  fitnessGoals FitnessGoal
+}
+
+model Goal {
+  id        String   @id @default(cuid())
+  goal      String
+  calories  String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  createdAt DateTime @default(now())
 }

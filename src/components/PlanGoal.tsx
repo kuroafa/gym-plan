@@ -1,6 +1,6 @@
 import React from "react";
-import PlanForm from "./PlanForm";
-import GoalForm from "./GoalForm";
+import PlanForm from "./forms/PlanForm";
+import GoalForm from "./forms/GoalForm";
 import { Goal } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import Image from "next/image";
@@ -19,7 +19,9 @@ const PlanGoal = ({ goalData }: Props) => {
           </h1>
           <img className="w-10" src="/checklist.png" alt="checked" />
         </div>
-        <p className="text-xl font-medium mb-2">Create Goals and stay on top of your MISSION.</p>
+        <p className="text-xl font-medium mb-2">
+          Create Goals and stay on top of your MISSION.
+        </p>
         <GoalForm />
       </div>
     </>

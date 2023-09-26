@@ -8,7 +8,8 @@ import { getAuthSession } from "@/lib/nextauth";
 import UserAccountNav from "@/components/navbar/UserAccountNav";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import PlanForm from "@/components/PlanForm";
+import PlanForm from "@/components/forms/PlanForm";
+import TrainingAppointmentForm from "@/components/TrainingAppointmentForm";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +17,6 @@ export const metadata: Metadata = {
   title: "Gymify",
   description: "Gym Daily Planner",
 };
-
 
 export default async function RootLayout({
   children,
@@ -28,12 +28,12 @@ export default async function RootLayout({
     <html lang="en">
       <body>
         {" "}
-        {!session?.user && <Navbar />}{" "}
-        {session?.user && (
+         <Navbar />
+        {/* {session?.user && (
           <div className=" absolute z-[999]">
             <SideBar />
           </div>
-        )}
+        )} */}
         <div
           className={cn(
             inter.className,
@@ -41,9 +41,7 @@ export default async function RootLayout({
           )}
         >
           <div
-            className={`flex-col flex p-5 ${
-              session?.user ? "" : ""
-            } w-full`}
+            className={`flex-col flex p-5 ${session?.user ? "" : ""} w-full`}
           >
             <div className="flex items-center  justify-end">
               {/* {session?.user ? (
@@ -63,21 +61,23 @@ export default async function RootLayout({
               alt="muscle"
               className=" bg-white rounded-full p-2"
             /> */}
-                
               </div>
 
               <div className="">
-               
+                {session ? (
+                  <div className="pr-5 mt-1 flex items-center gap-2 ">
+        
 
-                {session ?
-                   <div className="pr-5 mt-1 flex items-center gap-2 ">
-                     <PlanForm />
-                      {/* <UserAccountNav user={session?.user} /> */}
-                   </div>
-                  : null}
+                    {/* <UserAccountNav user={session?.user} /> */}
+                  </div>
+                ) : null}
               </div>
             </div>
-            <div className={`${!!session?.user ? " " : " "} md:mt-5 md:p-4 p-0 mt-[43px] `}>
+            <div
+              className={`${
+                !!session?.user ? " " : " "
+              } md:mt-1 md:p- p-0  `}
+            >
               {children}
             </div>
           </div>

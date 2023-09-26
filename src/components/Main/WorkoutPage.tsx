@@ -8,7 +8,7 @@ import GymWorkout from "../utils/GymWorkout";
 import BuildingMuscle from "../utils/BuildingMuscle";
 import { RandomWorkouts } from "../utils/Data";
 import { Plan } from "@prisma/client";
-import DashboardChart from "../DashboardChart";
+import DashboardChart from "../dashboard/DashboardChart";
 import WorkoutChart from "../WorkoutChart";
 import WorkoutChart2 from "../WorkoutChart2";
 
@@ -26,9 +26,6 @@ const WorkoutPage = ({ planData }: Props) => {
   return (
     <>
       <div>
-       
-       
-        
         <div>
           <div className="flex items-start flex-col mt-5">
             <h1 className="text-6xl font-medium pt-5 border-b border-lime-500 pb-1 w-fit">
@@ -38,7 +35,7 @@ const WorkoutPage = ({ planData }: Props) => {
               className="text-2xl border-b pt-5"
               onClick={handleTextDelete}
             >
-              {deleteText ? 'Clear details' : 'Details'}
+              {deleteText ? "Clear details" : "Details"}
             </button>
           </div>
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 pt-5">

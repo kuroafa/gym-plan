@@ -509,7 +509,7 @@ const muscleBuildingWorkouts = [
       fitnessGoal: fitnessGoals.CARDIO,
     },
     {
-      exercise: 'Mountain Climbers',
+      exercise: 'M/ Climbers',
       description: 'Mountain climbers are excellent for cardiovascular fitness and core strength...',
       sets: 3,
       reps: '20 each leg',
@@ -536,7 +536,7 @@ const muscleBuildingWorkouts = [
       fitnessGoal: fitnessGoals.CARDIO,
     },
     {
-      exercise: 'Bodyweight Calf Raises',
+      exercise: 'Calf Raises',
       description: 'Calf raises can be done without weights...',
       sets: 3,
       reps: 20,
@@ -581,7 +581,7 @@ const muscleBuildingWorkouts = [
       fitnessGoal: fitnessGoals.BACK_DAY,
     },
     {
-      exercise: 'Leg Curl Machine',
+      exercise: 'Leg Curl',
       description: 'The leg curl machine is great for isolating your hamstrings...',
       sets: 4,
       reps: 12,
@@ -590,7 +590,7 @@ const muscleBuildingWorkouts = [
       fitnessGoal: fitnessGoals.LEG_DAY,
     },
     {
-      exercise: 'Seated Row Machine',
+      exercise: 'Seated Row ',
       description: 'The seated row machine works your back and biceps...',
       sets: 4,
       reps: 12,
@@ -599,7 +599,7 @@ const muscleBuildingWorkouts = [
       fitnessGoal: fitnessGoals.BACK_DAY,
     },
     {
-      exercise: 'Shoulder Press Machine',
+      exercise: 'Shoulder Press',
       description: 'The shoulder press machine targets your shoulders and triceps...',
       sets: 4,
       reps: 12,
@@ -608,7 +608,7 @@ const muscleBuildingWorkouts = [
       fitnessGoal: fitnessGoals.SHOULDERS_DAY,
     },
     {
-      exercise: 'Leg Extension Machine',
+      exercise: 'Leg Extension ',
       description: 'The leg extension machine isolates your quadriceps...',
       sets: 4,
       reps: 12,
@@ -617,7 +617,7 @@ const muscleBuildingWorkouts = [
       fitnessGoal: fitnessGoals.LEG_DAY,
     },
     {
-      exercise: 'Cable Bicep Curls',
+      exercise: 'Bicep Curls',
       description: 'Cable bicep curls are great for targeting your biceps...',
       sets: 4,
       reps: 12,
@@ -626,7 +626,7 @@ const muscleBuildingWorkouts = [
       fitnessGoal: fitnessGoals.ARMS_DAY,
     },
     {
-      exercise: 'Tricep Pushdown Machine',
+      exercise: 'Tricep Pushdown ',
       description: 'The tricep pushdown machine works your triceps...',
       sets: 4,
       reps: 12,
@@ -644,7 +644,7 @@ const muscleBuildingWorkouts = [
       fitnessGoal: fitnessGoals.CHEST_DAY,
     },
     {
-      exercise: 'Bodyweight Squats',
+      exercise: 'Squats',
       description: 'Bodyweight squats help strengthen your legs...',
       sets: 4,
       reps: 10,
@@ -671,7 +671,7 @@ const muscleBuildingWorkouts = [
       fitnessGoal: fitnessGoals.LEG_DAY,
     },
     {
-      exercise: 'Park Bench Dips',
+      exercise: ' Bench Dips',
       description: 'Use a park bench for tricep dips...',
       sets: 4,
       reps: 12,
@@ -715,7 +715,7 @@ const muscleBuildingWorkouts = [
       fitnessGoal: fitnessGoals.STRENGTH_TRAINING,
     },
     {
-      exercise: 'Park Bench Step-Ups',
+      exercise: 'Bench Step-Ups',
       description: 'Use a park bench for step-ups...',
       sets: 4,
       reps: '12 (each leg)',
@@ -733,7 +733,7 @@ const muscleBuildingWorkouts = [
       fitnessGoal: fitnessGoals.STRENGTH_TRAINING,
     },
     {
-      exercise: 'Park Bench Leg Raises',
+      exercise: 'Bench Leg Raises',
       description: 'Hold onto a park bench and do leg raises...',
       sets: 4,
       reps: '12 (each leg)',
@@ -742,7 +742,7 @@ const muscleBuildingWorkouts = [
       fitnessGoal: fitnessGoals.STRENGTH_TRAINING,
     },
     {
-      exercise: 'Park Bench Push-Ups',
+      exercise: ' Bench Push-Ups',
       description: 'Use a park bench for incline push-ups...',
       sets: 4,
       reps: 12,
@@ -751,5 +751,281 @@ const muscleBuildingWorkouts = [
       fitnessGoal: fitnessGoals.CHEST_DAY,
     },
   ]
+  export const motivationalPhrases = [
+    "Never give up, ",
+    "Believe in yourself, ",
+    "Dream big, ",
+    "Stay positive, ",
+    "Work hard, ",
+    "Embrace challenges, ",
+    "Stay focused, ",
+    "Find your passion, ",
+    "Push your limits, ",
+    "Stay determined, ",
+    "Learn from failures, ",
+    "Make it happen, ",
+  ];
 
+  export const fitnessGoalTips: { [key: string]: string } = {
+    CARDIO: "Mix up your cardio routine to prevent boredom, and gradually increase intensity for cardiovascular fitness.",
+    ARMS_DAY: "Balance bicep and tricep exercises, and maintain controlled movements for effective arm training.",
+    BACK_DAY: "Engage your back muscles with compound exercises like rows and pull-ups, and prioritize good posture.",
+    BALANCE_TRAINING: "Work on balance exercises like single-leg squats or yoga poses to enhance stability.",
+    CHEST_DAY: "Use a full range of motion during chest exercises, and include both pressing and fly movements for chest development.",
+    FLEXIBILITY: "Incorporate dynamic stretches before workouts and static stretches after workouts to improve flexibility.",
+    LEG_DAY: "Focus on proper form to avoid injury, and don't skip leg day for a balanced physique.",
+    SHOULDERS_DAY: "Warm up your shoulder joints, and avoid lifting too heavy to prevent shoulder strain.",
+    STRENGTH_TRAINING: "Focus on progressive overload by increasing weights or resistance gradually to build strength."
+  };
+  export const meals = [
+    // LEG_DAY
+    {
+      name: "Grilled Chicken and Sweet Potato",
+      description: "Grilled chicken breast with roasted sweet potatoes. A protein-packed meal to fuel leg workouts.",
+      fitnessGoal: "LEG_DAY",
+    },
+    {
+      name: "Quinoa and Black Bean Stuffed Peppers",
+      description: "Bell peppers stuffed with quinoa, black beans, and vegetables. Provides energy for leg-focused training.",
+      fitnessGoal: "LEG_DAY",
+    },
+    {
+      name: "Salmon with Asparagus",
+      description: "Baked or grilled salmon with steamed asparagus. Omega-3s for joint health on leg day.",
+      fitnessGoal: "LEG_DAY",
+    },
+    {
+      name: "Chickpea and Spinach Curry",
+      description: "A hearty chickpea and spinach curry with brown rice. Plant-based protein for leg strength.",
+      fitnessGoal: "LEG_DAY",
+    },
+    {
+      name: "Turkey and Quinoa Stuffed Bell Peppers",
+      description: "Ground turkey and quinoa stuffed bell peppers. Lean protein and complex carbs for leg day.",
+      fitnessGoal: "LEG_DAY",
+    },
+  
+    // BACK_DAY
+    {
+      name: "Grilled Salmon and Quinoa",
+      description: "Grilled salmon fillet with quinoa. Protein and healthy fats to support back workouts.",
+      fitnessGoal: "BACK_DAY",
+    },
+    {
+      name: "Chicken and Broccoli Alfredo",
+      description: "Chicken and broccoli alfredo pasta. A creamy and satisfying meal for back day.",
+      fitnessGoal: "BACK_DAY",
+    },
+    {
+      name: "Black Bean and Corn Salad",
+      description: "Black bean and corn salad with avocado. Provides plant-based protein for back training.",
+      fitnessGoal: "BACK_DAY",
+    },
+    {
+      name: "Turkey and Avocado Wrap",
+      description: "Sliced turkey and avocado wrap with a side of mixed greens. A quick and nutritious option for back day.",
+      fitnessGoal: "BACK_DAY",
+    },
+    {
+      name: "Tofu and Vegetable Stir-Fry",
+      description: "Tofu and vegetable stir-fry with brown rice. Plant-based protein and fiber for back strength.",
+      fitnessGoal: "BACK_DAY",
+    },
+  
+    // SHOULDERS_DAY
+    {
+      name: "Grilled Chicken and Quinoa Salad",
+      description: "Grilled chicken breast on a bed of quinoa salad. Protein and complex carbs for shoulder workouts.",
+      fitnessGoal: "SHOULDERS_DAY",
+    },
+    {
+      name: "Tuna and White Bean Salad",
+      description: "Tuna and white bean salad with lemon vinaigrette. A light and refreshing choice for shoulder day.",
+      fitnessGoal: "SHOULDERS_DAY",
+    },
+    {
+      name: "Stir-Fried Tofu and Snow Peas",
+      description: "Stir-fried tofu and snow peas with ginger sauce. Plant-based protein for shoulder strength.",
+      fitnessGoal: "SHOULDERS_DAY",
+    },
+    {
+      name: "Shrimp and Vegetable Skewers",
+      description: "Grilled shrimp and vegetable skewers. A delicious and protein-rich option for shoulder workouts.",
+      fitnessGoal: "SHOULDERS_DAY",
+    },
+    {
+      name: "Chicken and Vegetable Stir-Fry",
+      description: "Chicken and vegetable stir-fry with a teriyaki glaze. Balanced nutrition for shoulder day.",
+      fitnessGoal: "SHOULDERS_DAY",
+    },
+  
+    // CHEST_DAY
+    {
+      name: "Baked Chicken Breast",
+      description: "Baked chicken breast seasoned with herbs and spices. A lean protein source for chest workouts.",
+      fitnessGoal: "CHEST_DAY",
+    },
+    {
+      name: "Quinoa Salad with Avocado",
+      description: "Quinoa salad with diced avocado, tomatoes, and a lime dressing. Nutrient-rich fuel for chest day.",
+      fitnessGoal: "CHEST_DAY",
+    },
+    {
+      name: "Lean Beef and Green Beans",
+      description: "Lean beef strips sautéed with green beans. Protein and iron to support chest strength.",
+      fitnessGoal: "CHEST_DAY",
+    },
+    {
+      name: "Cottage Cheese and Pineapple",
+      description: "Cottage cheese topped with fresh pineapple chunks. High-protein, low-fat option for chest workouts.",
+      fitnessGoal: "CHEST_DAY",
+    },
+    {
+      name: "Egg White Omelette",
+      description: "Egg white omelette with spinach and feta. Low in fat and high in protein for chest day.",
+      fitnessGoal: "CHEST_DAY",
+    },
+  
+    // ARMS_DAY
+    {
+      name: "Tuna and Spinach Wrap",
+      description: "Tuna salad and fresh spinach wrapped in a whole-grain tortilla. A balanced meal for arm day.",
+      fitnessGoal: "ARMS_DAY",
+    },
+    {
+      name: "Baked Sweet Potato Fries",
+      description: "Baked sweet potato fries with a side of Greek yogurt dip. A tasty and nutritious choice for arm workouts.",
+      fitnessGoal: "ARMS_DAY",
+    },
+    {
+      name: "Chickpea and Tomato Salad",
+      description: "Chickpea and tomato salad with herbs and olive oil. Plant-based protein for arm strength.",
+      fitnessGoal: "ARMS_DAY",
+    },
+    {
+      name: "Roasted Turkey and Cranberry Sandwich",
+      description: "Roasted turkey, cranberry sauce, and lettuce on whole-grain bread. A classic choice for arm day fuel.",
+      fitnessGoal: "ARMS_DAY",
+    },
+    {
+      name: "Peanut Butter and Banana Smoothie",
+      description: "Peanut butter, banana, and Greek yogurt smoothie. Provides protein and energy for arm workouts.",
+      fitnessGoal: "ARMS_DAY",
+    },
+  
+    // CARDIO
+    {
+      name: "Spinach and Strawberry Salad",
+      description: "Spinach and strawberry salad with balsamic vinaigrette. A light and refreshing option for cardio training.",
+      fitnessGoal: "CARDIO",
+    },
+    {
+      name: "Brown Rice and Black Bean Bowl",
+      description: "Brown rice and black bean bowl with salsa. Balanced carbs and protein for cardio workouts.",
+      fitnessGoal: "CARDIO",
+    },
+    {
+      name: "Oatmeal with Berries",
+      description: "Oatmeal topped with mixed berries and a drizzle of honey. Complex carbs for sustained energy during cardio.",
+      fitnessGoal: "CARDIO",
+    },
+    {
+      name: "Grilled Veggie Wrap",
+      description: "Grilled vegetable wrap with hummus in a whole-grain tortilla. A light and nutritious choice for cardio day.",
+      fitnessGoal: "CARDIO",
+    },
+    {
+      name: "Greek Yogurt Parfait",
+      description: "Greek yogurt parfait with granola and fresh fruit. Protein and carbs for recovery after cardio.",
+      fitnessGoal: "CARDIO",
+    },
+  
+    // STRENGTH_TRAINING
+    {
+      name: "Beef and Broccoli Stir-Fry",
+      description: "Beef and broccoli stir-fry with brown rice. A protein-packed option for strength training.",
+      fitnessGoal: "STRENGTH_TRAINING",
+      image: 'beefbrocli.jpg'
+    },
+    {
+      name: "Salmon and Quinoa Salad",
+      image:'salmonandquinoa.jpg',
+      description: "Salmon and quinoa salad with lemon dill dressing. Omega-3s and protein for strength workouts.",
+      fitnessGoal: "STRENGTH_TRAINING",
+    },
+    {
+      name: "Grilled Chicken and Vegetables",
+      image: 'grilledchickenveggie.jpg',
+      description: "Grilled chicken breast with a side of mixed grilled vegetables. Lean protein for strength gains.",
+      fitnessGoal: "STRENGTH_TRAINING",
+    },
+    {
+      name: "Tofu and Edamame Stir-Fry",
+      image: 'tofuedumame.webp',
+      description: "Tofu and edamame stir-fry with brown rice. Plant-based protein for strength and recovery.",
+      fitnessGoal: "STRENGTH_TRAINING",
+    },
+    {
+      name: "Pasta with Lean Turkey Meatballs",
+      image: 'turkeymeatball.jpg',
+      description: "Whole-grain pasta with lean turkey meatballs and marinara sauce. A balanced meal for strength training.",
+      fitnessGoal: "STRENGTH_TRAINING",
+    },
+  
+    // FLEXIBILITY
+    {
+      name: "Avocado and Cucumber Salad",
+      description: "Avocado and cucumber salad with lime dressing. A light and hydrating choice for flexibility training.",
+      fitnessGoal: "FLEXIBILITY",
+    },
+    {
+      name: "Cottage Cheese and Pineapple",
+      description: "Cottage cheese topped with fresh pineapple chunks. High-protein, low-fat option for flexibility workouts.",
+      fitnessGoal: "FLEXIBILITY",
+    },
+    {
+      name: "Mango and Yogurt Smoothie",
+      description: "Mango and Greek yogurt smoothie. Provides protein and vitamins for flexibility training.",
+      fitnessGoal: "FLEXIBILITY",
+    },
+    {
+      name: "Caprese Salad",
+      description: "Caprese salad with tomatoes, fresh mozzarella, and basil. A simple and light meal for flexibility day.",
+      fitnessGoal: "FLEXIBILITY",
+    },
+    {
+      name: "Quinoa and Chickpea Salad",
+      description: "Quinoa and chickpea salad with lemon tahini dressing. Plant-based protein for flexibility and balance.",
+      fitnessGoal: "FLEXIBILITY",
+    },
+  
+    // BALANCE_TRAINING
+    {
+      name: "Peanut Butter and Banana Toast",
+      description: "Whole-grain toast with peanut butter and sliced banana. Provides energy and protein for balance training.",
+      fitnessGoal: "BALANCE_TRAINING",
+    },
+    {
+      name: "Mixed Nuts and Dried Fruits",
+      description: "A mix of nuts and dried fruits. Balanced snacks to fuel balance and stability exercises.",
+      fitnessGoal: "BALANCE_TRAINING",
+    },
+    {
+      name: "Greek Yogurt with Honey",
+      description: "Greek yogurt drizzled with honey and a sprinkle of nuts. Protein and natural sweetness for balance workouts.",
+      fitnessGoal: "BALANCE_TRAINING",
+    },
+    {
+      name: "Hummus and Veggie Platter",
+      description: "Hummus with a variety of fresh vegetable sticks. A nutritious snack for balance and core training.",
+      fitnessGoal: "BALANCE_TRAINING",
+    },
+    {
+      name: "Protein Smoothie Bowl",
+      description: "Protein smoothie bowl topped with granola and fresh fruit. Provides protein and energy for balance exercises.",
+      fitnessGoal: "BALANCE_TRAINING",
+    },
+  ];
+  
+  
   export  {muscleBuildingWorkouts, GymBuildingWorkouts, LongListOutdoorParkWorkouts, RandomWorkouts, allWorkouts}

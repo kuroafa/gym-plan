@@ -13,8 +13,8 @@ import { Tabs } from "antd";
 import { Plan } from "@prisma/client"; // Assuming you have the Plan type defined
 import { allWorkouts } from "./utils/Data";
 import LatestPlan from "./LatestPlan";
-import { Button } from "./ui/button";
 import DeleteButton from "./buttons/DeleteButton";
+import { Button } from "@mui/material";
 
 interface DraggableTabPaneProps extends React.HTMLAttributes<HTMLDivElement> {
   "data-node-key": string;
@@ -65,16 +65,16 @@ const PlanPage = ({ planData }: Props) => {
          <div className="grid  grid-cols-1 gap-5">
             <div className=" p-2 rounded-xl">
               <div className="flex justify-between">
-                <p className="text-6xl mb-2 ">{plan.day}</p>
+                <p className="text-3xl mb-2 ">{plan.day}</p>
                
               </div>
 
-              <p className="text-3xl mb-2">Plan: {plan.planName}</p>
+              <p className="text-xl mb-2">{plan.planName}</p>
               <div className="flex flex-col gap-1">
-                <p className="text-2xl">
-                  Fitness Goal: {plan.fitnessGoals.replace("_", " ")}
+                <p className="text-xl">
+                  {plan.fitnessGoals.replace("_", " ")}
                 </p>
-                <p className="text-2xl">Note: {plan.description}</p>
+                <p className="text-lg">Note: {plan.description}</p>
                 <div className="mt-2">
                   <DeleteButton id={plan.id} />
                 </div>
@@ -105,8 +105,8 @@ const PlanPage = ({ planData }: Props) => {
 
   return (
     <>
-      <div className="grid grid-cols-1 ml-2">
-        <Tabs
+      <div className="grid grid-cols-1 ml-2  p-3 rounded-2xl">
+        {planData.length ?  <Tabs
           items={items}
           renderTabBar={(tabBarProps, DefaultTabBar) => (
             <DndContext sensors={[sensor]} onDragEnd={onDragEnd}>
@@ -124,7 +124,15 @@ const PlanPage = ({ planData }: Props) => {
               </SortableContext>
             </DndContext>
           )}
-        />
+        /> :  <div className="h-[200px] rounded-lg flex flex-col items-center justify-center ">
+        <h2 className="text-lg mb-2 font-medium">
+          Ready to start taking on your Training journey? Create new workout sessions now!
+        </h2>
+        <Button variant="outlined" className="text-black">
+          Create new session
+        </Button>
+      </div>}
+       
       </div>
     </>
   );

@@ -20,7 +20,7 @@ type Props = {
 
 const DeleteButton = ({ id }: Props) => {
   const router = useRouter();
-  const deleteAppointment = (AppointmentId: string) => {
+  const deletePlan = (AppointmentId: string) => {
     try {
       const response = fetch("/api/plans", {
         method: "DELETE",
@@ -44,20 +44,20 @@ const DeleteButton = ({ id }: Props) => {
     <>
       <Dialog>
         <DialogTrigger>
-         <Button className="border-blue-700 hover:border-orange-500 text-black font-medium" variant="outlined">Delete</Button>
+         <button className="text-white bg-black rounded-[30px] text-xl px-3 hover:bg-indigo-400 font-medium" variant="outlined">Delete</button>
         </DialogTrigger>
         <DialogContent className="flex flex-col items-start z-[500000000]">
           <DialogTitle>Are you sure?</DialogTitle>
           <DialogDescription>
             You are deleting this plan forever
           </DialogDescription>
-          <Button
-            onClick={() => deleteAppointment(id)}
-            variant="destructive"
-            className="self-end"
+          <button
+            onClick={() => deletePlan(id)}
+           
+            className="self-end bg-indigo-400 rounded-[30px] "
           >
             Delete
-          </Button>
+          </button>
         </DialogContent>
       </Dialog>
     </>

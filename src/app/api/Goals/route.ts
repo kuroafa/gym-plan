@@ -18,12 +18,13 @@ export async function POST(req: Request, res: Response) {
       );
     }
     const body = await req.json();
-    const { goal } = GoalSchema.parse(body);
+    const { goal, calories } = GoalSchema.parse(body);
 
     // Create the Plan and associate it with FitnessGoals
     const client = await prisma.goal.create({
       data: {
         goal: goal,
+        calories: calories,
         userId: session?.user.id,
       },
     });
