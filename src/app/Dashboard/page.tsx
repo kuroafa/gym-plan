@@ -17,10 +17,9 @@ const page = async (props: Props) => {
       userId: session.user.id,
     },
   });
-  let goalData = { calories: "0", goal: "0lb" };
+  let goalData: { calories: string; goal: string } = { calories: "0", goal: "0lb" };
   let goalCreated = false;
-
-  // Check if a goal exists in the database
+  
   const getGoalData = await prisma.goal.findFirst({
     where: {
       userId: session.user.id,
@@ -30,12 +29,12 @@ const page = async (props: Props) => {
     },
     take: 1,
   });
-
+  
   if (getGoalData) {
-    // Goal data found in the database, use it
     goalData = getGoalData;
     goalCreated = true;
   }
+  
 
   const getTrainerData = await prisma.trainer.findMany({
     where: {

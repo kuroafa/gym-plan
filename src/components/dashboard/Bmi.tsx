@@ -14,7 +14,9 @@ const Bmi = ({ weight, height, age, gender }: Props) => {
   const [bmiResult, setBmiResult] = useState("");
   const [bmiColor, setBmiColor] = useState('')
 
-  const handleBMI = () => {
+ 
+
+  useEffect(() => { const handleBMI = () => {
     const userWeight = parseInt(weight) * 0.45359237;
     const heightParts = height.split("."); // Split the height into feet and inches
     const userHeightInFeet = parseInt(heightParts[0]);
@@ -43,10 +45,8 @@ const Bmi = ({ weight, height, age, gender }: Props) => {
       setBmiColor('bg-red-400')
     }
   };
-
-  useEffect(() => {
     handleBMI();
-  }, []);
+  },[height, weight]);
 
   return (
     <div>

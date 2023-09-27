@@ -36,10 +36,12 @@ export default async function Home() {
               </div>
         
         </div>  <div className="relative">
-            <img
+            <Image
+            width={600}
+            height={300}
               src="/gym3.webp"
               alt="heroImage"
-              className="w-[600px] mt-5 rounded-xl"
+              className="w-[600px] -mt-10 rounded-xl"
             />
           </div>
       </div>
