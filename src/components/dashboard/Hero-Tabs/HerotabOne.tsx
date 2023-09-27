@@ -14,7 +14,6 @@ type UserData = {
   name?: string | null | undefined;
   email?: string | null | undefined;
   image?: string | null | undefined;
-  // Add optional properties
   height?: string | null | undefined;
   gender?: string | null | undefined;
   age?: string | null | undefined;

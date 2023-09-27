@@ -137,21 +137,21 @@ const WorkoutPage = ({ planData }: Props) => {
                   <div className="pl-3 pt-2">
                     <div className="px- flex flex-col gap-2">
                       <p className="md:text-4xl text-4xl font-medium ">
-                        Workout: {work.exercise}
+                        Workout: {work?.exercise}
                       </p>
                       <div>
                         <p className=" text-xl font-medium ">
                           Description:
                           <span className="font-normal">
                             {" "}
-                            {work.description}
+                            {work?.description}
                           </span>
                         </p>
                       </div>
                     </div>
                   </div>
                   <div>
-                    {work.image ? (
+                    {work?.image ? (
                       <Image
                       width={500}
                       height={100}
@@ -161,7 +161,7 @@ const WorkoutPage = ({ planData }: Props) => {
                       />
                     ) : null}
                   </div>
-                  {work.atHome ? (
+                  {work?.atHome ? (
                     <div className="grid grid-cols-2 text-center gap-5 p-3">
                       <p className="bg-lime-400 rounded-[30px] font-bold p-3 ">
                         Home
@@ -176,7 +176,7 @@ const WorkoutPage = ({ planData }: Props) => {
                         Gym
                       </p>
                       <p className="bg-indigo-400 rounded-[30px] font-bold text-white p-3 ">
-                        {work.difficulty}
+                        {work?.difficulty}
                       </p>
                     </div>
                   )}

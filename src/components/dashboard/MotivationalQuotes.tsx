@@ -3,8 +3,16 @@ import { User } from "@prisma/client";
 import React, { useEffect, useState } from "react";
 import { motivationalPhrases } from "../utils/Data";
 
+type UserData = {
+  id: string;
+  name?: string | null | undefined;
+  email?: string | null | undefined;
+  image?: string | null | undefined;
+
+};
+
 type Props = {
-    userData: Pick<User, 'name'>;
+    userData: UserData;
 };
 
 const MotivationalQuotes = ({ userData }: Props) => {

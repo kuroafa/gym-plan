@@ -1,12 +1,6 @@
 "use client";
-
-import React, { useEffect } from "react";
-import DashboardChart from "../DashboardChart";
-import { Goal, Plan, Trainer, User } from "@prisma/client";
-import BMIcalculator from "../BMIcalculator";
-import Bmi from "../Bmi";
-import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
+import React from "react";
+import {  Plan, Trainer } from "@prisma/client";
 import GoalForm from "../../forms/GoalForm";
 import HerotabOne from "./HerotabOne";
 import HerotabTwo from "./HerotabTwo";
@@ -19,7 +13,6 @@ type UserData = {
   name?: string | null | undefined;
   email?: string | null | undefined;
   image?: string | null | undefined;
-  // Add optional properties
   height?: string | null | undefined;
   gender?: string | null | undefined;
   age?: string | null | undefined;
