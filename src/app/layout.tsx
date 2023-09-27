@@ -58,7 +58,7 @@ export default async function RootLayout({
               </div>
             </div>
             <div
-              className={`${!!session?.user ? " " : " "} md:mt-1 md:p- p-0  `}
+              className={`${!!session?.user ? " " : " "} md:mt-0 mt-10 md:p-5 p-0  `}
             >
               {children}
               <ToastContainer
