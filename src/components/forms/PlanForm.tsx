@@ -40,14 +40,15 @@ import { Button } from "@/components/ui/button";
 
 import Image from "next/image";
 import { Space, Tag } from "antd";
-import { Input, TextField } from "@mui/material";
+
 import { toast } from "react-toastify";
 import { Plus } from "lucide-react";
+import { Input } from "../ui/input";
 
 const { CheckableTag } = Tag;
 
 type Props = {
-  handleClose: ()=>void;
+  handleClose: () => void;
 };
 enum FitnessGoals {
   LEG_DAY = "LEG_DAY",
@@ -71,7 +72,7 @@ enum Day {
   SUNDAY = "SUNDAY",
 }
 
-const PlanForm = ({handleClose}: Props) => {
+const PlanForm = ({ handleClose }: Props) => {
   const [selectedDay, setSelectedDay] = React.useState<Day>();
   const [selectedFitnessGoal, setSelectedFitnessGoal] =
     React.useState<FitnessGoals | null>();
@@ -131,7 +132,7 @@ const PlanForm = ({handleClose}: Props) => {
       setLoading(false);
     }
     form.reset();
-    handleClose()
+    handleClose();
   };
 
   return (
@@ -177,10 +178,9 @@ const PlanForm = ({handleClose}: Props) => {
                 <FormItem className="flex flex-col items-start">
                   <FormLabel>Plan name</FormLabel>
                   <FormControl>
-                    <TextField
+                    <Input
                       id="outlined-basic"
-                      label="Name of the plan"
-                      variant="outlined"
+                      placeholder="Name of the plan"
                       {...field}
                     />
                   </FormControl>
@@ -196,12 +196,7 @@ const PlanForm = ({handleClose}: Props) => {
                 <FormItem className="flex flex-col items-start">
                   <FormLabel>Plan Note</FormLabel>
                   <FormControl>
-                    <TextField
-                      id="outlined-basic"
-                      label="Describe this plan"
-                      variant="outlined"
-                      {...field}
-                    />
+                    <Input placeholder="Describe this plan" {...field} />
                   </FormControl>
                   <FormDescription className="pl-3 mb-3">
                     Notes help you stay organized
@@ -242,7 +237,13 @@ const PlanForm = ({handleClose}: Props) => {
             className="py-3 px-10 ml-3  bg-indigo-500 text-white rounded-[30px] flex items-center gap-2"
             type="submit"
           >
-            {loading ? "Creating..." : <h1 className="flex items-center gap-2">Create <Plus /> </h1>}
+            {loading ? (
+              "Creating..."
+            ) : (
+              <h1 className="flex items-center gap-2">
+                Create <Plus />{" "}
+              </h1>
+            )}
           </button>
         </form>
       </Form>

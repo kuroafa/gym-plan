@@ -45,8 +45,7 @@ import { Button } from "@/components/ui/button";
 
 import Image from "next/image";
 import { Space, Tag, TimePicker } from "antd";
-import type { DatePickerProps } from "antd";
-import { DatePicker } from "antd";
+
 import type { Dayjs } from "dayjs";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
@@ -55,13 +54,13 @@ import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { format } from "path";
 import { cn } from "@/lib/utils";
 import { Calendar } from "../ui/calendar";
-import { TextField } from "@mui/material";
+
 import { toast } from "react-toastify";
 
 const { CheckableTag } = Tag;
 
 type Props = {
-  handleClose: ()=>void;
+  handleClose: () => void;
 };
 enum FitnessGoals {
   LEG_DAY = "LEG_DAY",
@@ -75,7 +74,7 @@ enum FitnessGoals {
   BALANCE_TRAINING = "BALANCE_TRAINING",
 }
 
-const TrainingAppointmentForm = ({handleClose}: Props) => {
+const TrainingAppointmentForm = ({ handleClose }: Props) => {
   const [loading, setLoading] = React.useState(false);
   const [selectedFitnessGoal, setSelectedFitnessGoal] =
     React.useState<FitnessGoals | null>();
@@ -133,7 +132,7 @@ const TrainingAppointmentForm = ({handleClose}: Props) => {
       setLoading(false);
     }
     form.reset();
-    handleClose()
+    handleClose();
   };
 
   dayjs.extend(customParseFormat);
@@ -183,12 +182,7 @@ const TrainingAppointmentForm = ({handleClose}: Props) => {
                   <FormItem className="flex flex-col">
                     <FormLabel>Client Name</FormLabel>
                     <FormControl>
-                      <TextField
-                        id="outlined-basic"
-                        label="Client name"
-                        variant="outlined"
-                        {...field}
-                      />
+                      <Input placeholder="Client name" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -201,12 +195,7 @@ const TrainingAppointmentForm = ({handleClose}: Props) => {
                   <FormItem className="flex flex-col">
                     <FormLabel>Duration of session</FormLabel>
                     <FormControl>
-                      <TextField
-                        id="outlined-basic"
-                        label="Duration"
-                        variant="outlined"
-                        {...field}
-                      />
+                      <Input placeholder="Duration" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -308,7 +297,13 @@ const TrainingAppointmentForm = ({handleClose}: Props) => {
             className="py-3 px-10 bg-indigo-500 text-white rounded-[30px] "
             type="submit"
           >
-            {loading ? "Create..." : <h1 className="flex items-center gap-2">Create workout session <Plus /></h1>}
+            {loading ? (
+              "Create..."
+            ) : (
+              <h1 className="flex items-center gap-2">
+                Create workout session <Plus />
+              </h1>
+            )}
           </button>
         </form>
       </Form>

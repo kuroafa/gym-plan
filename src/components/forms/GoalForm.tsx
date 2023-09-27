@@ -12,7 +12,7 @@ import {
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import { Button, Input } from "@mui/material";
+import {  Input } from "@/components/ui/input";
 import { makeStyles } from "@mui/styles";
 import { GoalCreation, GoalSchema } from "@/lib/type";
 import { DatePicker } from "antd";
