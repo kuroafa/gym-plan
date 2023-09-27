@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import {  Plan, Trainer } from "@prisma/client";
+import {  Plan, Trainer, User } from "@prisma/client";
 import GoalForm from "../../forms/GoalForm";
 import HerotabOne from "./HerotabOne";
 import HerotabTwo from "./HerotabTwo";
@@ -12,7 +12,6 @@ type UserData = {
   id: string;
   name: string | null | undefined; // Provide a default value
   email: string | null | undefined; // Provide a default value
-  image: string | null | undefined; // Provide a default value
   height: string | null | undefined; // Provide a default value
   gender: string | null | undefined; // Provide a default value
   age: string | null | undefined; // Provide a default value
@@ -29,7 +28,7 @@ type GoalDataItem = {
 
 type Props = {
   trainerData: Trainer[];
-  userData: UserData;
+  userData: Pick<User,'age'|'createdAt'|'email'|'emailVerified'|'gender'|'hasCompletedSetup'|'height'|'id'|'name'|'password'|'updateAt'|'username'|'weight'>
   planData: Plan[];
   goalData: GoalDataItem[]; // Use the adjusted type here
 };

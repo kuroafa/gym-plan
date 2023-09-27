@@ -69,9 +69,9 @@ export const authOptions: NextAuthOptions = {
           name: existingUser.name || null,
           username: existingUser.username,
           email: existingUser.email || null,
-          weight: existingUser.weight ,
-          height: existingUser.height ,
-          age: existingUser.age ,
+          weight: existingUser.weight,
+          height: existingUser.height,
+          age: existingUser.age,
           gender: existingUser.gender,
         };
       }

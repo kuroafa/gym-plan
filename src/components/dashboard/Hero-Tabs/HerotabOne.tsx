@@ -13,7 +13,6 @@ type UserData = {
   id: string;
   name: string | null | undefined; // Provide a default value
   email: string | null | undefined; // Provide a default value
-  image: string | null | undefined; // Provide a default value
   height: string | null | undefined; // Provide a default value
   gender: string | null | undefined; // Provide a default value
   age: string | null | undefined; // Provide a default value

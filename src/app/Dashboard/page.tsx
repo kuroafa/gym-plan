@@ -2,12 +2,15 @@ import Dashboard from "@/components/dashboard/Dashboard";
 import HeroTabs from "@/components/dashboard/Hero-Tabs/HeroTabs";
 import { prisma } from "@/lib/db";
 import { getAuthSession } from "@/lib/nextauth";
+import { User } from "@prisma/client";
 import { redirect, useRouter } from "next/navigation";
 import React from "react";
 
-type Props = {};
+type Props = {
+  userData: Pick<User,'age'|'createdAt'|'email'|'emailVerified'|'gender'|'hasCompletedSetup'|'height'|'id'|'name'|'password'|'updateAt'|'username'|'weight'>
+};
 
-const page = async (props: Props) => {
+const page = async ({userData}: Props) => {
   const session = await getAuthSession();
   if (!session) {
     redirect("/");
@@ -66,16 +69,16 @@ const page = async (props: Props) => {
     age: string | null | undefined;
     weight: string | null | undefined;
   };
-  const userData: UserData = {
-    id: session?.user.id || "",
-    name: session?.user.name || null,
-    email: session?.user.email || null,
-    image: session?.user.image || null,
-    height: session?.user?.height, // Set a default value or fetch this information from somewhere
-    gender: "", // Set a default value or fetch this information from somewhere
-    age: session?.user?.age, // Set a default value or fetch this information from somewhere
-    weight: session?.user?.weight, // Set a default value or fetch this information from somewhere
-  };
+  // const userData: UserData = {
+  //   id: session?.user.id || "",
+  //   name: session?.user.name || null,
+  //   email: session?.user.email || null,
+  //   image: session?.user.image || null,
+  //   height: session?.user?.height, // Set a default value or fetch this information from somewhere
+  //   gender: "", // Set a default value or fetch this information from somewhere
+  //   age: session?.user?.age, // Set a default value or fetch this information from somewhere
+  //   weight: session?.user?.weight, // Set a default value or fetch this information from somewhere
+  // };
   return (
     <div className="flex flex-col gap-2  ">
       <Dashboard userData={session?.user} planData={getPlanData} />
