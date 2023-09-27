@@ -19,15 +19,8 @@ const page = async (props: Props) => {
     },
   });
 
-  let goalData: {
-    calories: string;
-    goal: string;
-    id: string;
-    userId: string;
-    createdAt: Date;
-  } | null = null; // Initialize as null
+
   
-  let goalCreated = false;
 
   const getGoalData = await prisma.goal.findFirst({
     where: {
@@ -38,11 +31,14 @@ const page = async (props: Props) => {
     },
     take: 1,
   });
-
-  if (getGoalData) {
-    goalData = getGoalData;
-    goalCreated = true;
-  }
+  type GoalDataItem = {
+    id: string;
+    goal: string;
+    calories: string;
+    userId: string;
+    createdAt: Date;
+  };
+  const goalData: GoalDataItem[] = getGoalData ? [getGoalData] : [];
 
   const getTrainerData = await prisma.trainer.findMany({
     where: {
@@ -60,15 +56,34 @@ const page = async (props: Props) => {
     position: "relative",
     zIndex: "200",
   };
-
+  type UserData = {
+    id: string;
+    name: string | null | undefined;
+    email: string | null | undefined;
+    image: string | null | undefined;
+    height: string | null | undefined;
+    gender: string | null | undefined;
+    age: string | null | undefined;
+    weight: string | null | undefined;
+  };
+  const userData: UserData = {
+    id: session?.user.id || "",
+    name: session?.user.name || null,
+    email: session?.user.email || null,
+    image: session?.user.image || null,
+    height: session?.user?.height, // Set a default value or fetch this information from somewhere
+    gender: "", // Set a default value or fetch this information from somewhere
+    age: session?.user?.age, // Set a default value or fetch this information from somewhere
+    weight: session?.user?.weight, // Set a default value or fetch this information from somewhere
+  };
   return (
     <div className="flex flex-col gap-2  ">
       <Dashboard userData={session?.user} planData={getPlanData} />
       <HeroTabs
         planData={getPlanData}
-        userData={session?.user}
+        userData={userData}
         trainerData={getTrainerData}
-        goalData={goalData} // Pass goalData as null or the fetched data
+        goalData={goalData}
       />
     </div>
   );

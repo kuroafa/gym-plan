@@ -11,15 +11,23 @@ import Link from "next/link";
 
 type UserData = {
   id: string;
-  name?: string;
-  email?: string;
-  image?: string;
-  height?: string;
-  gender?: string;
-  age?: string;
-  weight?: string;
+  name: string | null | undefined; // Provide a default value
+  email: string | null | undefined; // Provide a default value
+  image: string | null | undefined; // Provide a default value
+  height: string | null | undefined; // Provide a default value
+  gender: string | null | undefined; // Provide a default value
+  age: string | null | undefined; // Provide a default value
+  weight: string | null | undefined; // Provide a default value
 };
+
 type GoalData = {
+  id: string;
+  goal: string;
+  calories: string;
+  userId: string;
+  createdAt: Date;
+};
+type GoalDataItem = {
   id: string;
   goal: string;
   calories: string;
@@ -29,13 +37,12 @@ type GoalData = {
 type Props = {
   trainerData: Trainer[];
   userData: UserData;
-  goalData: Goal[];
+  goalData: GoalDataItem[];
 };
 
-const HerotabOne = ({ trainerData, userData }: Props) => {
+const HerotabOne = ({ trainerData, userData, goalData }: Props) => {
   const [sessionsValue, setSessionsValue] = React.useState("");
   const [sessionsColor, setSessionsColor] = React.useState("");
-  const [goalData, setGoalData] = useState<GoalData | null>(null);
   const workoutSessions = trainerData.length.toString();
   const parsedWorkouts = parseInt(workoutSessions);
 
@@ -159,27 +166,57 @@ const HerotabOne = ({ trainerData, userData }: Props) => {
               lb
             </p>
           </div>
-
-          <div className="bg-white rounded-[40px] grid grid-cols-2  mt-5 p-5">
-            <p className="text-xl font-medium rounded-full w-fit bg-black text-white px-5 py-3">
-              Target
-            </p>{" "}
-            <p className="xl:text-6xl text-4xl font-bold">
-              {goalData?.goal ? goalData.goal.replace("lb", "") : "0"}
-            </p>
-          </div>
-          <div className=" rounded-[40px] grid grid-cols-2 gap-2 mt-4 p-5">
-            <p className="text-xl  font-medium rounded-full w-fit bg-white  px-4 py-4">
-              Calories
-            </p>{" "}
-            <p className="xl:text-6xl text-white text-4xl font-bold">
-              {goalData?.calories || "0"}
-            </p>
-          </div>
-          <div className="grid grid-cols-2 pt-[30px] gap-2 items-center">
-            <GoalForm />
-            <GoalDeleteButton id={goalData?.id || ''} />
-          </div>
+          {goalData.length > 0 ? (
+            <div>
+              {goalData.map((goal) => {
+                return (
+                  <div key={goal.id}>
+                    <div>
+                      <div className="bg-white rounded-[40px] grid grid-cols-2 mt-5 p-5">
+                        <p className="text-xl font-medium rounded-full w-fit bg-black text-white px-5 py-3">
+                          Target
+                        </p>{" "}
+                        <p className="xl:text-6xl text-4xl font-bold">
+                          {goal.goal.replace("lb", "")}
+                        </p>
+                      </div>
+                      <div className="rounded-[40px] grid grid-cols-2 gap-2 mt-4 p-5">
+                        <p className="text-xl font-medium rounded-full w-fit bg-white px-4 py-4">
+                          Calories
+                        </p>{" "}
+                        <p className="xl:text-6xl text-white text-4xl font-bold">
+                          {goal.calories}
+                        </p>
+                      </div>
+                      <div className="grid grid-cols-2 pt-[30px] gap-2 items-center">
+                      <GoalForm />  <GoalDeleteButton id={goal.id} /> 
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div>
+              <div>
+                <div className="bg-white rounded-[40px] grid grid-cols-2 mt-5 p-5">
+                  <p className="text-xl font-medium rounded-full w-fit bg-black text-white px-5 py-3">
+                    Target
+                  </p>{" "}
+                  <p className="xl:text-6xl text-4xl font-bold"></p>
+                </div>
+                <div className="rounded-[40px] grid grid-cols-2 gap-2 mt-4 p-5">
+                  <p className="text-xl font-medium rounded-full w-fit bg-white px-4 py-4">
+                    Calories
+                  </p>{" "}
+                  <p className="xl:text-6xl text-white text-4xl font-bold"></p>
+                </div>
+                <div className="grid grid-cols-2 pt-[30px] gap-2 items-center">
+                  <GoalForm />
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -10,21 +10,30 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 type UserData = {
   id: string;
-  name: string
-  email: string 
-  image: string 
-  height: string
-  Gender: string  
-  Age: string  
-  Weight: string  
+  name: string | null | undefined; // Provide a default value
+  email: string | null | undefined; // Provide a default value
+  image: string | null | undefined; // Provide a default value
+  height: string | null | undefined; // Provide a default value
+  gender: string | null | undefined; // Provide a default value
+  age: string | null | undefined; // Provide a default value
+  weight: string | null | undefined; // Provide a default value
+};
+
+type GoalDataItem = {
+  id: string;
+  goal: string;
+  calories: string;
+  userId: string;
+  createdAt: Date;
 };
 
 type Props = {
   trainerData: Trainer[];
   userData: UserData;
-  planData: Plan[],
-  goalData: { calories: string; goal: string; id: string; userId: string; createdAt: Date; }[];
+  planData: Plan[];
+  goalData: GoalDataItem[]; // Use the adjusted type here
 };
+
 
 const HeroTabs = ({ trainerData, userData, planData, goalData }: Props) => {
  
