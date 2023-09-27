@@ -10,28 +10,24 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 type UserData = {
   id: string;
-  name?: string | null | undefined;
-  email?: string | null | undefined;
-  image?: string | null | undefined;
-  height?: string | null | undefined;
-  gender?: string | null | undefined;
-  age?: string | null | undefined;
-  weight?: string | null | undefined;
+  name: string
+  email: string 
+  image: string 
+  height: string
+  Gender: string  
+  Age: string  
+  Weight: string  
 };
 
 type Props = {
   trainerData: Trainer[];
-  userData: UserData
+  userData: UserData;
   planData: Plan[],
-  goalData: { calories: string; goal: string };
+  goalData: { calories: string; goal: string; id: string; userId: string; createdAt: Date; }[];
 };
 
 const HeroTabs = ({ trainerData, userData, planData, goalData }: Props) => {
-  const [value, setValue] = React.useState("one");
-
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-    setValue(newValue);
-  };
+ 
 
   return (
     <div className="grid grid-cols-1">

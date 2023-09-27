@@ -9,6 +9,17 @@ import MotivationalQuotes from "./MotivationalQuotes";
 
 type Props = {
   planData: Plan[];
+  userData: UserData;
+};
+type UserData = {
+  id: string;
+  name?: string | null | undefined;
+  email?: string | null | undefined;
+  image?: string | null | undefined;
+  height?: string | null | undefined;
+  gender?: string | null | undefined;
+  age?: string | null | undefined;
+  weight?: string | null | undefined;
 };
 
 const overlayStyle = {
@@ -21,21 +32,22 @@ const overlayStyle = {
   zIndex: 1,
 };
 
-const Dashboard = async ({ planData }: Props) => {
+const Dashboard = async ({ planData, userData}: Props) => {
   const session = await getAuthSession();
   const getPlanData = await prisma.plan.findMany({
     where: {
       userId: session?.user.id,
     },
   });
+  
   return (
     <div className="grid lg:grid-cols-2 grid-cols-1  ">
       <div className="flex flex-col gap-2">
-        <MotivationalQuotes userData={session?.user} />
+        <MotivationalQuotes userData={userData} />
         <h1 className="xl:text-4xl text-3xl my-3  font-medium whitespace-nowrap">
           Here&apos;s today&apos;s pulse.
         </h1>
-        <LatestPlan userData={session?.user} planData={getPlanData} />
+        <LatestPlan userData={userData} planData={getPlanData} />
       </div>
 
       <div className="">

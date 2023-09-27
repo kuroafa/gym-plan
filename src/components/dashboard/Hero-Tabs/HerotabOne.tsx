@@ -11,27 +11,31 @@ import Link from "next/link";
 
 type UserData = {
   id: string;
-  name?: string | null | undefined;
-  email?: string | null | undefined;
-  image?: string | null | undefined;
-  height?: string | null | undefined;
-  gender?: string | null | undefined;
-  age?: string | null | undefined;
-  weight?: string | null | undefined;
+  name?: string;
+  email?: string;
+  image?: string;
+  height?: string;
+  gender?: string;
+  age?: string;
+  weight?: string;
+};
+type GoalData = {
+  id: string;
+  goal: string;
+  calories: string;
+  userId: string;
+  createdAt: Date;
 };
 type Props = {
   trainerData: Trainer[];
   userData: UserData;
-  goalData: { calories: string; goal: string };
+  goalData: Goal[];
 };
 
-const HerotabOne = ({
-  trainerData,
-  userData,
-  goalData,
-}: Props) => {
+const HerotabOne = ({ trainerData, userData }: Props) => {
   const [sessionsValue, setSessionsValue] = React.useState("");
   const [sessionsColor, setSessionsColor] = React.useState("");
+  const [goalData, setGoalData] = useState<GoalData | null>(null);
   const workoutSessions = trainerData.length.toString();
   const parsedWorkouts = parseInt(workoutSessions);
 
@@ -109,8 +113,8 @@ const HerotabOne = ({
                     return (
                       <div key={train.date}>
                         <h1 className="md:text-md font-semibold">
-                          New Workout session with{" "}
-                          {train.client.toUpperCase()} @{train.time} today.
+                          New Workout session with {train.client.toUpperCase()}{" "}
+                          @{train.time} today.
                         </h1>
                       </div>
                     );
@@ -130,17 +134,18 @@ const HerotabOne = ({
       <div className="grid xl:grid-cols-2 sm:grid-cols-2 col-span-2 gap-5">
         <div className="rounded-[40px] bg-indigo-500 pb-5">
           <Bmi
-            weight={userData?.weight}
-            height={userData?.height}
-            age={userData?.age}
-            gender={userData?.gender}
+            weight={userData?.weight || ""}
+            height={userData?.height || ""}
+            age={userData?.age || ""}
+            gender={userData?.gender || ""}
           />
           <div className="grid grid-cols-1 px-6 pt-[150px] gap-2">
-            <Link href='WorkoutsPage' className="bg-white text-lg font-semibold rounded-[20px] px-4 py-2 flex justify-between items-center ">
-              Start workouts{" "}
-              <ArrowUpRight size={40} />
+            <Link
+              href="WorkoutsPage"
+              className="bg-white text-lg font-semibold rounded-[20px] px-4 py-2 flex justify-between items-center "
+            >
+              Start workouts <ArrowUpRight size={40} />
             </Link>
-          
           </div>
         </div>
         <div className="rounded-[40px] bg-black px-5 py-5">
@@ -160,7 +165,7 @@ const HerotabOne = ({
               Target
             </p>{" "}
             <p className="xl:text-6xl text-4xl font-bold">
-              {goalData.goal ? goalData.goal.replace("lb", "") : "0"}
+              {goalData?.goal ? goalData.goal.replace("lb", "") : "0"}
             </p>
           </div>
           <div className=" rounded-[40px] grid grid-cols-2 gap-2 mt-4 p-5">
@@ -168,12 +173,12 @@ const HerotabOne = ({
               Calories
             </p>{" "}
             <p className="xl:text-6xl text-white text-4xl font-bold">
-              {goalData.calories || "0"}
+              {goalData?.calories || "0"}
             </p>
           </div>
           <div className="grid grid-cols-2 pt-[30px] gap-2 items-center">
             <GoalForm />
-            <GoalDeleteButton id={goalData.id} />
+            <GoalDeleteButton id={goalData?.id || ''} />
           </div>
         </div>
       </div>

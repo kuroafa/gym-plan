@@ -12,14 +12,23 @@ const page = async (props: Props) => {
   if (!session) {
     redirect("/");
   }
+  
   const getPlanData = await prisma.plan.findMany({
     where: {
       userId: session.user.id,
     },
   });
-  let goalData: { calories: string; goal: string } = { calories: "0", goal: "0lb" };
-  let goalCreated = false;
+
+  let goalData: {
+    calories: string;
+    goal: string;
+    id: string;
+    userId: string;
+    createdAt: Date;
+  } | null = null; // Initialize as null
   
+  let goalCreated = false;
+
   const getGoalData = await prisma.goal.findFirst({
     where: {
       userId: session.user.id,
@@ -29,12 +38,11 @@ const page = async (props: Props) => {
     },
     take: 1,
   });
-  
+
   if (getGoalData) {
     goalData = getGoalData;
     goalCreated = true;
   }
-  
 
   const getTrainerData = await prisma.trainer.findMany({
     where: {
@@ -55,12 +63,12 @@ const page = async (props: Props) => {
 
   return (
     <div className="flex flex-col gap-2  ">
-      <Dashboard planData={getPlanData} />
+      <Dashboard userData={session?.user} planData={getPlanData} />
       <HeroTabs
         planData={getPlanData}
         userData={session?.user}
         trainerData={getTrainerData}
-        goalData={goalData}
+        goalData={goalData} // Pass goalData as null or the fetched data
       />
     </div>
   );

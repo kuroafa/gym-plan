@@ -8,22 +8,23 @@ import { toast } from "react-toastify";
 import { fitnessGoalTips } from "../utils/Data";
 import Loader from "../Loader";
 
-type Props = {
-  planData: Plan[];
-  trainerData: Pick<
-    Trainer,
-    | "client"
-    | "date"
-    | "fitnessGoals"
-    | "id"
-    | "time"
-    | "userId"
-    | "workOutDuration"
-  >;
-  userData: User;
+type UserData = {
+  id: string;
+  name?: string | null | undefined;
+  email?: string | null | undefined;
+  image?: string | null | undefined;
+  height?: string | null | undefined;
+  gender?: string | null | undefined;
+  age?: string | null | undefined;
+  weight?: string | null | undefined;
 };
 
-const LatestPlan = ({ planData, trainerData, userData }: Props) => {
+type Props = {
+  planData: Plan[];
+  userData: UserData
+};
+
+const LatestPlan = ({ planData,  userData }: Props) => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
   const [tip, setTip] = useState("");
