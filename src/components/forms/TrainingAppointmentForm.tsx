@@ -78,7 +78,9 @@ const TrainingAppointmentForm = ({ handleClose }: Props) => {
   const [loading, setLoading] = React.useState(false);
   const [selectedFitnessGoal, setSelectedFitnessGoal] =
     React.useState<FitnessGoals | null>();
-  const [selectedDate, setSelectedDate] = React.useState<Dayjs | null>(null);
+  const [selectedDate, setSelectedDate] = React.useState<dayjs.Dayjs | null>(
+    null
+  );
 
   const handleFitnessGoalToggle = (goal: FitnessGoals) => {
     if (selectedFitnessGoal === goal) {
@@ -237,60 +239,58 @@ const TrainingAppointmentForm = ({ handleClose }: Props) => {
                 )}
               />
 
-              <FormField
-                control={form.control}
-                name="date"
-                render={({ field }) => (
-                  <FormItem>
-                    <div className="flex flex-col gap-2">
-                      <FormLabel className="pr-2">Date</FormLabel>
-                      <FormControl className="">
-                        <Popover>
-                          <PopoverTrigger asChild>
-                            <FormControl>
-                              <Button
-                                variant={"outline"}
-                                className={cn(
-                                  "pl-3  text-left font-normal",
-                                  !selectedDate && "text-muted-foreground"
-                                )}
-                              >
-                                {selectedDate ? (
-                                  dayjs(selectedDate).format("MMM D, YYYY") // Format the date
-                                ) : (
-                                  <span>Pick a date</span>
-                                )}
-                                <CalendarIcon className="ml-auto h-4 w-4  opacity-50 " />
-                              </Button>
-                            </FormControl>
-                          </PopoverTrigger>
-                          <PopoverContent
-                            className="w-auto p-0 z-[500000]"
-                            align="start"
-                          >
-                            <Calendar
-                              fromDate={new Date()}
-                              toDate={calendarTo}
-                              mode="single"
-                              onSelect={(date) => {
-                                setSelectedDate(date); // Update the selectedDate state
-                                if (date) {
-                                  const formattedDate = date.valueOf(); // Convert the date to a localized string
-                                  field.onChange(formattedDate.toString()); // Update the field value with the formatted date string
-                                }
-                              }}
-                              value={selectedDate} // Set the value prop to selectedDate
-                              disabled={(date) => date < new Date()}
-                              initialFocus
-                            />
-                          </PopoverContent>
-                        </Popover>
-                      </FormControl>
-                    </div>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+<FormField
+      control={form.control}
+      name="date"
+      render={({ field }) => (
+        <div className="flex flex-col gap-2">
+          <FormLabel className="pr-2">Date</FormLabel>
+          <FormControl>
+            <Popover>
+              <PopoverTrigger asChild>
+                <FormControl>
+                  <Button
+                    variant={"outline"}
+                    className={cn(
+                      "pl-3  text-left font-normal",
+                      !selectedDate && "text-muted-foreground"
+                    )}
+                  >
+                    {selectedDate ? (
+                      selectedDate.format("MMM D, YYYY") // Format the date using dayjs
+                    ) : (
+                      <span>Pick a date</span>
+                    )}
+                    <CalendarIcon className="ml-auto h-4 w-4  opacity-50 " />
+                  </Button>
+                </FormControl>
+              </PopoverTrigger>
+              <PopoverContent
+                className="w-auto p-0 z-[500000]"
+                align="start"
+              >
+                <Calendar
+                  fromDate={new Date()}
+                  toDate={calendarTo}
+                  mode="single"
+                  onSelect={(date) => {
+                    setSelectedDate(date ? dayjs(date) : null); // Convert Date to Dayjs and update selectedDate
+                    if (date) {
+                      const formattedDate = date.valueOf(); // Convert the date to a localized string
+                      field.onChange(formattedDate.toString()); // Update the field value with the formatted date string
+                    } else {
+                      field.onChange(''); // Clear the field value if no date is selected
+                    }
+                  }}
+                  disabled={(date) => date < new Date()}
+                  initialFocus
+                />
+              </PopoverContent>
+            </Popover>
+          </FormControl>
+        </div>
+      )}
+    />
             </div>
           </div>
           <button
