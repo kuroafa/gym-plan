@@ -34,7 +34,7 @@ const RecommendedWorkouts = ({ planData }: Props) => {
                     {allWorkouts.map((workout, index) => {
                       return (
                         <>
-                          {plan.fitnessGoals === workout.fitnessGoal && (
+                          {plan.fitnessGoals === workout.fitnessGoal && workout.image && (
                             <div key={index} className="my-5  p-2 rounded-lg">
                               <div className=" grid grid-cols-1 text-center">
                                 <h1 className="text-xl font-medium p-4 bg-black text-white mb-2 rounded-[30px]  ">

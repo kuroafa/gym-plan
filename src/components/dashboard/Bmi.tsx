@@ -61,7 +61,7 @@ const Bmi = ({ weight, height, age, gender }: Props) => {
         ) : null}
         {bmi !== undefined ? (
           <div className="text-xl p-5 mx-5 grid grid-cols-2 gap-2 px-5 rounded-[40px] bg-lime-200">
-            <p className="text-4xl font-medium rounded-full w-fit bg-slate-100 lg:px-10 px-5 pt-2">BMI</p>{" "}
+            <p className="text-4xl font-medium rounded-full w-fit bg-slate-100 lg:px-10 px-5 py-2">BMI</p>{" "}
             <p className="xl:text-6xl text-4xl font-bold">{bmi.toFixed(2)}</p>
           </div>
         ) : null}

@@ -83,10 +83,12 @@ const GymWorkout: React.FC<Props> = () => {
               viewport={{ once: true }}
               style={ModelStyles}
             >
-              <X size={40} onClick={handleGymClose} />
-              <div className="grid gap-5 grid-cols-1 lg:grid-cols-2">
+              <div className="absolute top-3 right-5">
+                <X size={40} onClick={handleGymClose} />
+              </div>
+              <div className="grid gap-5 grid-cols-1 mt-10 lg:grid-cols-2">
                 <div className="items-start">
-                  <h1 className="text-4xl font-extrabold italic">
+                  <h1 className="text-4xl text-start font-extrabold italic">
                     Create new Plan
                   </h1>
                   <PlanForm handleClose={handleGymClose} />

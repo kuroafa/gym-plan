@@ -61,7 +61,7 @@ export async function DELETE(req: Request, res: Response) {
     const { id } = DeletionSchema.parse(body);
     const deleteGoal = await prisma.goal.deleteMany({
       where: {
-        id: id,
+        userId: session.user.id,
       },
     });
     console.log("goal deleted: ", deleteGoal);

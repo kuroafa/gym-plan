@@ -63,7 +63,7 @@ const MealSlide = ({ planData }: Props) => {
                             {plan.fitnessGoals.replace("_", " ")}
                           </span>
                         </h2>
-                        <p className="font-bold mt-2 mb-1">
+                        <p className="font-bold mt-2 mb-2">
                           Here&apos;s your recommended meals{" "}
                           <span className="bg-indigo-200 rounded-full text-lg px-2">
                             !
@@ -81,7 +81,7 @@ const MealSlide = ({ planData }: Props) => {
                               >
                                 {index === currentMealIndex && (
                                   <div
-                                    className="h-60 relative w-full gap-5"
+                                    className="h-80 relative w-full gap-5"
                                     style={{
                                       backgroundImage: `url(${meal.image})`,
                                       backgroundSize: "cover",
@@ -113,7 +113,7 @@ const MealSlide = ({ planData }: Props) => {
                   </div>
                 );
               })}
-              <div className="flex  mt-4">
+              <div className="flex -mt-5 ">
                 <button
                   className="bg-indigo-500 text-white rounded-[30px] p-2 mr-2"
                   onClick={previousMeal}

@@ -109,7 +109,7 @@ const PlanPage = ({ planData }: Props) => {
 
   return (
     <>
-      <div className="grid grid-cols-1 ml-2  p-3 rounded-2xl">
+      <div className="grid grid-cols-1   rounded-2xl">
         {planData.length ? (
           <Tabs
             items={items}

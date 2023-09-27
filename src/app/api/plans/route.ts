@@ -49,11 +49,13 @@ export async function POST(req: Request, res: Response) {
 
 export async function DELETE(req: Request, res: Response) {
   try {
+    const session = await getAuthSession();
     const body = await req.json();
     const { id } = DeletionSchema.parse(body);
     const deletePlan = await prisma.plan.delete({
       where: {
         id: id,
+        userId: session?.user.id
       },
     });
     console.log("plan deleted: ", deletePlan);

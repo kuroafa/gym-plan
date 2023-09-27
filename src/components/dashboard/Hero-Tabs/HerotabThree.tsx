@@ -19,11 +19,11 @@ const PlanFormStyles = {
 const HerotabThree = ({ planData }: Props) => {
   return (
     <div className="grid lg:grid-cols-2 gap-5">
-      <div style={PlanFormStyles} className="rounded-[30px]  p-3">
+      <div style={PlanFormStyles} className="rounded-[30px] ">
         <h2 className="text-3xl font-semibold  my-2">Create A Plan</h2>
         <PlanPage planData={planData} />
       </div>
-      <div className="rounded-[30px] grid grid-cols-1  bg-slate-100 p-3">
+      <div className="rounded-[30px] grid grid-cols-1 ">
         <MealSlide planData={planData} />
       </div>
     </div>

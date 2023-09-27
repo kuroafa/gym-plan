@@ -42,10 +42,10 @@ const Dashboard = async ({ planData, goalData }: Props) => {
     },
   });
   return (
-    <div className="grid lg:grid-cols-2 grid-cols-1  px-5">
-      <div>
+    <div className="grid lg:grid-cols-2 grid-cols-1  ">
+      <div className="flex flex-col gap-2">
         <MotivationalQuotes userData={session?.user} />
-        <h1 className="xl:text-5xl text-4xl mb-5 font-medium whitespace-nowrap">
+        <h1 className="xl:text-4xl text-3xl my-3  font-medium whitespace-nowrap">
           Here&apos;s today&apos;s pulse.
         </h1>
         <LatestPlan userData={session?.user} planData={getPlanData} />

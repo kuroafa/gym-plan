@@ -151,7 +151,7 @@ const HerotabOne = ({
           </div>
 
           <div className="bg-white rounded-[40px] grid grid-cols-2  mt-5 p-5">
-            <p className="text-xl font-medium rounded-full w-fit bg-black text-white px-5 pt-3">
+            <p className="text-xl font-medium rounded-full w-fit bg-black text-white px-5 py-3">
               Target
             </p>{" "}
             <p className="xl:text-6xl text-4xl font-bold">
@@ -159,7 +159,7 @@ const HerotabOne = ({
             </p>
           </div>
           <div className=" rounded-[40px] grid grid-cols-2 gap-2 mt-4 p-5">
-            <p className="text-xl font-medium rounded-full w-fit bg-white  px-4 pt-4">
+            <p className="text-xl  font-medium rounded-full w-fit bg-white  px-4 py-4">
               Calories
             </p>{" "}
             <p className="xl:text-6xl text-white text-4xl font-bold">

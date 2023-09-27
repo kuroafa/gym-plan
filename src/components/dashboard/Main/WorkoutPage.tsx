@@ -109,7 +109,7 @@ const WorkoutPage = ({ planData }: Props) => {
                     {work.atHome ? (
                       <div className="grid grid-cols-2 text-center gap-5 p-3">
                         <p className="bg-lime-400 rounded-[30px] font-bold p-3 ">
-                          Home workout
+                          Home
                         </p>
                         <p className="bg-lime-400 rounded-[30px] font-bold p-3 ">
                           {work.difficulty}
@@ -118,7 +118,7 @@ const WorkoutPage = ({ planData }: Props) => {
                     ) : (
                       <div className="grid grid-cols-2 text-center gap-5 p-3">
                         <p className="bg-indigo-400 rounded-[30px] font-bold text-white p-3 ">
-                          Gym workout
+                          Gym
                         </p>
                         <p className="bg-indigo-400 rounded-[30px] font-bold text-white p-3 ">
                           {work.difficulty}
@@ -158,7 +158,7 @@ const WorkoutPage = ({ planData }: Props) => {
                   <div>
                     {work.image ? (
                       <img
-                        className="md:w-[100%] md:h-[360px] "
+                        className="md:w-[100%] md:h-[460px] "
                         alt={work.exercise}
                         src={work.image}
                       />
@@ -167,7 +167,7 @@ const WorkoutPage = ({ planData }: Props) => {
                   {work.atHome ? (
                     <div className="grid grid-cols-2 text-center gap-5 p-3">
                       <p className="bg-lime-400 rounded-[30px] font-bold p-3 ">
-                        Home workout
+                        Home
                       </p>
                       <p className="bg-lime-400 rounded-[30px] font-bold p-3 ">
                         {work.difficulty}
@@ -176,7 +176,7 @@ const WorkoutPage = ({ planData }: Props) => {
                   ) : (
                     <div className="grid grid-cols-2 text-center gap-5 p-3">
                       <p className="bg-indigo-400 rounded-[30px] font-bold text-white p-3 ">
-                        Gym workout
+                        Gym
                       </p>
                       <p className="bg-indigo-400 rounded-[30px] font-bold text-white p-3 ">
                         {work.difficulty}

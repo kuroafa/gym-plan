@@ -48,9 +48,9 @@ const AppointmentsDeleteButton = ({ id }: Props) => {
       <Dialog>
         <DialogTrigger>
         <button
-            className="self-end w-20 text-xl px-3 font-bold py-2 rounded-[10px] "
+            className="self-end w-20 text-xl hover:bg-indigo-300 font-bold  rounded-full bg-indigo-500 text-white w-fit "
           >
-             <X size={50} />
+             <X size={30} />
           </button>
         </DialogTrigger>
         <DialogContent className="flex flex-col items-start z-[500000000]">

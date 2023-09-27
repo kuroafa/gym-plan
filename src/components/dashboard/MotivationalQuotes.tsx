@@ -24,7 +24,7 @@ const MotivationalQuotes = ({ userData }: Props) => {
   const quoteWithUser = `${currentQuote}${userData.name?.toUpperCase()}`;
 
   return (
-    <h1 className="xl:text-4xl text-4xl font-bold ">
+    <h1 className="xl:text-5xl text-3xl font-bold ">
       {quoteWithUser}
     </h1>
   );

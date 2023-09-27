@@ -72,8 +72,10 @@ const BuildingMuscle: React.FC<Props> = () => {
               viewport={{ once: true }}
               style={ModelStyles}
             >
-              <X size={40} onClick={handleClose} />
-              <div className="grid gap-5 grid-cols-1 lg:grid-cols-2">
+              <div className="absolute top-3 right-5">
+                <X size={40} onClick={handleClose} />
+              </div>
+              <div className="grid gap-5 grid-cols-1 mt-10 lg:grid-cols-2">
                 <div>
                   <h1 className="italic font-extrabold text-4xl my-5 ">
                     Create a session{" "}

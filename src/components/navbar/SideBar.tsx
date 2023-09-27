@@ -35,7 +35,7 @@ const SideBar = (props: Props) => {
           className="fixed top-0 left-0 w-full h-full bg-black opacity-40 z-20"
         ></div>
       )}
-      <div className=" relative z-40  ">
+      <div className=" relative   ">
         <Hamburger toggled={open} toggle={toggleSidebar} />
       </div>
       <div>
@@ -104,7 +104,7 @@ const SideBar = (props: Props) => {
               whileInView={{ opacity: 1, x: "0%" }}
               transition={{ delay: 0, duration: 0.3, ease: "linear" }}
               viewport={{ once: true }}
-              className="rounded-[30px] bg-indigo-300 mb-20 p-3 cursor-pointer hover:bg-lime-200"
+              className="rounded-[30px] bg-indigo-300 mb-20 px-4 py-2 cursor-pointer hover:bg-lime-200"
               onClick={() => {
                 signOut().catch(console.error);
               }}

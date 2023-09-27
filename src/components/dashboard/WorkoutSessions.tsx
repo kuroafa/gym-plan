@@ -24,26 +24,25 @@ const WorkoutSessions = ({ trainerData }: Props) => {
             {trainerData.map((train) => {
               return (
                 <>
-                  <div className=" grid grid-cols-1 py-2 px-3  " key={train.id}>
-                    <div>
-                      <div className=" w-full">
-                        <div className="flex items-center justify-between">
-                          <h1 className="text-2xl font-semibold bg-indigo-500 text-white w-fit rounded-[20px] px-3">
-                            {train.client.toUpperCase()}
-                          </h1>
+                  <div className=" grid grid-cols-1 py-2 px-3 bg-gray-200 rounded-[20px] mt-2 " key={train.id}>
+                    <div className="flex flex-col gap-6 md:gap-3">
+                      <div className="flex items-center justify-between py-2">
+                        <h1 className="text-2xl font-semibold bg-indigo-500 text-white w-fit rounded-[20px] px-3">
+                          {train.client.toUpperCase()}
+                        </h1>
 
-                          <AppointmentsDeleteButton id={train.id} />
-                        </div>
+                        <AppointmentsDeleteButton id={train.id} />
                       </div>
-                      <div className="flex flex-col sm:flex-row  md:items-center gap-3">
-                        <p className="text-xl font-bold md:border-r pr-2 border-black">
+
+                      <div className="flex  md:items-center gap-3">
+                        <p className="md:text-xl font-bold md:border-r pr-2 border-black">
                           {train.fitnessGoals.replace("_", " ")}
                         </p>
-                        <div className="flex flex-col sm:flex-row  md:items-center gap-2">
-                          <p className="text-xl md:border-r pr-2 border-black">
+                        <div className="flex   md:items-center gap-2">
+                          <p className="md:text-xl md:border-r pr-2 border-black">
                             {new Date(train.date).toLocaleDateString()}
                           </p>
-                          <p className="text-xl  font-bold">{train.time}</p>
+                          <p className="md:text-xl  font-bold">{train.time}</p>
                         </div>
                       </div>
                     </div>
