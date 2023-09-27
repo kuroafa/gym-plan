@@ -30,27 +30,7 @@ const LatestPlan = ({ planData,  userData }: Props) => {
   const [tip, setTip] = useState("");
   const router = useRouter();
 
-  const getUsers = async (data: PlanCreation) => {
-    try {
-      setIsGenerating(true);
-      const response = await fetch("/api/Mock", {
-        method: "POST",
-        body: JSON.stringify(data),
-      });
-      const result = await response.json();
-      router.refresh();
-      if (result === "plans added successfully") {
-        toast.success(`Successfully generated Plans`);
-      }
-      setIsGenerating(false);
-    } catch (error) {
-      if (error) {
-        toast.error(`Error generating Plans: ${error}`);
-      }
-    }finally{
-      setIsGenerating(false)
-    }
-  };
+
   const lessPlans = planData.slice(0, 3);
 
   useEffect(() => {
@@ -150,15 +130,9 @@ const LatestPlan = ({ planData,  userData }: Props) => {
               <h2 className="text-lg mb-2 font-medium">
                 Not sure where to start? Click generate & start your gains!
               </h2>
-              <Button
-                onClick={() => {
-                  getUsers(planData);
-                }}
-                variant="outlined"
-                className="text-black"
-              >
-                Generate Plans
-              </Button>
+           
+                Generate A new plan on the Plans tab below!
+             
             </div> }
             
           </div>

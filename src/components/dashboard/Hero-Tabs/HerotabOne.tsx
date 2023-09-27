@@ -144,7 +144,7 @@ const HerotabOne = ({ trainerData, goalData }: Props) => {
             age={userData?.age }
             gender={userData?.gender }
           /> */}
-          <div className="grid grid-cols-1 px-6 pt-[150px] gap-2">
+          <div className="grid grid-cols-1 px-6 pt-[350px] gap-2">
             <Link
               href="WorkoutsPage"
               className="bg-white text-lg font-semibold rounded-[20px] px-4 py-2 flex justify-between items-center "
