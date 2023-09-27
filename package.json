@@ -33,7 +33,6 @@
     "@radix-ui/react-select": "^1.2.2",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-tabs": "^1.0.4",
-    "@reach/combobox": "^0.18.0",
     "@react-google-maps/api": "^2.19.2",
     "@types/node": "20.5.7",
     "@types/react": "18.2.21",
