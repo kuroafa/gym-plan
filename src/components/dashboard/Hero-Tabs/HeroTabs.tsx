@@ -14,11 +14,23 @@ import HerotabThree from "./HerotabThree";
 import HerotabFour from "./HerotabFour";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
+type UserData = {
+  id: string;
+  name?: string | null | undefined;
+  email?: string | null | undefined;
+  image?: string | null | undefined;
+  // Add optional properties
+  height?: string | null | undefined;
+  gender?: string | null | undefined;
+  age?: string | null | undefined;
+  weight?: string | null | undefined;
+};
+
 type Props = {
   trainerData: Trainer[];
-  userData: Pick<User, "age" | "gender" | "height" | "weight">;
+  userData: UserData
   planData: Plan[],
-  goalData: Goal[];
+  goalData: { calories: string; goal: string };
 };
 
 const HeroTabs = ({ trainerData, userData, planData, goalData }: Props) => {

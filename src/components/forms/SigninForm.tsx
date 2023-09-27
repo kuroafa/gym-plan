@@ -37,10 +37,15 @@ const SigninForm = (props: Props) => {
       email: data.email,
       password: data.password,
     });
+    if(signinData?.ok){
+       toast.success('Successfully logged in')
+    } else {
+      toast.error('Signing failed')
+    }
     if (signinData?.error) {
       console.log(signinData.error);
     } else {
-      toast.success('Successfully logged in')
+     
       router.push("/Dashboard");
     }
   };

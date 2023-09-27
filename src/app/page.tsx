@@ -1,11 +1,6 @@
-import Footer from "@/components/dashboard/Footer";
-import Hero from "@/components/Main/Hero";
 import Signupform from "@/components/forms/Signupform";
-import { Button } from "@/components/ui/button";
-import { prisma } from "@/lib/db";
 import { getAuthSession } from "@/lib/nextauth";
 import Image from "next/image";
-import Link from "next/link";
 import { redirect } from "next/navigation";
 
 export default async function Home() {

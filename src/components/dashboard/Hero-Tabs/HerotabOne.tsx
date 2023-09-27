@@ -9,10 +9,21 @@ import { Goal, Plan, Trainer, User } from "@prisma/client";
 import GoalDeleteButton from "@/components/buttons/GoalDeleteButton";
 import Link from "next/link";
 
+type UserData = {
+  id: string;
+  name?: string | null | undefined;
+  email?: string | null | undefined;
+  image?: string | null | undefined;
+  // Add optional properties
+  height?: string | null | undefined;
+  gender?: string | null | undefined;
+  age?: string | null | undefined;
+  weight?: string | null | undefined;
+};
 type Props = {
   trainerData: Trainer[];
-  userData: Pick<User, "age" | "gender" | "height" | "weight">;
-  goalData: Goal[];
+  userData: UserData;
+  goalData: { calories: string; goal: string };
 };
 
 const HerotabOne = ({
