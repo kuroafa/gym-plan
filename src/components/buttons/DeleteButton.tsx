@@ -3,7 +3,7 @@
 import { DeleteSchema } from "@/lib/type";
 import { useRouter } from "next/navigation";
 import { GrClose } from "react-icons/gr";
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import {
   Dialog,
@@ -13,16 +13,19 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@mui/material";
+import { ChevronRight, Trash2 } from "lucide-react";
 
 type Props = {
   id: string;
 };
 
 const DeleteButton = ({ id }: Props) => {
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const deletePlan = (AppointmentId: string) => {
+  const deletePlan = async (AppointmentId: string) => {
     try {
-      const response = fetch("/api/plans", {
+      setLoading(true);
+      const response = await fetch("/api/plans", {
         method: "DELETE",
         headers: {
           "Content-type": "application/json",
@@ -32,34 +35,27 @@ const DeleteButton = ({ id }: Props) => {
         }),
       }); 
       router.refresh();
-      router.push("/planPage");
+     
       
       
     } catch (error) {
       console.log(`${error} deleting appointment`);
+    } finally{
+      setLoading(false);
     }
   };
 
   return (
     <>
-      <Dialog>
-        <DialogTrigger>
-         <button className="text-white bg-black rounded-[30px] text-xl px-3 hover:bg-indigo-400 font-medium" variant="outlined">Delete</button>
-        </DialogTrigger>
-        <DialogContent className="flex flex-col items-start z-[500000000]">
-          <DialogTitle>Are you sure?</DialogTitle>
-          <DialogDescription>
-            You are deleting this plan forever
-          </DialogDescription>
+     
           <button
             onClick={() => deletePlan(id)}
            
-            className="self-end bg-indigo-400 rounded-[30px] "
+            className="self-end bg-indigo-400 text-xl px-3 text-white py-2 rounded-[30px] flex gap-2 items-center "
           >
-            Delete
+            {loading ? "deleting..." : "Delete plan"}<Trash2 />
           </button>
-        </DialogContent>
-      </Dialog>
+     
     </>
   );
 };

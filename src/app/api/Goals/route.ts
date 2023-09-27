@@ -1,7 +1,7 @@
 // Import necessary modules and functions
 import { prisma } from "@/lib/db";
 import { getAuthSession } from "@/lib/nextauth";
-import { GoalSchema } from "@/lib/type";
+import { DeletionSchema, GoalSchema } from "@/lib/type";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -20,7 +20,7 @@ export async function POST(req: Request, res: Response) {
     const body = await req.json();
     const { goal, calories } = GoalSchema.parse(body);
 
-    // Create the Plan and associate it with FitnessGoals
+
     const client = await prisma.goal.create({
       data: {
         goal: goal,
@@ -44,40 +44,6 @@ export async function POST(req: Request, res: Response) {
   }
 }
 
-export async function GET(req: Request, res: Response) {
-  try {
-    const session = await getAuthSession();
-    if (!session?.user) {
-      console.log("User is not authenticated");
-      return NextResponse.json(
-        { error: "You must be logged in to create a Workout." },
-        {
-          status: 401,
-        }
-      );
-    }
-
-    console.log("Workout records created successfully");
-    return NextResponse.json(
-      { message: "Workout records created successfully" },
-      { status: 200 }
-    );
-  } catch (error) {
-    console.error("Error creating a workout:", error);
-    if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        { error: error.issues },
-        {
-          status: 400,
-        }
-      );
-    }
-    return NextResponse.json(
-      { error: "Internal error while creating a workout" },
-      { status: 500 }
-    );
-  }
-}
 
 export async function DELETE(req: Request, res: Response) {
   try {
@@ -91,16 +57,23 @@ export async function DELETE(req: Request, res: Response) {
         }
       );
     }
+    const body = await req.json();
+    const { id } = DeletionSchema.parse(body);
+    const deleteGoal = await prisma.goal.deleteMany({
+      where: {
+        id: id,
+      },
+    });
+    console.log("goal deleted: ", deleteGoal);
 
-    console.log("Data cleared successfully");
     return NextResponse.json(
-      { message: "Data cleared successfully" },
+      { message: "Goal deleted successfully" },
       { status: 200 }
     );
   } catch (error) {
-    console.error("Error clearing data:", error);
+    console.error("Error deleting goal:", error);
     return NextResponse.json(
-      { error: "Internal error while clearing data" },
+      { error: "Internal error while deleting goal" },
       { status: 500 }
     );
   }

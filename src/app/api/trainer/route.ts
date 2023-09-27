@@ -10,7 +10,7 @@ export async function POST(req: Request, res: Response) {
     if (!session?.user) {
       console.log("User is not authenticated");
       return NextResponse.json(
-        { error: "You must be logged in to create a Plan." },
+        { error: "You must be logged in to create a session." },
         {
           status: 401,
         }
@@ -52,33 +52,16 @@ export async function DELETE(req: Request, res: Response) {
   try {
     const body = await req.json();
     const { id } = DeletionSchema.parse(body);
-    const deleteClient = await prisma.trainer.delete({
+    const deleteSession = await prisma.trainer.delete({
       where: {
         id: id,
       },
     });
-    console.log("Workout session deleted: ", deleteClient);
+    console.log("Workout session deleted: ", deleteSession);
     return NextResponse.json({ message: "Workout session deleted" });
   } catch (error) {
     console.log("error deleting workout session", error);
   }
 }
 
-export async function GET(req: Request, res: Response) {
-  try {
-    const session = await getAuthSession();
-    if (!session?.user) {
-      console.log("User is not authenticated");
-      return NextResponse.json(
-        { error: "You must be logged in to check your plan." },
-        {
-          status: 401,
-        }
-      );
-    }
 
-    // Handle your GET logic here.
-  } catch (error) {
-    console.error("Error checking user plan:", error);
-  }
-}

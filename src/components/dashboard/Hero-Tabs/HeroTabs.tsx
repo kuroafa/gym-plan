@@ -53,8 +53,10 @@ const HeroTabs = ({ trainerData, userData, planData, goalData }: Props) => {
           >
             <Tab className="font-semibold" value="one" label="for you" />
             <Tab className="font-semibold" value="two" label="recommended" />
-            <Tab className="font-semibold" value="three" label="New Plan" />
-            <Tab className="font-semibold" value="four" label="New session" />
+            <Tab className="font-semibold" value="three" label="Plans" />
+            <Tab className="font-semibold" value="four" label="Workout sessions" />
+
+  
           </Tabs>
         </Box>
         <TabPanel value="one">
@@ -64,7 +66,7 @@ const HeroTabs = ({ trainerData, userData, planData, goalData }: Props) => {
           <HerotabTwo planData={planData}/>
         </TabPanel>
         <TabPanel value="three"><HerotabThree planData={planData}/></TabPanel>
-        <TabPanel value="four"><HerotabFour/></TabPanel>
+        <TabPanel value="four"><HerotabFour trainerData={trainerData} planData={planData}/></TabPanel>
       </TabContext>
     </div>
   );

@@ -16,6 +16,7 @@ import {
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Radio } from "antd";
+import { toast } from "react-toastify";
 
 type Props = {};
 
@@ -50,10 +51,13 @@ const Signupform = (props: Props) => {
       });
 
       if (response.ok) {
+        toast.success("Created Account successfully");
       } else {
         console.log("Registering failed");
+       
       }
-    } catch (error) {
+    } catch (error) { 
+      toast.error("Error creating Account");
       console.error("Could not create account:", error);
     } finally {
       form.reset();
@@ -63,14 +67,12 @@ const Signupform = (props: Props) => {
 
   return (
     <>
-      <div className="  shadow-2xl shadow-black rounded-xl p-5  ">
-        <h1 className="text-6xl font-medium">SIGN UP</h1>
-        <p className="text-4xl font-normal mt-1">
-          Let’s get started by entering a few details below!
-        </p>
+      <div className="   p-5  ">
+        <p className="text-3xl font-medium">Create an account</p>
+       
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className=" space-y-3 text-black">
-            <div className="flex flex-col gap-2 mt-5 ">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="  text-black">
+            <div className="flex flex-col gap-5 my-5 ">
               <Radio.Group defaultValue="a" size="large">
                 <Radio.Button value="Male">Male</Radio.Button>
                 <Radio.Button value="Female">Female</Radio.Button>
@@ -110,42 +112,46 @@ const Signupform = (props: Props) => {
                     </FormItem>
                   )}
                 />
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <TextField
-                          id="outlined-basic"
-                          label="Email"
-                          variant="outlined"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
+             
+              </div> 
+                <div className="flex gap-2">
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <TextField
+                            id="outlined-basic"
+                            label="Email"
+                            variant="outlined"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="age"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <TextField
+                            id="outlined-basic"
+                            variant="outlined"
+                            label="Age"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
               <div className="flex gap-2">
-                <FormField
-                  control={form.control}
-                  name="age"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <TextField
-                          id="outlined-basic"
-                          variant="outlined"
-                          label="Age"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                
                 <FormField
                   control={form.control}
                   name="weight"
@@ -227,9 +233,9 @@ const Signupform = (props: Props) => {
             </Button>
           </form>
         </Form>
-        <p className="text-2xl mt-2">
+        <p className="text-xl mt-3">
           Already have an account?{" "}
-          <Link className="text-lime-700" href="/SigninPage">
+          <Link className="text-indigo-700" href="/SigninPage">
             Sign in
           </Link>
         </p>

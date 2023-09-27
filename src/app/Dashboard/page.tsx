@@ -4,16 +4,16 @@ import DashboardChart from "@/components/dashboard/DashboardChart";
 import DashboardData1 from "@/components/dashboard/DashboardData1";
 import DashboardData2 from "@/components/dashboard/DashboardData2";
 import HeroTabs from "@/components/dashboard/Hero-Tabs/HeroTabs";
-import LatestPlan from "@/components/LatestPlan";
+import LatestPlan from "@/components/dashboard/LatestPlan";
 import LocalWeather from "@/components/LocalWeather";
 import Map from "@/components/Map";
 import PlanGoal from "@/components/PlanGoal";
-import PlanPage from "@/components/PlanPage";
+import PlanPage from "@/components/dashboard/PlanPage";
 import PlayWorkout from "@/components/PlayWorkout";
 import RandomWorkout from "@/components/RandomWorkout";
-import RecommendedWorkouts from "@/components/RecommendedWorkouts";
+import RecommendedWorkouts from "@/components/dashboard/RecommendedWorkouts";
 import Stats from "@/components/Stats";
-import WorkoutSessions from "@/components/WorkoutSessions";
+import WorkoutSessions from "@/components/dashboard/WorkoutSessions";
 import WorkoutsPlayer from "@/components/WorkoutsPlayer";
 import { prisma } from "@/lib/db";
 import { getAuthSession } from "@/lib/nextauth";
@@ -39,16 +39,26 @@ const page = async ({ planData }: Props) => {
       userId: session.user.id,
     },
   });
+  let goalData = { calories: "0", goal: "0lb" };
+  let goalCreated = false;
+
+  // Check if a goal exists in the database
   const getGoalData = await prisma.goal.findFirst({
     where: {
       userId: session.user.id,
     },
     orderBy: {
-      createdAt: 'desc', 
+      createdAt: "desc",
     },
-    take: 1, 
+    take: 1,
   });
-  
+
+  if (getGoalData) {
+    // Goal data found in the database, use it
+    goalData = getGoalData;
+    goalCreated = true;
+  }
+
   const getTrainerData = await prisma.trainer.findMany({
     where: {
       userId: session.user.id,
@@ -68,12 +78,12 @@ const page = async ({ planData }: Props) => {
 
   return (
     <div className="flex flex-col gap-2  ">
-      <Dashboard goalData={getGoalData} planData={getPlanData} />
+      <Dashboard goalData={goalData} planData={getPlanData} />
       <HeroTabs
         planData={getPlanData}
         userData={session?.user}
         trainerData={getTrainerData}
-        goalData={getGoalData}
+        goalData={goalData}
       />
       {/* <PlanPage planData={getPlanData} /> */}
     </div>

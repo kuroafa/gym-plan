@@ -1,17 +1,18 @@
-import TrainingAppointmentForm from '@/components/TrainingAppointmentForm'
-import React from 'react'
+import TrainingAppointmentForm from "@/components/forms/TrainingAppointmentForm";
+import WorkoutSessions from "@/components/dashboard/WorkoutSessions";
+import { Trainer } from "@prisma/client";
+import React from "react";
 
-type Props = {}
+type Props = {
+  trainerData: Trainer[];
+};
 
-const HerotabFour = (props: Props) => {
+const HerotabFour = ({ trainerData }: Props) => {
   return (
-    <div className='grid md:grid-cols-2'>
-            <div className="p-3">
-      <h2 className="text-3xl font-semibold  my-2">Workout Session Form</h2>
-        <TrainingAppointmentForm/>
-      </div>
+    <div className="grid grid-cols-1">
+      <WorkoutSessions trainerData={trainerData} />
     </div>
-  )
-}
+  );
+};
 
-export default HerotabFour
+export default HerotabFour;

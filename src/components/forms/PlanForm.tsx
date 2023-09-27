@@ -41,10 +41,14 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Space, Tag } from "antd";
 import { Input, TextField } from "@mui/material";
+import { toast } from "react-toastify";
+import { Plus } from "lucide-react";
 
 const { CheckableTag } = Tag;
 
-type Props = {};
+type Props = {
+  handleClose: ()=>void;
+};
 enum FitnessGoals {
   LEG_DAY = "LEG_DAY",
   BACK_DAY = "BACK_DAY",
@@ -67,14 +71,15 @@ enum Day {
   SUNDAY = "SUNDAY",
 }
 
-const PlanForm = (prop: Props) => {
+const PlanForm = ({handleClose}: Props) => {
   const [selectedDay, setSelectedDay] = React.useState<Day>();
   const [selectedFitnessGoal, setSelectedFitnessGoal] =
-    React.useState<FitnessGoals | null>(FitnessGoals.ARMS_DAY);
+    React.useState<FitnessGoals | null>();
   const [selectedTags, setSelectedTags] = React.useState([]);
   const handleDaySelect = (day: Day) => {
     setSelectedDay(day);
   };
+  const [loading, setLoading] = React.useState(false);
 
   const handleFitnessGoalToggle = (goal: FitnessGoals) => {
     if (selectedFitnessGoal === goal) {
@@ -101,6 +106,7 @@ const PlanForm = (prop: Props) => {
 
   const onSubmit = async (data: PlanCreation) => {
     try {
+      setLoading(true);
       const completeData = {
         ...data,
         day: selectedDay,
@@ -117,127 +123,126 @@ const PlanForm = (prop: Props) => {
       if (!response.ok) {
         throw new Error("Failed to make Plan");
       }
+      toast.success("Plan created successfully");
     } catch (error) {
       console.error("Could not create Plan:", error);
+      toast.error("Error creating Plan");
     } finally {
+      setLoading(false);
     }
     form.reset();
-    window.location.reload(true);
+    handleClose()
   };
 
   return (
-    <div className="flex items-center justify-between  ">
-      <div className="flex flex-col items-start justify-start "></div>
+    <div className=" items-start " id="planform">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className=" space-y-8">
-          <div className="flex flex-col gap-[10px] flex-wrap ">
-          <div className="mt-2">
-                <FormField
-                  name="fitnessGoals"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-3xl font-bold">
-                        Fitness Goals
-                      </FormLabel>
-                      <FormControl>
-                        <Space size={[0, 8]} wrap>
-                          {Object.values(FitnessGoals).map((goal) => (
-                            <CheckableTag
-                              className="text-[15px]"
-                              key={goal}
-                              checked={selectedFitnessGoal === goal}
-                              onChange={() => handleFitnessGoalToggle(goal)}
-                            >
-                              {goal.replace("_", " ").toLocaleLowerCase()}
-                            </CheckableTag>
-                          ))}
-                        </Space>
-                      </FormControl>
-                      <FormDescription className="pl-3 mb-3">
-                        Select one for each plan
-                      </FormDescription>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-            <div className="flex   p-3 gap-5">
-              <FormField
-                control={form.control}
-                name="planName"
-                render={({ field }) => (
-                  <FormItem className="flex flex-col">
-                    <FormLabel>Plan name</FormLabel>
+        <form onSubmit={form.handleSubmit(onSubmit)} className=" space-y-3 ">
+          <div className="mt-2 flex items-start">
+            <FormField
+              name="fitnessGoals"
+              render={({ field }) => (
+                <FormItem className="flex flex-col items-start">
+                  <FormLabel className="text-2xl -mb-5 font-semibold">
+                    Fitness Goals
+                  </FormLabel>
+                  <br />{" "}
+                  <FormControl>
+                    <Space size={[0, 8]} wrap>
+                      {Object.values(FitnessGoals).map((goal) => (
+                        <CheckableTag
+                          className="sm:text-md font-semibold "
+                          key={goal}
+                          checked={selectedFitnessGoal === goal}
+                          onChange={() => handleFitnessGoalToggle(goal)}
+                        >
+                          {goal.replace("_", " ")}
+                        </CheckableTag>
+                      ))}
+                    </Space>
+                  </FormControl>
+                  <FormDescription className="pl-3 mb-3">
+                    Select one for each plan
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <div className="flex p-3 gap-5">
+            <FormField
+              control={form.control}
+              name="planName"
+              render={({ field }) => (
+                <FormItem className="flex flex-col items-start">
+                  <FormLabel>Plan name</FormLabel>
+                  <FormControl>
+                    <TextField
+                      id="outlined-basic"
+                      label="Name of the plan"
+                      variant="outlined"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormDescription>this is the plan name</FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="description"
+              render={({ field }) => (
+                <FormItem className="flex flex-col items-start">
+                  <FormLabel>Plan Note</FormLabel>
+                  <FormControl>
+                    <TextField
+                      id="outlined-basic"
+                      label="Describe this plan"
+                      variant="outlined"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormDescription className="pl-3 mb-3">
+                    Notes help you stay organized
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <div className="flex">
+            <FormField
+              name="day"
+              render={({ field }) => (
+                <FormItem>
+                  <Select
+                    onValueChange={handleDaySelect}
+                    defaultValue={selectedDay}
+                  >
                     <FormControl>
-                      <TextField
-                        id="outlined-basic"
-                        label="Name of the plan"
-                        variant="outlined"
-                        {...field}
-                      />
+                      <SelectTrigger className="h-10 ml-3">
+                        <SelectValue placeholder="Select a day for this workout" />
+                      </SelectTrigger>
                     </FormControl>
-                    <FormDescription>this is the plan name</FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="description"
-                render={({ field }) => (
-                  <FormItem className="flex flex-col">
-                      <FormLabel>Plan Note</FormLabel>
-                    <FormControl>
-                      <TextField
-                        id="outlined-basic"
-                        label="Describe this plan"
-                        variant="outlined"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormDescription className="pl-3 mb-3">
-                      Notes help you stay organized
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-            <div className="grid grid-cols-1 pl-3 ">
-              <FormField
-                name="day"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Select a day</FormLabel>
-                    <Select
-                      onValueChange={handleDaySelect}
-                      defaultValue={selectedDay}
-                    >
-                      <FormControl>
-                        <SelectTrigger className="">
-                          <SelectValue placeholder="Select a day for this workout" />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent className="text-black">
-                        {Object.values(Day).map((day) => (
-                          <SelectItem key={day} value={day}>
-                            {day}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            
-            </div>
+                    <SelectContent className="text-black z-[500]">
+                      {Object.values(Day).map((day) => (
+                        <SelectItem key={day} value={day}>
+                          {day}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
           </div>
           <button
-            className="p-3 bg-indigo-500 text-white rounded-[30px] "
+            className="py-3 px-10 ml-3  bg-indigo-500 text-white rounded-[30px] flex items-center gap-2"
             type="submit"
           >
-            Submit
+            {loading ? "Creating..." : <h1 className="flex items-center gap-2">Create <Plus /> </h1>}
           </button>
         </form>
       </Form>

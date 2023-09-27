@@ -51,12 +51,12 @@ export async function DELETE(req: Request, res: Response) {
   try {
     const body = await req.json();
     const { id } = DeletionSchema.parse(body);
-    const deleteClient = await prisma.plan.delete({
+    const deletePlan = await prisma.plan.delete({
       where: {
         id: id,
       },
     });
-    console.log("plan deleted: ", deleteClient);
+    console.log("plan deleted: ", deletePlan);
     return NextResponse.json({ message: "Plan deleted" });
   } catch (error) {
     console.log("error deleting plan", error);

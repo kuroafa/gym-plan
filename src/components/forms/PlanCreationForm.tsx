@@ -16,7 +16,7 @@ import {
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Card } from "../ui/card";
-import Hero from "../Main/Hero";
+import Hero from "../dashboard/Main/Hero";
 import Image from "next/image";
 
 type Props = {

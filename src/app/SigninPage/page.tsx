@@ -1,4 +1,4 @@
-import SigninForm from "@/components/buttons/SigninForm";
+import SigninForm from "@/components/forms/SigninForm";
 import Signupform from "@/components/forms/Signupform";
 import { prisma } from "@/lib/db";
 import { getAuthSession } from "@/lib/nextauth";
@@ -16,15 +16,15 @@ const page = async (props: Props) => {
 
   return (
     <div className="p-5">
-      <div className="grid md:grid-cols-3 grid-cols-1">
+      <div className="flex items-center justify-center">
         <div className=" ">
-          <h1 className="text-8xl font-medium">
-            SIGN <span className="text-lime-500">IN</span>{" "}
+          <h1 className="md:text-6xl text-5xl  text-center font-bold">
+            SIGN <span className="text-indigo-500">IN</span>{" "}
           </h1>
           <SigninForm />
-          <p className="text-2xl mt-2">
+          <p className="text-xl mt-3">
             Don&apos;t have an account?{" "}
-            <Link className="text-lime-700" href="/">
+            <Link className="text-slate-700" href="/">
               Sign Up
             </Link>
           </p>

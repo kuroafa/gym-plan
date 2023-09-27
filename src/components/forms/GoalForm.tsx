@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   Form,
   FormControl,
@@ -23,6 +23,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 import { TransitionProps } from "@mui/material/transitions";
+import { toast } from "react-toastify";
 
 type Props = {};
 
@@ -37,6 +38,7 @@ const Transition = React.forwardRef(function Transition(
 
 const GoalForm = (props: Props) => {
   const [open, setOpen] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -61,6 +63,7 @@ const GoalForm = (props: Props) => {
 
   const onSubmit = async (data: GoalCreation) => {
     try {
+      setLoading(true);
       const response = await fetch("/api/Goals", {
         method: "POST",
         headers: {
@@ -72,11 +75,16 @@ const GoalForm = (props: Props) => {
       if (!response.ok) {
         throw new Error("Failed to make Goal");
       }
+      toast.success("Successfully set goal");
     } catch (error) {
       console.error("Could not create Goal:", error);
+      toast.error("Error setting goal");
+    } finally {
+      setLoading(false);
     }
     form.setValue("goal", "");
     router.refresh();
+    handleClose()
   };
 
   // Define styles using makeStyles
@@ -177,7 +185,6 @@ const GoalForm = (props: Props) => {
                   </div>
                   <button
                     className="rounded-[30px] bg-lime-300 text-black text-lg py-5"
-                    variant="outlined"
                     type="submit"
                   >
                     Submit
@@ -186,7 +193,6 @@ const GoalForm = (props: Props) => {
               </form>
             </Form>
           </DialogContentText>
-         
         </DialogContent>
         <DialogActions>
           <button

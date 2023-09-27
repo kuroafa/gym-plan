@@ -332,6 +332,7 @@ const muscleBuildingWorkouts = [
       reps: 12,
       restTime: 60,
       atHome: false,
+      difficulty: 'Intermediate',
     },
     {
       exercise: "Stability Ball Pull Ins",
@@ -341,6 +342,7 @@ const muscleBuildingWorkouts = [
       reps: 12,
       restTime: 60,
       atHome: false,
+      difficulty: 'Intermediate',
     },
     {
       exercise: "Bosu Ball Crunch",
@@ -350,6 +352,7 @@ const muscleBuildingWorkouts = [
       reps: 12,
       restTime: 60,
       atHome: false,
+      difficulty: 'Intermediate',
     },
     {
       exercise: "Laying Flat Bench Raises",
@@ -359,6 +362,7 @@ const muscleBuildingWorkouts = [
       reps: 12,
       restTime: 60,
       atHome: false,
+      difficulty: 'Intermediate',
     },
     {
       exercise: "Laying Leg Raises",
@@ -368,6 +372,7 @@ const muscleBuildingWorkouts = [
       reps: 12,
       restTime: 60,
       atHome: false,
+      difficulty: 'Intermediate',
     },
     {
       exercise: "Elbow Plank",
@@ -377,6 +382,7 @@ const muscleBuildingWorkouts = [
       reps: 12,
       restTime: 60,
       atHome: false,
+      difficulty: 'Intermediate',
     },
     {
       exercise: "Hollow Hold",
@@ -386,6 +392,7 @@ const muscleBuildingWorkouts = [
       reps: 12,
       restTime: 60,
       atHome: false,
+      difficulty: 'Intermediate',
     },
     {
       exercise: "Ball Crunch",
@@ -395,6 +402,7 @@ const muscleBuildingWorkouts = [
       reps: 12,
       restTime: 60,
       atHome: false,
+      difficulty: 'Intermediate',
     },
     {
       exercise: "Wipers",
@@ -404,6 +412,7 @@ const muscleBuildingWorkouts = [
       reps: 12,
       restTime: 60,
       atHome: false,
+      difficulty: 'Advanced',
     },
     {
       exercise: "Laying Flat Leg Raises",
@@ -413,6 +422,7 @@ const muscleBuildingWorkouts = [
       reps: 12,
       restTime: 60,
       atHome: false,
+      difficulty: 'Intermediate',
     },
     {
       exercise: "Otis Up",
@@ -422,6 +432,7 @@ const muscleBuildingWorkouts = [
       reps: 12,
       restTime: 60,
       atHome: false,
+      difficulty: 'Intermediate',
     },
     {
       exercise: "Landmines",
@@ -431,6 +442,7 @@ const muscleBuildingWorkouts = [
       reps: 12,
       restTime: 60,
       atHome: false,
+      difficulty: 'Intermediate',
     },
     {
       exercise: "Hanging Leg Raises",
@@ -440,8 +452,10 @@ const muscleBuildingWorkouts = [
       reps: 12,
       restTime: 60,
       atHome: false,
+      difficulty: 'Advanced',
     },
-  ];
+];
+
   const fitnessGoals = {
     LEG_DAY: 'LEG_DAY',
     BACK_DAY: 'BACK_DAY',
@@ -456,301 +470,307 @@ const muscleBuildingWorkouts = [
   const allWorkouts = [
     {
       exercise: 'Push-Ups',
-      description: 'Push-ups are a great bodyweight exercise for your chest, shoulders, and triceps...',
+      description: 'Push-ups are a great bodyweight exercise for your chest, shoulders, and triceps. Start in a plank position with your hands shoulder-width apart, lower your chest to the ground, and push back up.',
       sets: 3,
       reps: 15,
       restTime: 30,
+      image: 'pushup.png',
       atHome: true,
       fitnessGoal: fitnessGoals.CHEST_DAY,
+      difficulty: 'Beginner',
     },
     {
       exercise: 'Bodyweight Squats',
-      description: 'Bodyweight squats are effective for targeting your quadriceps, hamstrings, and glutes...',
+      description: 'Bodyweight squats are effective for targeting your quadriceps, hamstrings, and glutes. Stand with your feet shoulder-width apart, lower your body by bending your knees, and then stand back up.',
       sets: 3,
       reps: 15,
       restTime: 30,
+      image:'bodyweightsquat.png' ,
       atHome: true,
       fitnessGoal: fitnessGoals.LEG_DAY,
+      difficulty: 'Beginner',
     },
     {
       exercise: 'Plank',
-      description: 'The plank is an excellent core-strengthening exercise...',
+      description: 'The plank is an excellent core-strengthening exercise. Hold a push-up position with your elbows on the ground and your body in a straight line for the specified time duration.',
       sets: 3,
       reps: 'Hold for 30 seconds',
       restTime: 30,
+      image: 'Plank.png',
       atHome: true,
       fitnessGoal: fitnessGoals.STRENGTH_TRAINING,
+      difficulty: 'Beginner',
     },
     {
       exercise: 'Lunges',
-      description: 'Lunges can be done without weights for leg development...',
+      description: 'Lunges can be done without weights for leg development. Step forward with one leg, bend both knees, and lower your body until your rear knee is just above the ground. Alternate legs.',
       sets: 3,
       reps: '12 each leg',
       restTime: 30,
+      image: 'lunges.png',
       atHome: true,
       fitnessGoal: fitnessGoals.LEG_DAY,
+      difficulty: 'Beginner',
     },
     {
       exercise: 'Chair Dips',
-      description: 'Chair dips are a variation of dips that can be done using a sturdy chair...',
+      description: 'Chair dips are a variation of dips that can be done using a sturdy chair. Position your hands on the edge of the chair, lower your body, and then push yourself back up.',
       sets: 3,
       reps: 12,
       restTime: 30,
+      image:'chairdips.png',
       atHome: true,
       fitnessGoal: fitnessGoals.ARMS_DAY,
-    },
-    {
-      exercise: 'Burpees',
-      description: 'Burpees provide a full-body workout...',
-      sets: 3,
-      reps: 10,
-      restTime: 30,
-      atHome: true,
-      fitnessGoal: fitnessGoals.CARDIO,
-    },
-    {
-      exercise: 'M/ Climbers',
-      description: 'Mountain climbers are excellent for cardiovascular fitness and core strength...',
-      sets: 3,
-      reps: '20 each leg',
-      restTime: 30,
-      atHome: true,
-      fitnessGoal: fitnessGoals.CARDIO,
+      difficulty: 'Intermediate',
     },
     {
       exercise: 'Bodyweight Rows',
-      description: 'Bodyweight rows are a great back and bicep exercise...',
+      description: 'Bodyweight rows are a great back and bicep exercise. Use a sturdy horizontal bar, like a pull-up bar or a TRX system, and pull your chest towards the bar.',
       sets: 3,
       reps: 12,
       restTime: 30,
-      atHome: true,
+      atHome: false,
+      image: 'bodyweightrows.png',
       fitnessGoal: fitnessGoals.BACK_DAY,
-    },
-    {
-      exercise: 'Jumping Jacks',
-      description: 'Jumping jacks are a simple and effective full-body exercise...',
-      sets: 3,
-      reps: '30 seconds',
-      restTime: 30,
-      atHome: true,
-      fitnessGoal: fitnessGoals.CARDIO,
+      difficulty: 'Intermediate',
     },
     {
       exercise: 'Calf Raises',
-      description: 'Calf raises can be done without weights...',
+      description: 'Calf raises can be done without weights. Stand with your feet hip-width apart, raise your heels as high as possible, and then lower them back down.',
       sets: 3,
       reps: 20,
       restTime: 30,
       atHome: true,
+      image: 'calraises.png',
       fitnessGoal: fitnessGoals.LEG_DAY,
+      difficulty: 'Beginner',
     },
     {
       exercise: 'Wall Sits',
-      description: 'Wall sits are great for strengthening your quads...',
+      description: 'Wall sits are great for strengthening your quads. Lean against a wall with your knees at a 90-degree angle and hold the position for the specified time duration.',
       sets: 3,
       reps: 'Hold for 30 seconds',
       restTime: 30,
       atHome: true,
+      image:'wallsit.png' ,
       fitnessGoal: fitnessGoals.LEG_DAY,
+      difficulty: 'Intermediate',
     },
     {
       exercise: 'Bench Press',
-      description: 'The bench press is a classic chest exercise...',
+      description: 'The bench press is a classic chest exercise. Lie on a flat bench, grip the barbell with hands slightly wider than shoulder-width, lower it to your chest, and then push it back up.',
       sets: 4,
       reps: 12,
       restTime: 60,
       atHome: false,
+      image:'bench.png' ,
       fitnessGoal: fitnessGoals.CHEST_DAY,
+      difficulty: 'Intermediate',
     },
     {
       exercise: 'Leg Press',
-      description: 'The leg press machine is excellent for working your lower body...',
+      description: 'The leg press machine is excellent for working your lower body. Sit in the machine, press the weight upward with your feet, and then lower it back down.',
       sets: 4,
       reps: 10,
       restTime: 60,
       atHome: false,
+      image: 'legpress.png',
       fitnessGoal: fitnessGoals.LEG_DAY,
+      difficulty: 'Intermediate',
     },
     {
       exercise: 'Lat Pulldown',
-      description: 'The lat pulldown machine targets your back and biceps...',
+      description: 'The lat pulldown machine targets your back and biceps. Sit at the machine, grip the bar, and pull it down to your chest, then slowly release it back up.',
       sets: 4,
       reps: 12,
       restTime: 60,
       atHome: false,
+      image: 'latpulldown.png',
       fitnessGoal: fitnessGoals.BACK_DAY,
+      difficulty: 'Intermediate',
     },
     {
       exercise: 'Leg Curl',
-      description: 'The leg curl machine is great for isolating your hamstrings...',
+      description: 'The leg curl machine is great for isolating your hamstrings. Lie on the machine, secure your legs, and curl the weight by bending your knees, then straighten them.',
       sets: 4,
       reps: 12,
       restTime: 60,
       atHome: false,
+      image:'legcurl.png' ,
       fitnessGoal: fitnessGoals.LEG_DAY,
+      difficulty: 'Intermediate',
     },
     {
       exercise: 'Seated Row ',
-      description: 'The seated row machine works your back and biceps...',
+      description: 'The seated row machine works your back and biceps. Sit at the machine, grip the handles, and pull them towards your torso, then extend your arms to return to the start.',
       sets: 4,
       reps: 12,
       restTime: 60,
       atHome: false,
+      image:'seatedrow.png' ,
       fitnessGoal: fitnessGoals.BACK_DAY,
+      difficulty: 'Intermediate',
     },
-    {
-      exercise: 'Shoulder Press',
-      description: 'The shoulder press machine targets your shoulders and triceps...',
-      sets: 4,
-      reps: 12,
-      restTime: 60,
-      atHome: false,
-      fitnessGoal: fitnessGoals.SHOULDERS_DAY,
-    },
-    {
-      exercise: 'Leg Extension ',
-      description: 'The leg extension machine isolates your quadriceps...',
-      sets: 4,
-      reps: 12,
-      restTime: 60,
-      atHome: false,
-      fitnessGoal: fitnessGoals.LEG_DAY,
-    },
+   
     {
       exercise: 'Bicep Curls',
-      description: 'Cable bicep curls are great for targeting your biceps...',
+      description: 'Cable bicep curls are great for targeting your biceps. Stand in front of the cable machine, grip the handle, and curl the weight towards your chest, then lower it.',
       sets: 4,
       reps: 12,
       restTime: 60,
       atHome: false,
+      image: 'bicepcurl.png',
       fitnessGoal: fitnessGoals.ARMS_DAY,
+      difficulty: 'Intermediate',
     },
     {
       exercise: 'Tricep Pushdown ',
-      description: 'The tricep pushdown machine works your triceps...',
+      description: 'The tricep pushdown machine works your triceps. Stand at the cable machine, grip the bar, and push it down by extending your elbows, then return to the start.',
       sets: 4,
       reps: 12,
       restTime: 60,
       atHome: false,
+      image: 'tricebpushdown.png' ,
       fitnessGoal: fitnessGoals.ARMS_DAY,
-    },
-    {
-      exercise: 'Push-Ups',
-      description: 'Perform push-ups to work your chest, shoulders, and triceps...',
-      sets: 4,
-      reps: 12,
-      restTime: 60,
-      atHome: false,
-      fitnessGoal: fitnessGoals.CHEST_DAY,
-    },
-    {
-      exercise: 'Squats',
-      description: 'Bodyweight squats help strengthen your legs...',
-      sets: 4,
-      reps: 10,
-      restTime: 60,
-      atHome: false,
-      fitnessGoal: fitnessGoals.LEG_DAY,
+      difficulty: 'Intermediate',
     },
     {
       exercise: 'Pull-Ups',
-      description: 'Find a sturdy horizontal bar at the park for pull-ups...',
+      description: 'Find a sturdy horizontal bar at the park for pull-ups. Hang from the bar with your palms facing away, then pull your chest towards the bar and lower yourself back down.',
       sets: 4,
       reps: 12,
       restTime: 60,
       atHome: false,
+      image: 'pullup.png',
       fitnessGoal: fitnessGoals.BACK_DAY,
+      difficulty: 'Advanced',
     },
     {
       exercise: 'Lunges',
-      description: 'Perform lunges to work your legs and improve balance...',
+      description: 'Perform lunges to work your legs and improve balance. Step forward with one leg, bend both knees, and lower your body until your rear knee is just above the ground. Alternate legs.',
       sets: 4,
       reps: 12,
       restTime: 60,
       atHome: false,
+      image: 'lunges.png' ,
       fitnessGoal: fitnessGoals.LEG_DAY,
+      difficulty: 'Intermediate',
     },
     {
-      exercise: ' Bench Dips',
-      description: 'Use a park bench for tricep dips...',
+      exercise: 'Bench Dips',
+      description: 'Use a park bench for tricep dips. Position your hands on the edge of the bench, lower your body, and then push yourself back up.',
       sets: 4,
       reps: 12,
       restTime: 60,
       atHome: false,
+      image: 'benchdip.png',
       fitnessGoal: fitnessGoals.ARMS_DAY,
-    },
-    {
-      exercise: 'Box Jumps',
-      description: 'Find a sturdy surface or park bench for box jumps...',
-      sets: 4,
-      reps: 10,
-      restTime: 60,
-      atHome: false,
-      fitnessGoal: fitnessGoals.LEG_DAY,
-    },
-    {
-      exercise: 'Jumping Jacks',
-      description: 'Perform jumping jacks on an open area of grass...',
-      sets: 4,
-      reps: 20,
-      restTime: 60,
-      atHome: false,
-      fitnessGoal: fitnessGoals.CARDIO,
-    },
-    {
-      exercise: 'Sprint Intervals',
-      description: 'Mark a distance in the park and do sprint intervals...',
-      sets: 6,
-      reps: '30 seconds sprint, 60 seconds rest',
-      atHome: false,
-      fitnessGoal: fitnessGoals.CARDIO,
-    },
-    {
-      exercise: 'Bicycle Crunches',
-      description: 'Lie on the grass and do bicycle crunches...',
-      sets: 4,
-      reps: '20 (10 per side)',
-      restTime: 60,
-      atHome: false,
-      fitnessGoal: fitnessGoals.STRENGTH_TRAINING,
+      difficulty: 'Intermediate',
     },
     {
       exercise: 'Bench Step-Ups',
-      description: 'Use a park bench for step-ups...',
+      description: 'Use a park bench for step-ups. Step onto the bench with one leg, then bring the other leg up, and step back down. Repeat for the specified number of reps on each leg.',
       sets: 4,
       reps: '12 (each leg)',
       restTime: 60,
       atHome: false,
+      image: 'stepups.png',
       fitnessGoal: fitnessGoals.LEG_DAY,
-    },
-    {
-      exercise: 'Mountain Climbers',
-      description: 'Perform mountain climbers on the grass...',
-      sets: 4,
-      reps: '20 (10 per leg)',
-      restTime: 60,
-      atHome: false,
-      fitnessGoal: fitnessGoals.STRENGTH_TRAINING,
+      difficulty: 'Intermediate',
     },
     {
       exercise: 'Bench Leg Raises',
-      description: 'Hold onto a park bench and do leg raises...',
+      description: 'Hold onto a park bench and do leg raises. Hang from the bench and lift your legs up to a 90-degree angle, then lower them back down.',
       sets: 4,
       reps: '12 (each leg)',
       restTime: 60,
       atHome: false,
+      image: 'benchlegraises.png',
       fitnessGoal: fitnessGoals.STRENGTH_TRAINING,
+      difficulty: 'Intermediate',
     },
     {
-      exercise: ' Bench Push-Ups',
-      description: 'Use a park bench for incline push-ups...',
+      exercise: 'Bench Push-Ups',
+      description: 'Use a park bench for incline push-ups. Place your hands on the bench and perform push-ups to work your chest, shoulders, and triceps.',
       sets: 4,
       reps: 12,
       restTime: 60,
       atHome: false,
+      image: 'benchpushup.png',
       fitnessGoal: fitnessGoals.CHEST_DAY,
+      difficulty: 'Intermediate',
     },
-  ]
+    {
+      exercise: 'Shoulder Press',
+      description: 'The shoulder press machine targets your shoulders and triceps. Sit at the machine, grip the handles, and press the weight upward, then lower it back down.',
+      sets: 4,
+      reps: 12,
+      restTime: 60,
+      atHome: false,
+      image: 'shoulder.png',
+      fitnessGoal: fitnessGoals.SHOULDERS_DAY,
+      difficulty: 'Intermediate',
+    },
+    {
+      exercise: 'Pilates Mat Routine',
+      description: 'Practice a Pilates mat routine that emphasizes flexibility and core strength. Exercises like the Hundred, Roll-Up, and Spine Stretch can be done at home.',
+      sets: 3,
+      reps: '12-15 (each exercise)',
+      restTime: '30 seconds between sets',
+      atHome: true,
+      fitnessGoal: fitnessGoals.FLEXIBILITY,
+      image: '',
+      difficulty: 'Intermediate',
+    },
+    {
+      exercise: 'Resistance Band Stretches',
+      description: 'Use resistance bands for assisted stretching. Anchor the band and use it to gently stretch various muscle groups, such as hamstrings, shoulders, and chest.',
+      sets: 3,
+      reps: '15-20 seconds (each stretch)',
+      restTime: '30 seconds between sets',
+      atHome: true,
+      image: 'band.png',
+      fitnessGoal: fitnessGoals.FLEXIBILITY,
+      difficulty: 'Intermediate',
+    },
+    
+    // BALANCE_TRAINING (Home Workouts)
+    {
+      exercise: 'Single-Leg Balance',
+      description: 'Stand on one leg with your eyes closed for 30 seconds to improve proprioception and balance. Gradually increase the duration as you progress.',
+      sets: 3,
+      reps: '30 seconds (each leg)',
+      restTime: '30 seconds between sets',
+      atHome: true,
+      image: 'single2.png',
+      fitnessGoal: fitnessGoals.BALANCE_TRAINING,
+      difficulty: 'Beginner',
+    },
+    {
+      exercise: 'Foam Rolling Session',
+      description: 'Use a foam roller to target muscle knots and improve flexibility. Roll over different muscle groups, applying gentle pressure to release tension. Spend 1-2 minutes on each muscle group.',
+      sets: 1,
+      reps:' 1 session (1-2 minutes per muscle group)',
+      restTime: 'As needed',
+      atHome: true,
+      image: 'foam.png',
+      fitnessGoal: fitnessGoals.FLEXIBILITY,
+      difficulty: 'Beginner',
+    },
+    {
+      exercise: 'Dynamic Yoga Flow',
+      description: 'Engage in a dynamic yoga flow that combines yoga poses with fluid movements. Focus on transitions between poses to enhance flexibility and build strength. Follow along with a video or guide.',
+      sets: 1,
+      reps: '1 session (30-60 minutes)',
+      restTime: 'As needed',
+      atHome: true,
+      image: '',
+      fitnessGoal: fitnessGoals.FLEXIBILITY,
+      difficulty: 'Intermediate',
+    },
+    
+];
+
   export const motivationalPhrases = [
     "Never give up, ",
     "Believe in yourself, ",
@@ -783,53 +803,58 @@ const muscleBuildingWorkouts = [
       name: "Grilled Chicken and Sweet Potato",
       description: "Grilled chicken breast with roasted sweet potatoes. A protein-packed meal to fuel leg workouts.",
       fitnessGoal: "LEG_DAY",
+      image:'sweetpotatochicken.jpg'
     },
     {
       name: "Quinoa and Black Bean Stuffed Peppers",
       description: "Bell peppers stuffed with quinoa, black beans, and vegetables. Provides energy for leg-focused training.",
       fitnessGoal: "LEG_DAY",
+      image: 'beansquinoa.jpg'
     },
     {
       name: "Salmon with Asparagus",
       description: "Baked or grilled salmon with steamed asparagus. Omega-3s for joint health on leg day.",
       fitnessGoal: "LEG_DAY",
+      image:'salmonass.jpg'
     },
     {
       name: "Chickpea and Spinach Curry",
       description: "A hearty chickpea and spinach curry with brown rice. Plant-based protein for leg strength.",
       fitnessGoal: "LEG_DAY",
+      image:'chickpeasspinch.webp'
     },
-    {
-      name: "Turkey and Quinoa Stuffed Bell Peppers",
-      description: "Ground turkey and quinoa stuffed bell peppers. Lean protein and complex carbs for leg day.",
-      fitnessGoal: "LEG_DAY",
-    },
-  
+   
+
     // BACK_DAY
     {
       name: "Grilled Salmon and Quinoa",
       description: "Grilled salmon fillet with quinoa. Protein and healthy fats to support back workouts.",
       fitnessGoal: "BACK_DAY",
+      image:  'salmonquinoa.jpg'
     },
     {
       name: "Chicken and Broccoli Alfredo",
       description: "Chicken and broccoli alfredo pasta. A creamy and satisfying meal for back day.",
       fitnessGoal: "BACK_DAY",
+      image: 'c&broccli.jpg'
     },
     {
       name: "Black Bean and Corn Salad",
       description: "Black bean and corn salad with avocado. Provides plant-based protein for back training.",
       fitnessGoal: "BACK_DAY",
+      image: 'blackbeancorn.jpg'
     },
     {
       name: "Turkey and Avocado Wrap",
       description: "Sliced turkey and avocado wrap with a side of mixed greens. A quick and nutritious option for back day.",
       fitnessGoal: "BACK_DAY",
+      image: 'tuukey.webp'
     },
     {
       name: "Tofu and Vegetable Stir-Fry",
       description: "Tofu and vegetable stir-fry with brown rice. Plant-based protein and fiber for back strength.",
       fitnessGoal: "BACK_DAY",
+      image: 'tofu.jpg'
     },
   
     // SHOULDERS_DAY
@@ -837,26 +862,31 @@ const muscleBuildingWorkouts = [
       name: "Grilled Chicken and Quinoa Salad",
       description: "Grilled chicken breast on a bed of quinoa salad. Protein and complex carbs for shoulder workouts.",
       fitnessGoal: "SHOULDERS_DAY",
+      image: 'quimasalad.jpg'
     },
     {
       name: "Tuna and White Bean Salad",
       description: "Tuna and white bean salad with lemon vinaigrette. A light and refreshing choice for shoulder day.",
       fitnessGoal: "SHOULDERS_DAY",
+      image: 'tunawhitebean.jpg'
     },
     {
       name: "Stir-Fried Tofu and Snow Peas",
       description: "Stir-fried tofu and snow peas with ginger sauce. Plant-based protein for shoulder strength.",
       fitnessGoal: "SHOULDERS_DAY",
+      image: 'snowpeas.jpg'
     },
     {
       name: "Shrimp and Vegetable Skewers",
       description: "Grilled shrimp and vegetable skewers. A delicious and protein-rich option for shoulder workouts.",
       fitnessGoal: "SHOULDERS_DAY",
+      image: 'shrimpveg.jpg'
     },
     {
       name: "Chicken and Vegetable Stir-Fry",
       description: "Chicken and vegetable stir-fry with a teriyaki glaze. Balanced nutrition for shoulder day.",
       fitnessGoal: "SHOULDERS_DAY",
+      image:'chickenveg.jpg'
     },
   
     // CHEST_DAY
@@ -864,26 +894,25 @@ const muscleBuildingWorkouts = [
       name: "Baked Chicken Breast",
       description: "Baked chicken breast seasoned with herbs and spices. A lean protein source for chest workouts.",
       fitnessGoal: "CHEST_DAY",
+      image:'bakedchick.jpg'
     },
     {
       name: "Quinoa Salad with Avocado",
       description: "Quinoa salad with diced avocado, tomatoes, and a lime dressing. Nutrient-rich fuel for chest day.",
       fitnessGoal: "CHEST_DAY",
+      image:'avosalad.jpg'
     },
     {
       name: "Lean Beef and Green Beans",
       description: "Lean beef strips sautéed with green beans. Protein and iron to support chest strength.",
       fitnessGoal: "CHEST_DAY",
-    },
-    {
-      name: "Cottage Cheese and Pineapple",
-      description: "Cottage cheese topped with fresh pineapple chunks. High-protein, low-fat option for chest workouts.",
-      fitnessGoal: "CHEST_DAY",
+      image:'leanbeef.jpg'
     },
     {
       name: "Egg White Omelette",
       description: "Egg white omelette with spinach and feta. Low in fat and high in protein for chest day.",
       fitnessGoal: "CHEST_DAY",
+      image:'eggom.jpg'
     },
   
     // ARMS_DAY
@@ -891,26 +920,31 @@ const muscleBuildingWorkouts = [
       name: "Tuna and Spinach Wrap",
       description: "Tuna salad and fresh spinach wrapped in a whole-grain tortilla. A balanced meal for arm day.",
       fitnessGoal: "ARMS_DAY",
+      image:'tunawrap.jpg'
     },
     {
       name: "Baked Sweet Potato Fries",
       description: "Baked sweet potato fries with a side of Greek yogurt dip. A tasty and nutritious choice for arm workouts.",
       fitnessGoal: "ARMS_DAY",
+      image:'sweetfries.jpg'
     },
     {
       name: "Chickpea and Tomato Salad",
       description: "Chickpea and tomato salad with herbs and olive oil. Plant-based protein for arm strength.",
       fitnessGoal: "ARMS_DAY",
+      image:'tomatosal.jpg'
     },
     {
       name: "Roasted Turkey and Cranberry Sandwich",
       description: "Roasted turkey, cranberry sauce, and lettuce on whole-grain bread. A classic choice for arm day fuel.",
       fitnessGoal: "ARMS_DAY",
+      image:'turkeyCran.jpg'
     },
     {
       name: "Peanut Butter and Banana Smoothie",
       description: "Peanut butter, banana, and Greek yogurt smoothie. Provides protein and energy for arm workouts.",
       fitnessGoal: "ARMS_DAY",
+      image:'peanutbanana.jpg'
     },
   
     // CARDIO
@@ -918,26 +952,31 @@ const muscleBuildingWorkouts = [
       name: "Spinach and Strawberry Salad",
       description: "Spinach and strawberry salad with balsamic vinaigrette. A light and refreshing option for cardio training.",
       fitnessGoal: "CARDIO",
+      image:'strawspinsalad.jpg'
     },
     {
       name: "Brown Rice and Black Bean Bowl",
       description: "Brown rice and black bean bowl with salsa. Balanced carbs and protein for cardio workouts.",
       fitnessGoal: "CARDIO",
+      image:'blackbeanrice.webp'
     },
     {
       name: "Oatmeal with Berries",
       description: "Oatmeal topped with mixed berries and a drizzle of honey. Complex carbs for sustained energy during cardio.",
       fitnessGoal: "CARDIO",
+      image:'berriesoat.jpg'
     },
     {
       name: "Grilled Veggie Wrap",
       description: "Grilled vegetable wrap with hummus in a whole-grain tortilla. A light and nutritious choice for cardio day.",
       fitnessGoal: "CARDIO",
+      image:'veggie.jpg'
     },
     {
       name: "Greek Yogurt Parfait",
       description: "Greek yogurt parfait with granola and fresh fruit. Protein and carbs for recovery after cardio.",
       fitnessGoal: "CARDIO",
+      image:'parfait.jpg'
     },
   
     // STRENGTH_TRAINING
@@ -946,6 +985,7 @@ const muscleBuildingWorkouts = [
       description: "Beef and broccoli stir-fry with brown rice. A protein-packed option for strength training.",
       fitnessGoal: "STRENGTH_TRAINING",
       image: 'beefbrocli.jpg'
+      
     },
     {
       name: "Salmon and Quinoa Salad",
@@ -977,26 +1017,31 @@ const muscleBuildingWorkouts = [
       name: "Avocado and Cucumber Salad",
       description: "Avocado and cucumber salad with lime dressing. A light and hydrating choice for flexibility training.",
       fitnessGoal: "FLEXIBILITY",
+      image: 'avocadoCucumber.jpg'
     },
     {
       name: "Cottage Cheese and Pineapple",
       description: "Cottage cheese topped with fresh pineapple chunks. High-protein, low-fat option for flexibility workouts.",
       fitnessGoal: "FLEXIBILITY",
+      image: 'cottage.jpg'
     },
     {
       name: "Mango and Yogurt Smoothie",
       description: "Mango and Greek yogurt smoothie. Provides protein and vitamins for flexibility training.",
       fitnessGoal: "FLEXIBILITY",
+      image: 'mangoyo.jpg'
     },
     {
       name: "Caprese Salad",
       description: "Caprese salad with tomatoes, fresh mozzarella, and basil. A simple and light meal for flexibility day.",
       fitnessGoal: "FLEXIBILITY",
+      image: 'caprese.webp'
     },
     {
       name: "Quinoa and Chickpea Salad",
       description: "Quinoa and chickpea salad with lemon tahini dressing. Plant-based protein for flexibility and balance.",
       fitnessGoal: "FLEXIBILITY",
+      image: 'chicquinoa.jpg'
     },
   
     // BALANCE_TRAINING
@@ -1004,26 +1049,31 @@ const muscleBuildingWorkouts = [
       name: "Peanut Butter and Banana Toast",
       description: "Whole-grain toast with peanut butter and sliced banana. Provides energy and protein for balance training.",
       fitnessGoal: "BALANCE_TRAINING",
+      image:'peanuttoast.jpg'
     },
     {
       name: "Mixed Nuts and Dried Fruits",
       description: "A mix of nuts and dried fruits. Balanced snacks to fuel balance and stability exercises.",
       fitnessGoal: "BALANCE_TRAINING",
+      image:'mixnuts.jpg'
     },
     {
       name: "Greek Yogurt with Honey",
       description: "Greek yogurt drizzled with honey and a sprinkle of nuts. Protein and natural sweetness for balance workouts.",
       fitnessGoal: "BALANCE_TRAINING",
+      image:'greekhoney.jpg'
     },
     {
       name: "Hummus and Veggie Platter",
       description: "Hummus with a variety of fresh vegetable sticks. A nutritious snack for balance and core training.",
       fitnessGoal: "BALANCE_TRAINING",
+      image:'hummusveg.jpg'
     },
     {
       name: "Protein Smoothie Bowl",
       description: "Protein smoothie bowl topped with granola and fresh fruit. Provides protein and energy for balance exercises.",
       fitnessGoal: "BALANCE_TRAINING",
+      image:'protienbowl.webp'
     },
   ];
   

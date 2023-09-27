@@ -25,10 +25,10 @@ const Navbar = async (props: Props) => {
 
   return (
     <div className=" ">
-      <div className="flex lg:px-10 px-3 items-center justify-between h-20 mt-5  w-full ">
+      <div className="flex lg:px-6 px-3 items-center justify-between h-20 mt-5  w-full ">
         <div className="flex items-center  gap-5">
           <Link href="/" className="items-center flex ">
-            <h1 className="rounde-lg text-5xl font-bold italic p-4 z-40 ">Gymify</h1>
+            <h1 className="rounde-lg text-5xl font-extrabold p-4  ">Gymify</h1>
           </Link>
           {/* <div>
               <h1 className="text-xl font-normal ">
@@ -40,9 +40,9 @@ const Navbar = async (props: Props) => {
 
         <div className="flex gap-5 pr-5 items-center">
           {!session?.user ?  <Link href='/SigninPage'>
-            <Button variant="outlined">
+            <button className="text-xl font-semibold rounded-[20px] bg-black text-white  px-6 py-2">
                 Sign in
-            </Button>
+            </button>
           </Link> : <SideBar/> }
          
         </div>

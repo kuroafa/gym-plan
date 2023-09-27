@@ -1,6 +1,11 @@
-import RecommendedWorkouts from "@/components/RecommendedWorkouts";
+import RecommendedWorkouts from "@/components/dashboard/RecommendedWorkouts";
+import BuildingMuscle from "@/components/dashboard/BuildingMuscle";
 import { meals } from "@/components/utils/Data";
+import GymWorkout from "@/components/dashboard/GymWorkout";
 import { Plan } from "@prisma/client";
+import { ChevronRight } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 import React, { useState, useEffect } from "react";
 
 type Props = {
@@ -44,98 +49,28 @@ const HerotabTwo = ({ planData }: Props) => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row -ml-5  gap-5">
-      <div className="rounded-[30px]">
-        {planData.map((plan) => {
-          return (
-            <div key={plan.id}>
-              {plan.day === dayName && (
-                <div>
-                  <h2 className="text-xl font-semibold">
-                    Today is{" "}
-                    <span className="bg-indigo-200 text-black rounded-[30px] px-2">
-                      {plan.day}
-                    </span>{" "}
-                    You'll be doing{" "}
-                    <span className="border-b  border-black">
-                      {plan.fitnessGoals.replace("_", " ")}
-                    </span>
-                  </h2>
-                  <p className="font-bold mt-2 mb-1">
-                    Here's your recommended meals{" "}
-                    <span className="bg-indigo-200 rounded-full text-lg px-2">
-                      !
-                    </span>
-                  </p>
-                  <div className="flex">
-                    {meals
-                      .filter((meal) => meal.fitnessGoal === plan.fitnessGoals)
-                      .map((meal, index) => (
-                        <div
-                          className="bg-black bg-opacity-80 rounded-[30px]   top-0 left-0  "
-                          key={index}
-                        >
-                          {index === currentMealIndex && (
-                            <div
-                              className="h-60 relative w-full gap-5"
-                              style={{
-                                backgroundImage: `url(${meal.image})`,
-                                backgroundSize: "cover",
-                                backgroundPosition: "center",
-                                backgroundRepeat: "no-repeat",
-                                padding: "20px",
-                                borderRadius: "30px",
-                              }}
-                            >
-                              {/* Overlay */}
-                              <div
-                                className="absolute top-0 left-0 w-full h-full bg-black opacity-50 rounded-[30px]"
-                                style={{ zIndex: 1 }}
-                              ></div>
-
-                              {/* Content */}
-                              <div className="p-2 relative z-10">
-                                <div className="text-white p-1">
-                                  <h2 className="md:text-3xl text-2xl font-bold">
-                                    {meal.name}
-                                  </h2>
-                                  <p>{meal.description}</p>
-                                </div>
-                              </div>
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          );
-        })}
-        <div className="flex  mt-4">
-          <button
-            className="bg-indigo-500 text-white rounded-[30px] p-2 mr-2"
-            onClick={previousMeal}
+    <div className="flex flex-col -ml-5  gap-5">
+      <div className=" p-3 rounded-[30px] bg-slate-100">
+        {" "}
+        <div className="gap-3 rounded-[20px] py-5 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
+          <Link
+            href="/WorkoutsPage"
+            className=" flex items-center gap-2 sm:text-xl hover:bg-black hover:text-white  bg-lime-200 text-black rounded-[30px] justify-center font-bold py-3 px-10"
           >
-            Previous Meal
-          </button>
-          <button
-            className="bg-indigo-500 text-white rounded-[30px] p-2"
-            onClick={nextMeal}
-          >
-            Next Meal
-          </button>
-        </div>
-      </div>
-      <div className=" p-3 rounded-[30px] ">
-        <h2 className="text-3xl font-bold">Recommended workouts</h2>
-        <p>Workouts Tailored to your plans</p>
-        <RecommendedWorkouts planData={planData} />
-        <div className=" ">
-          <button className="text-lg bg-indigo-400 hover:bg-indigo-200 text-white rounded-[30px] w-fit p-3 mt-2 font-medium">
             View all workouts
+            <ChevronRight />
+          </Link>
+          <button type="button">
+            <GymWorkout />
+          </button>
+
+          <button type="button">
+            <BuildingMuscle />
           </button>
         </div>
+        <h2 className="text-3xl font-bold">Recommended workouts</h2>
+        <p>Workouts Tailored to your plan of the day</p>
+        <RecommendedWorkouts planData={planData} />
       </div>
     </div>
   );

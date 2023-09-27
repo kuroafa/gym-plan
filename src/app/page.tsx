@@ -8,44 +8,42 @@ import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-
-
 export default async function Home() {
   const session = await getAuthSession();
   if (session?.user) {
     return redirect("/Dashboard");
   }
- 
 
   return (
-   
-      <div  className=" sm:bg-center-bottom bg-center-left ">
+    <div>
+      <div className="flex flex-col lg:flex-row items-center justify-center mt-10 md:mt-0 gap-20 ">
         {/* Dark overlay */}
-        <div className="grid md:grid-cols-2 ">
-          <div className="grid xl:grid-cols-2  md:grid-cols-1 gap-5  h-[750px] ">
-            <div className="flex flex-col gap-20">
-              <div className="flex flex-col relative z-[500] gap-2">
-                <p className="lg:text-9xl text-7xl whitespace-nowrap font-bold ">
-                  Hard work,
-                  <br />
-                  Harder <span className="italic text-orange-500">GAINS.</span>
-                </p>
-                <p className="md:text-3xl text-2xl  font-semibold">
-                  Reach your limits & get to the next{" "}
-                  <span className="text-orange-500">level</span>
-                </p>
-                <div className="flex mt-3 gap-3">
-                  <Signupform />
-                </div>
-              </div>
+        <div className="  items-start ">
+            <div className="flex flex-col pl-5 gap-2">
+              <p className="lg:text-6xl text-5xl  font-bold ">
+                Hard work,
+                <br />
+                Harder <span className="italic text-indigo-500">GAINS.</span>
+              </p>
+              <p className="md:text-3xl text-2xl  font-semibold">
+                Reach your limits & get to the next{" "}
+                <span className="text-indigo-500">level</span>
+              </p>
+              
             </div>
+        <div className="flex mt-3 gap-3">
+                <Signupform />
+              </div>
+        
+        </div>  <div className="relative">
+            <img
+              src="/gym3.webp"
+              alt="heroImage"
+              className="w-[600px] mt-5 rounded-xl"
+            />
           </div>
-          <div className="relative">
-            <img src="/signuppageimage.jpg" alt="heroImage" className="w-[600px] mt-5 rounded-xl" />
-          </div>
-        </div>
-        <Footer />
-  
+      </div>
+     
     </div>
   );
 }
