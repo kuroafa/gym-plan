@@ -7,7 +7,7 @@ import { redirect, useRouter } from "next/navigation";
 import React from "react";
 
 type Props = {
-  userData: Pick<User,'age'|'createdAt'|'email'|'emailVerified'|'gender'|'hasCompletedSetup'|'height'|'id'|'name'|'password'|'updateAt'|'username'|'weight'>
+  
 };
 
 const page = async (props: Props) => {

@@ -14,37 +14,37 @@ const Bmi = ({ userData }: Props) => {
 
  
 
-  useEffect(() => { const handleBMI = () => {
-    const userWeight = parseInt(userData.weight) * 0.45359237;
-    const heightParts = userData.height.split("."); // Split the height into feet and inches
-    const userHeightInFeet = parseInt(heightParts[0]);
-    const userHeightInInches = parseInt(heightParts[1]);
-    const userHeight = (userHeightInFeet * 12 + userHeightInInches) * 0.0254;
-    const calculatedBmi =
-      Math.round((userWeight / userHeight ** 2) * 100) / 100;
-    setBmi(calculatedBmi);
-    if (calculatedBmi < 18.5) {
-      setBmiResult("Underweight");
-      setBmiColor('bg-yellow-300')
-    } else if (calculatedBmi === 18.5 || calculatedBmi < 24.9) {
-      setBmiResult("Normal Weight");
-      setBmiColor('bg-green-400')
-    } else if (calculatedBmi === 25.0 || calculatedBmi < 29.9) {
-      setBmiResult("Pre-obesity");
-      setBmiColor('bg-orange-400')
-    } else if (calculatedBmi === 30 || calculatedBmi < 34.9) {
-      setBmiResult("Obesity Class 1");
-      setBmiColor('bg-red-400')
-    } else if (calculatedBmi === 35 || calculatedBmi < 39.9) {
-      setBmiResult("Obesity Class 2");
-      setBmiColor('bg-red-400')
-    } else if (calculatedBmi > 40) {
-      setBmiResult("Obesity Class 3");
-      setBmiColor('bg-red-400')
-    }
-  };
-    handleBMI();
-  },[]);
+  // useEffect(() => { const handleBMI = () => {
+  //   const userWeight = parseInt(userData.weight) * 0.45359237;
+  //   const heightParts = userData.height.split("."); // Split the height into feet and inches
+  //   const userHeightInFeet = parseInt(heightParts[0]);
+  //   const userHeightInInches = parseInt(heightParts[1]);
+  //   const userHeight = (userHeightInFeet * 12 + userHeightInInches) * 0.0254;
+  //   const calculatedBmi =
+  //     Math.round((userWeight / userHeight ** 2) * 100) / 100;
+  //   setBmi(calculatedBmi);
+  //   if (calculatedBmi < 18.5) {
+  //     setBmiResult("Underweight");
+  //     setBmiColor('bg-yellow-300')
+  //   } else if (calculatedBmi === 18.5 || calculatedBmi < 24.9) {
+  //     setBmiResult("Normal Weight");
+  //     setBmiColor('bg-green-400')
+  //   } else if (calculatedBmi === 25.0 || calculatedBmi < 29.9) {
+  //     setBmiResult("Pre-obesity");
+  //     setBmiColor('bg-orange-400')
+  //   } else if (calculatedBmi === 30 || calculatedBmi < 34.9) {
+  //     setBmiResult("Obesity Class 1");
+  //     setBmiColor('bg-red-400')
+  //   } else if (calculatedBmi === 35 || calculatedBmi < 39.9) {
+  //     setBmiResult("Obesity Class 2");
+  //     setBmiColor('bg-red-400')
+  //   } else if (calculatedBmi > 40) {
+  //     setBmiResult("Obesity Class 3");
+  //     setBmiColor('bg-red-400')
+  //   }
+  // };
+  //   handleBMI();
+  // },[]);
 
   return (
     <div>
