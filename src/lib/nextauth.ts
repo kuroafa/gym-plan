@@ -60,6 +60,7 @@ export const authOptions: NextAuthOptions = {
           existingUser.password
         );
       
+        
         if (!passwordMatch) {
           return null;
         }
