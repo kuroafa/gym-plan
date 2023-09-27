@@ -1,12 +1,9 @@
 "use client";
 import { useForm } from "react-hook-form";
 import {
-  PlanCreation,
-  PlanCreationSchema,
   TrainerCreationSchema,
   TrainerSchema,
 } from "@/lib/type";
-import { custom, z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
@@ -19,39 +16,13 @@ import {
 } from "@/components/ui/form";
 import { Input } from "../ui/input";
 import { useRouter } from "next/navigation";
-import axios from "axios";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-
 import * as React from "react";
-
 import { Button } from "@/components/ui/button";
-
-import Image from "next/image";
 import { Space, Tag, TimePicker } from "antd";
-
-import type { Dayjs } from "dayjs";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import { CalendarIcon, Plus } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { format } from "path";
 import { cn } from "@/lib/utils";
 import { Calendar } from "../ui/calendar";
 

@@ -8,13 +8,10 @@ import {
 } from "@radix-ui/react-dropdown-menu";
 import { User } from "next-auth";
 import { signOut } from "next-auth/react";
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { Button } from "../ui/button";
 // import { LogOut } from "lucide-react";
 import UserAvatar from "./UserAvatar";
-import HoverNavbar from "../HoverNavbar";
-import { useRouter } from "next/navigation";
+
 
 
 type Props = {

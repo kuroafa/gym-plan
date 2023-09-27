@@ -1,12 +1,8 @@
 import { getAuthSession } from "@/lib/nextauth";
 import Link from "next/link";
 import React from "react";
-import SignInButton from "../buttons/SignInButton";
-import { redirect } from "next/navigation";
-import UserAccountNav from "./UserAccountNav";
-import PlanForm from "../forms/PlanForm";
 import { prisma } from "@/lib/db";
-import { Plan } from "@prisma/client";
+
 
 import {
   Popover,

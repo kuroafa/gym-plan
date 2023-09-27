@@ -1,12 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Hamburger from "hamburger-react";
-import { GiGymBag } from "react-icons/gi";
-import { CgGym } from "react-icons/cg";
-import { GrPlan } from "react-icons/gr";
-import { GiMeal } from "react-icons/gi";
 import { GoSignOut } from "react-icons/go";
-import { MdDashboard } from "react-icons/md";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { motion } from "framer-motion";
