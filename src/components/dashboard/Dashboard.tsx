@@ -9,7 +9,6 @@ import MotivationalQuotes from "./MotivationalQuotes";
 
 type Props = {
   planData: Plan[];
-  goalData: Goal[];
 };
 
 const overlayStyle = {

@@ -55,7 +55,7 @@ const page = async (props: Props) => {
 
   return (
     <div className="flex flex-col gap-2  ">
-      <Dashboard goalData={goalData} planData={getPlanData} />
+      <Dashboard planData={getPlanData} />
       <HeroTabs
         planData={getPlanData}
         userData={session?.user}
