@@ -21,7 +21,7 @@ const overlayStyle = {
   zIndex: 1,
 };
 
-const Dashboard = async ({ planData, goalData }: Props) => {
+const Dashboard = async ({ planData }: Props) => {
   const session = await getAuthSession();
   const getPlanData = await prisma.plan.findMany({
     where: {

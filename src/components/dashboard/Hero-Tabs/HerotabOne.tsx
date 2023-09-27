@@ -12,17 +12,12 @@ import Link from "next/link";
 type Props = {
   trainerData: Trainer[];
   userData: Pick<User, "age" | "gender" | "height" | "weight">;
-  planData: Pick<
-    Plan,
-    "day" | "description" | "fitnessGoals" | "id" | "planName" | "userId"
-  >;
-  goalData: Pick<Goal, "calories" | "createdAt" | "goal" | "id" | "userId">;
+  goalData: Goal[];
 };
 
 const HerotabOne = ({
   trainerData,
   userData,
-  planData,
   goalData,
 }: Props) => {
   const [sessionsValue, setSessionsValue] = React.useState("");

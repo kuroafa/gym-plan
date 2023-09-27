@@ -17,10 +17,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 type Props = {
   trainerData: Trainer[];
   userData: Pick<User, "age" | "gender" | "height" | "weight">;
-  planData: Pick<
-    Plan,
-    "day" | "description" | "fitnessGoals" | "id" | "planName" | "userId"
-  >;
+  planData: Plan[],
   goalData: Goal[];
 };
 
@@ -45,7 +42,6 @@ const HeroTabs = ({ trainerData, userData, planData, goalData }: Props) => {
           <HerotabOne
             goalData={goalData}
             trainerData={trainerData}
-            planData={planData}
             userData={userData}
           />
         </TabsContent>
@@ -56,7 +52,7 @@ const HeroTabs = ({ trainerData, userData, planData, goalData }: Props) => {
           <HerotabThree planData={planData} />
         </TabsContent>
         <TabsContent  value="four">
-          <HerotabFour trainerData={trainerData} planData={planData} />
+          <HerotabFour trainerData={trainerData}  />
         </TabsContent>
       </Tabs>
     </div>
