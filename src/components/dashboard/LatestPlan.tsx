@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { fitnessGoalTips } from "../utils/Data";
+import Loader from "../Loader";
 
 type Props = {
   planData: Plan[];
@@ -45,6 +46,8 @@ const LatestPlan = ({ planData, trainerData, userData }: Props) => {
       if (error) {
         toast.error(`Error generating Plans: ${error}`);
       }
+    }finally{
+      setIsGenerating(false)
     }
   };
   const lessPlans = planData.slice(0, 3);
@@ -140,19 +143,23 @@ const LatestPlan = ({ planData, trainerData, userData }: Props) => {
             })}
           </div>
         ) : (
-          <div className="h-[400px] rounded-lg flex flex-col items-center justify-center ">
-            <h2 className="text-lg mb-2 font-medium">
-              Not sure where to start? Click generate & start your gains!
-            </h2>
-            <Button
-              onClick={() => {
-                getUsers(planData);
-              }}
-              variant="outlined"
-              className="text-black"
-            >
-              Generate Plans
-            </Button>
+        
+          <div className="h-[300px] " >  
+          {isGenerating ? <div className="flex justify-center items-center"><Loader/> </div>: <div className="h-[400px] rounded-lg flex flex-col items-center justify-center ">
+              <h2 className="text-lg mb-2 font-medium">
+                Not sure where to start? Click generate & start your gains!
+              </h2>
+              <Button
+                onClick={() => {
+                  getUsers(planData);
+                }}
+                variant="outlined"
+                className="text-black"
+              >
+                Generate Plans
+              </Button>
+            </div> }
+            
           </div>
         )}
       </div>
