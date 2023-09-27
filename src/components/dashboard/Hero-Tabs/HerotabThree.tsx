@@ -1,8 +1,5 @@
 import MealSlide from "@/components/dashboard/MealSlide";
 import PlanPage from "@/components/dashboard/PlanPage";
-import Stats from "@/components/Stats";
-import TrainingAppointmentForm from "@/components/forms/TrainingAppointmentForm";
-import PlanForm from "@/components/forms/PlanForm";
 import { Plan } from "@prisma/client";
 import React from "react";
 

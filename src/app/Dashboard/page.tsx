@@ -1,35 +1,13 @@
-import BMIcalculator from "@/components/dashboard/BMIcalculator";
 import Dashboard from "@/components/dashboard/Dashboard";
-import DashboardChart from "@/components/dashboard/DashboardChart";
-import DashboardData1 from "@/components/dashboard/DashboardData1";
-import DashboardData2 from "@/components/dashboard/DashboardData2";
 import HeroTabs from "@/components/dashboard/Hero-Tabs/HeroTabs";
-import LatestPlan from "@/components/dashboard/LatestPlan";
-import LocalWeather from "@/components/LocalWeather";
-import Map from "@/components/Map";
-import PlanGoal from "@/components/PlanGoal";
-import PlanPage from "@/components/dashboard/PlanPage";
-import PlayWorkout from "@/components/PlayWorkout";
-import RandomWorkout from "@/components/RandomWorkout";
-import RecommendedWorkouts from "@/components/dashboard/RecommendedWorkouts";
-import Stats from "@/components/Stats";
-import WorkoutSessions from "@/components/dashboard/WorkoutSessions";
-import WorkoutsPlayer from "@/components/WorkoutsPlayer";
 import { prisma } from "@/lib/db";
 import { getAuthSession } from "@/lib/nextauth";
-import { Plan } from "@prisma/client";
-import { Carousel } from "antd";
 import { redirect, useRouter } from "next/navigation";
 import React from "react";
 
-type Props = {
-  planData: Pick<
-    Plan,
-    "day" | "description" | "fitnessGoals" | "id" | "planName" | "userId"
-  >;
-};
+type Props = {};
 
-const page = async ({ planData }: Props) => {
+const page = async (props: Props) => {
   const session = await getAuthSession();
   if (!session) {
     redirect("/");
@@ -85,37 +63,8 @@ const page = async ({ planData }: Props) => {
         trainerData={getTrainerData}
         goalData={goalData}
       />
-      {/* <PlanPage planData={getPlanData} /> */}
     </div>
   );
 };
 
 export default page;
-{
-  /* big half
-      <div className="lg:col-span-3 md:col-span-2">
-       
-     
-        <div className="grid lg:grid-cols-2 grid-cols-1 gap-5 mb-2 mt-5 border-l p-3 ">
-        
-         <WorkoutSessions trainerData={getTrainerData} />
-        </div>
-
-        <div className="grid lg:grid-cols-2 grid-cols-1 gap-5 mb-2 border-r p-3">
-           
-        <DashboardChart />
-        </div>
-      </div>
-   
-
-      <div className=" pl-2  border-l "> 
-       <BMIcalculator />
-       <LatestPlan planData={getPlanData} /> 
-        
-      <Stats planData={getPlanData} />
-  
-
-       
-        
-      </div> */
-}

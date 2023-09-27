@@ -1,21 +1,9 @@
 import { useRouter } from "next/navigation"; // Changed 'next/navigation' to 'next/router'
 import React, { useEffect, useState } from "react";
-import { Button } from "../ui/button";
 import { Goal, Plan } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { getAuthSession } from "@/lib/nextauth";
-import { Card } from "../ui/card";
-import BuildingMuscle from "./BuildingMuscle";
-import GymWorkout from "./GymWorkout";
-import OutDoorWorkout from "../utils/OutDoorworkout";
-import DashboardChart from "./DashboardChart";
 import LatestPlan from "./LatestPlan";
-import RandomWorkout from "../RandomWorkout";
-import WorkoutChart2 from "../WorkoutChart2";
-import PlanPage from "./PlanPage";
-import Map from "../Map";
-import PlanGoal from "../PlanGoal";
-import BMIcalculator from "./BMIcalculator";
 import Workouts from "./Workouts";
 import MotivationalQuotes from "./MotivationalQuotes";
 

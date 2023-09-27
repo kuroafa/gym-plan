@@ -1,12 +1,8 @@
 import WorkoutPage from "@/components/dashboard/Main/WorkoutPage";
 import RecommendedWorkouts from "@/components/dashboard/RecommendedWorkouts";
-import { allWorkouts } from "@/components/utils/Data";
 import { prisma } from "@/lib/db";
 import { getAuthSession } from "@/lib/nextauth";
-import { Plan } from "@prisma/client";
-import { Divider } from "antd";
 import { redirect } from "next/navigation";
-import { platform } from "os";
 import React from "react";
 
 type Props = {};

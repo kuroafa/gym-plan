@@ -1,10 +1,7 @@
 "use client";
-import { prisma } from "@/lib/db";
-import { getAuthSession } from "@/lib/nextauth";
 import { PlanCreation } from "@/lib/type";
 import { Button } from "@mui/material";
 import { Plan, Trainer, User } from "@prisma/client";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";

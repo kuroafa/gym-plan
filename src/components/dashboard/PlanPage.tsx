@@ -11,12 +11,9 @@ import { CSS } from "@dnd-kit/utilities";
 import React, { useState } from "react";
 import { Tabs } from "antd";
 import { Plan } from "@prisma/client"; // Assuming you have the Plan type defined
-import { allWorkouts } from "../utils/Data";
-import LatestPlan from "./LatestPlan";
 import DeleteButton from "../buttons/DeleteButton";
 import { Button } from "@mui/material";
-import PlanForm from "../forms/PlanForm";
-import PlanPageTabs from "../PlanPageTabs";
+
 
 interface DraggableTabPaneProps extends React.HTMLAttributes<HTMLDivElement> {
   "data-node-key": string;

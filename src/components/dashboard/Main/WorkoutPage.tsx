@@ -1,17 +1,10 @@
 "use client";
-import { useRouter } from "next/navigation"; // Use 'next/router' instead of 'next/navigation'
 import React, { useState, useEffect } from "react"; // Add 'useEffect' import
-import { Card } from "../../ui/card";
-import { ClipboardEdit, Plus } from "lucide-react";
-import OutDoorWorkout from "../utils/OutDoorworkout";
-import GymWorkout from "../GymWorkout";
-import BuildingMuscle from "../BuildingMuscle";
 import { RandomWorkouts, allWorkouts, fitnessGoalTips } from "../../utils/Data";
 import { Plan } from "@prisma/client";
-import DashboardChart from "../DashboardChart";
-import WorkoutChart from "../../WorkoutChart";
-import WorkoutChart2 from "../../WorkoutChart2";
+
 import RecommendedWorkouts from "../RecommendedWorkouts";
+import Image from "next/image";
 
 type Props = {
   planData: Plan[];
@@ -100,7 +93,9 @@ const WorkoutPage = ({ planData }: Props) => {
                       </div>
                     </div>
                     <div>
-                      <img
+                      <Image
+                      width={200}
+                      height={100}
                         className="md:w-[100%] md:h-[400px] "
                         alt={work.exercise}
                         src={work.image}
@@ -157,7 +152,9 @@ const WorkoutPage = ({ planData }: Props) => {
                   </div>
                   <div>
                     {work.image ? (
-                      <img
+                      <Image
+                      width={200}
+                      height={100}
                         className="md:w-[100%] md:h-[460px] "
                         alt={work.exercise}
                         src={work.image}

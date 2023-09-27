@@ -1,12 +1,8 @@
 import { Trainer } from "@prisma/client";
 import React from "react";
-import type { Dayjs } from "dayjs";
-import dayjs from "dayjs";
-import DeleteButton from "../buttons/DeleteButton";
 import AppointmentsDeleteButton from "../buttons/AppointmentsDeleteButton";
-import { Button } from "@mui/material";
-import Link from "next/link";
 import BuildingMuscle from "./BuildingMuscle";
+
 type Props = {
   trainerData: Trainer[];
 };

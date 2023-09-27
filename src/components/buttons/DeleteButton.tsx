@@ -1,18 +1,7 @@
 "use client";
-
 import { DeleteSchema } from "@/lib/type";
 import { useRouter } from "next/navigation";
-import { GrClose } from "react-icons/gr";
 import React, { useState } from "react";
-import axios from "axios";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Button } from "@mui/material";
 import { ChevronRight, Trash2 } from "lucide-react";
 
 type Props = {

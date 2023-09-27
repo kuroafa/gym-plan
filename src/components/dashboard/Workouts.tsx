@@ -1,15 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Carousel } from "antd";
-import RandomWorkout from "@/components/RandomWorkout";
-import BMIcalculator from "@/components/dashboard/BMIcalculator";
-import Image from "next/image";
-import PlanForm from "@/components/forms/PlanForm";
-import LatestPlan from "@/components/dashboard/LatestPlan";
-import { platform } from "os";
 import { Plan } from "@prisma/client";
-import { getAuthSession } from "@/lib/nextauth";
-import { Button } from "@mui/material";
+
 
 type Props = {
   planData: Plan[];

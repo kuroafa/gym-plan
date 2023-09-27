@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { CircularProgressbar } from "react-circular-progressbar";
-import Map from "../Map";
+
 
 type Props = {
   weight: string;

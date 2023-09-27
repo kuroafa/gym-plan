@@ -1,17 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Backdrop from "@mui/material/Backdrop";
-import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
-import Fade from "@mui/material/Fade";
-import Typography from "@mui/material/Typography";
-
-import { GymBuildingWorkouts } from "../utils/Data";
-import Image from "next/image";
-import { Button } from "@mui/material";
-import GymModalContent from "../GymModalContent";
 import PlanForm from "../forms/PlanForm";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { ChevronRight, X } from "lucide-react";
 

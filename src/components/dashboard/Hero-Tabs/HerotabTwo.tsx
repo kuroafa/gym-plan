@@ -4,7 +4,6 @@ import { meals } from "@/components/utils/Data";
 import GymWorkout from "@/components/dashboard/GymWorkout";
 import { Plan } from "@prisma/client";
 import { ChevronRight } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 
@@ -27,7 +26,7 @@ const HerotabTwo = ({ planData }: Props) => {
     if (currentPlan) {
       setCurrentFitnessGoal(currentPlan.fitnessGoals);
     }
-  }, [planData, dayName]);
+  }, [planData]);
 
   const nextMeal = () => {
     // Filter meals by the current fitness goal
