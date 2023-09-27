@@ -4,7 +4,7 @@ import { revalidateTag } from "next/cache";
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
 
-export async function POST(res: Response, req: Request) {
+export async function POST(req: Request, res: Response) {
   try {
     const session = await getAuthSession();
     if (!session?.user) {

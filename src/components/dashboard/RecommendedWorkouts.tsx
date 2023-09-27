@@ -56,9 +56,9 @@ const RecommendedWorkouts = ({ planData }: Props) => {
                                 </p>
                                 {workout.image ? (
                                   <Image
-                                  width={200}
+                                  width={400}
                                   height={100}
-                                    src={workout.image}
+                                    src={`/${workout.image}`}
                                     alt="workout-image"
                                     className="mt-10"
                                   />

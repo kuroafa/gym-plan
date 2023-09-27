@@ -94,11 +94,11 @@ const WorkoutPage = ({ planData }: Props) => {
                     </div>
                     <div>
                       <Image
-                      width={200}
+                      width={500}
                       height={100}
                         className="md:w-[100%] md:h-[400px] "
                         alt={work.exercise}
-                        src={work.image}
+                        src={`/${work.image}`}
                       />
                     </div>
                     {work.atHome ? (
@@ -153,11 +153,11 @@ const WorkoutPage = ({ planData }: Props) => {
                   <div>
                     {work.image ? (
                       <Image
-                      width={200}
+                      width={500}
                       height={100}
                         className="md:w-[100%] md:h-[460px] "
                         alt={work.exercise}
-                        src={work.image}
+                        src={`/${work.image}`}
                       />
                     ) : null}
                   </div>
