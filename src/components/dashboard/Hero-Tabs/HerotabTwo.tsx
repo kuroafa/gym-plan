@@ -59,13 +59,13 @@ const HerotabTwo = ({ planData }: Props) => {
             View all workouts
             <ChevronRight />
           </Link>
-          <button type="button">
+          <div >
             <GymWorkout />
-          </button>
+          </div>
 
-          <button type="button">
+          <div >
             <BuildingMuscle />
-          </button>
+          </div>
         </div>
         <h2 className="text-3xl font-bold">Recommended workouts</h2>
         <p>Workouts Tailored to your plan of the day</p>

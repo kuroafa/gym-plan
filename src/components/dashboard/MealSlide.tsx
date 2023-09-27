@@ -114,18 +114,18 @@ const MealSlide = ({ planData }: Props) => {
                 );
               })}
               <div className="flex -mt-5 ">
-                <button
+                <div
                   className="bg-indigo-500 text-white rounded-[30px] p-2 mr-2"
                   onClick={previousMeal}
                 >
                   <ArrowLeft />
-                </button>
-                <button
+                </div>
+                <div
                   className="bg-indigo-500 text-white rounded-[30px] p-2"
                   onClick={nextMeal}
                 >
                   <ArrowRight />
-                </button>
+                </div>
               </div>
             </div>
           </>
