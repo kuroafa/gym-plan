@@ -1,15 +1,13 @@
 "use client";
+import { User } from "@prisma/client";
 import React, { useEffect, useState } from "react";
 
 
 type Props = {
-  weight: string;
-  height: string; // Height in the format "5.9"
-  age: string;
-  gender: string;
+  userData: Pick<User,'age'|'createdAt'|'email'|'emailVerified'|'gender'|'hasCompletedSetup'|'height'|'id'|'name'|'password'|'updateAt'|'username'|'weight'>
 };
 
-const Bmi = ({ weight, height, age, gender }: Props) => {
+const Bmi = ({ userData }: Props) => {
   const [bmi, setBmi] = useState<number>();
   const [bmiResult, setBmiResult] = useState("");
   const [bmiColor, setBmiColor] = useState('')
@@ -17,8 +15,8 @@ const Bmi = ({ weight, height, age, gender }: Props) => {
  
 
   useEffect(() => { const handleBMI = () => {
-    const userWeight = parseInt(weight) * 0.45359237;
-    const heightParts = height.split("."); // Split the height into feet and inches
+    const userWeight = parseInt(userData.weight) * 0.45359237;
+    const heightParts = userData.height.split("."); // Split the height into feet and inches
     const userHeightInFeet = parseInt(heightParts[0]);
     const userHeightInInches = parseInt(heightParts[1]);
     const userHeight = (userHeightInFeet * 12 + userHeightInInches) * 0.0254;
@@ -46,7 +44,7 @@ const Bmi = ({ weight, height, age, gender }: Props) => {
     }
   };
     handleBMI();
-  },[height, weight]);
+  },[]);
 
   return (
     <div>

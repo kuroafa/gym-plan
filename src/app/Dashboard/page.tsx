@@ -10,7 +10,7 @@ type Props = {
   userData: Pick<User,'age'|'createdAt'|'email'|'emailVerified'|'gender'|'hasCompletedSetup'|'height'|'id'|'name'|'password'|'updateAt'|'username'|'weight'>
 };
 
-const page = async ({userData}: Props) => {
+const page = async (props: Props) => {
   const session = await getAuthSession();
   if (!session) {
     redirect("/");
@@ -74,17 +74,18 @@ const page = async ({userData}: Props) => {
   //   name: session?.user.name || null,
   //   email: session?.user.email || null,
   //   image: session?.user.image || null,
-  //   height: session?.user?.height, // Set a default value or fetch this information from somewhere
-  //   gender: "", // Set a default value or fetch this information from somewhere
-  //   age: session?.user?.age, // Set a default value or fetch this information from somewhere
-  //   weight: session?.user?.weight, // Set a default value or fetch this information from somewhere
+  //   height: session?.user?.height || "", // Provide a default value or fetch this information from somewhere
+  //   gender: session?.user?.gender || "", // Provide a default value or fetch this information from somewhere
+  //   age: session?.user?.age || "", // Provide a default value or fetch this information from somewhere
+  //   weight: session?.user?.weight || "", // Provide a default value or fetch this information from somewhere
   // };
+  
   return (
     <div className="flex flex-col gap-2  ">
       <Dashboard userData={session?.user} planData={getPlanData} />
       <HeroTabs
         planData={getPlanData}
-        userData={userData}
+
         trainerData={getTrainerData}
         goalData={goalData}
       />

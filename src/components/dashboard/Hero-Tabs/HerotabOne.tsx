@@ -35,11 +35,10 @@ type GoalDataItem = {
 };
 type Props = {
   trainerData: Trainer[];
-  userData: UserData;
   goalData: GoalDataItem[];
 };
 
-const HerotabOne = ({ trainerData, userData, goalData }: Props) => {
+const HerotabOne = ({ trainerData, goalData }: Props) => {
   const [sessionsValue, setSessionsValue] = React.useState("");
   const [sessionsColor, setSessionsColor] = React.useState("");
   const workoutSessions = trainerData.length.toString();
@@ -139,12 +138,12 @@ const HerotabOne = ({ trainerData, userData, goalData }: Props) => {
 
       <div className="grid xl:grid-cols-2 sm:grid-cols-2 col-span-2 gap-5">
         <div className="rounded-[40px] bg-indigo-500 pb-5">
-          <Bmi
-            weight={userData?.weight || ""}
-            height={userData?.height || ""}
-            age={userData?.age || ""}
-            gender={userData?.gender || ""}
-          />
+          {/* <Bmi
+            weight={userData?.weight  }
+            height={userData?.height }
+            age={userData?.age }
+            gender={userData?.gender }
+          /> */}
           <div className="grid grid-cols-1 px-6 pt-[150px] gap-2">
             <Link
               href="WorkoutsPage"
@@ -160,7 +159,7 @@ const HerotabOne = ({ trainerData, userData, goalData }: Props) => {
             <p className="text-lg font-medium bg-lime-200 rounded-[30px] p-2">
               W/{" "}
               <span className="font-bold text-2xl">
-                {userData.weight || "0"}
+               
               </span>
               lb
             </p>

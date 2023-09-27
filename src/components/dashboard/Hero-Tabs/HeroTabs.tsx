@@ -28,13 +28,12 @@ type GoalDataItem = {
 
 type Props = {
   trainerData: Trainer[];
-  userData: Pick<User,'age'|'createdAt'|'email'|'emailVerified'|'gender'|'hasCompletedSetup'|'height'|'id'|'name'|'password'|'updateAt'|'username'|'weight'>
   planData: Plan[];
   goalData: GoalDataItem[]; // Use the adjusted type here
 };
 
 
-const HeroTabs = ({ trainerData, userData, planData, goalData }: Props) => {
+const HeroTabs = ({ trainerData, planData, goalData }: Props) => {
  
 
   return (
@@ -51,7 +50,7 @@ const HeroTabs = ({ trainerData, userData, planData, goalData }: Props) => {
           <HerotabOne
             goalData={goalData}
             trainerData={trainerData}
-            userData={userData}
+            // userData={userData}
           />
         </TabsContent>
         <TabsContent className="pl-7" value="two">
