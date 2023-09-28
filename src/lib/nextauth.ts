@@ -65,7 +65,6 @@ export const authOptions: NextAuthOptions = {
           return null;
         }
       
-        // Update the return type to ensure email is not null
         return {
           id: existingUser.id,
           username: existingUser.username,

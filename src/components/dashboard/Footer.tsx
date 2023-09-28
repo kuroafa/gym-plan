@@ -1,8 +1,5 @@
-import Link from "next/link";
-import React from "react";
 
-import SignInButton from "../buttons/SignInButton";
-import Image from "next/image";
+import React from "react";
 
 type Props = {};
 

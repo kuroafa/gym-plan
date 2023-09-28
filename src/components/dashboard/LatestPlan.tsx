@@ -1,10 +1,7 @@
 "use client";
-import { PlanCreation } from "@/lib/type";
-import { Button } from "@mui/material";
 import { Plan, Trainer, User } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
 import { fitnessGoalTips } from "../utils/Data";
 import Loader from "../Loader";
 
