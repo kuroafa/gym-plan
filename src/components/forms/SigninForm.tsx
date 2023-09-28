@@ -1,7 +1,7 @@
 "use client";
 import { SigninSchema, SigninType } from "@/lib/type";
 import { zodResolver } from "@hookform/resolvers/zod";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import {
   Form,
@@ -15,10 +15,15 @@ import { signIn } from "next-auth/react";
 import { redirect, useRouter } from "next/navigation";
 import SignInButton from "../buttons/SignInButton";
 import { toast } from "react-toastify";
+import { Eye, EyeOff } from "lucide-react";
 
 type Props = {};
 
 const SigninForm = (props: Props) => {
+  const [showPassword, setShowPassword] = useState(false);
+  const handleShow= () =>{
+setShowPassword(!showPassword)
+  }
   const router = useRouter();
   const {
     reset,
@@ -37,17 +42,17 @@ const SigninForm = (props: Props) => {
       email: data.email,
       password: data.password,
     });
-    if(signinData?.ok){
-       toast.success('Successfully logged in')
+    if (signinData?.ok) {
+      toast.success("Successfully logged in");
     } else {
     }
     if (signinData?.error) {
       console.log(signinData.error);
     } else {
-     
       router.push("/Dashboard");
     }
   };
+
   return (
     <div>
       <Form {...form}>
@@ -76,16 +81,29 @@ const SigninForm = (props: Props) => {
                 control={form.control}
                 name="password"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className="relative">
                     <FormControl>
                       <TextField
+                      type={showPassword?'text':'password'}
                         className="w-80"
                         id="outlined-basic"
-                        label="Password"
+                        label="Password "
                         variant="outlined"
                         {...field}
                       />
-                    </FormControl>
+                       
+                    </FormControl> 
+                    <Button
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="cursor-pointer absolute right-1"
+                      aria-label="Toggle password visibility"
+                    >
+                      {showPassword ? (
+                        <EyeOff />
+                      ) : (
+                        <Eye />
+                      )}
+                    </Button>
                     <FormMessage />
                   </FormItem>
                 )}

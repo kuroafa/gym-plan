@@ -137,6 +137,7 @@ const TrainingAppointmentForm = ({ handleClose }: Props) => {
                           className="sm:text-md font-semibold "
                           checked={selectedFitnessGoal === goal}
                           onChange={() => handleFitnessGoalToggle(goal)}
+                          
                         >
                           {goal.replace("_", " ")}
                         </CheckableTag>
