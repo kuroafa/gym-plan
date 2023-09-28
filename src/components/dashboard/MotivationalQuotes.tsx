@@ -30,7 +30,7 @@ const MotivationalQuotes = ({ userData }: Props) => {
 
     return () => clearInterval(interval);
   }, []);
-
+  console.debug(userData);
   const currentQuote = motivationalPhrases[currentQuoteIndex];
   const quoteWithUser = `${currentQuote}${userData.name?.toUpperCase()}`;
 

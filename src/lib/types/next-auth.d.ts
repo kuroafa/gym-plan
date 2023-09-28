@@ -6,7 +6,7 @@ interface User {
   id: string
     username: string
     email: string
-
+   name: string
  
 }
   interface Session {
@@ -14,14 +14,14 @@ interface User {
       id: string
     username: string
     email: string
-  
+    name: string
 
     }
     token: {
       id: string
         username: string
         email: string
-       
+        name: string
       
     }
   }
