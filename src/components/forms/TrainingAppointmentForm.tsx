@@ -177,38 +177,39 @@ const TrainingAppointmentForm = ({ handleClose }: Props) => {
             </div>
 
             <div className="grid grid-cols-2   gap-5">
-              <FormField
-                control={form.control}
-                name="time"
-                render={({ field }) => (
-                  <FormItem>
-                    <div className="flex flex-col relative gap-2">
-                      <FormLabel>Time</FormLabel>
-                      <FormControl>
-                        <TimePicker
-                          className="h-9 relative"
-                          placeholder="Start Time"
-                          format="hh:mm a"
-                          onOk={(time) => {
-                            if (time) {
-                              const formattedTime =
-                                dayjs(time).format("hh:mm A");
-                              field.onChange(formattedTime);
-                            }
-                          }}
-                          value={
-                            field.value ? dayjs(field.value, "hh:mm A") : null
-                          }
-                          onChange={(time, timeString) => {
-                            console.log("Selected time:", timeString);
-                          }}
-                        />
-                      </FormControl>
-                    </div>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+            <FormField
+  control={form.control}
+  name="time"
+  render={({ field }) => (
+    <FormItem>
+      <div className="flex flex-col relative gap-2">
+        <FormLabel>Time</FormLabel>
+        <FormControl>
+          <TimePicker
+            popupStyle={{ top: '250px' }} // Adjust the top value as needed
+            className="h-9 relative"
+            placeholder="Start Time"
+            format="hh:mm a"
+            onOk={(time) => {
+              if (time) {
+                const formattedTime = dayjs(time).format("hh:mm A");
+                field.onChange(formattedTime);
+              }
+            }}
+            value={
+              field.value ? dayjs(field.value, "hh:mm A") : null
+            }
+            onChange={(time, timeString) => {
+              console.log("Selected time:", timeString);
+            }}
+          />
+        </FormControl>
+      </div>
+      <FormMessage />
+    </FormItem>
+  )}
+/>
+
 
 <FormField
       control={form.control}
