@@ -28,7 +28,8 @@ import {
 } from "@/components/ui/alert-dialog";
 
 import { toast } from "react-toastify";
-import { X } from "lucide-react";
+import {  X } from "lucide-react";
+import Loader from "../Loader";
 
 type Props = {};
 
@@ -149,12 +150,13 @@ const GoalForm = (props: Props) => {
                     )}
                   />
                 </div>
-                <button
+                {loading? <div className="m-auto"><Loader/></div> :  <button
                   className="rounded-[30px] bg-lime-300 text-black text-lg py-5"
                   type="submit"
                 >
-                  {loading ? 'Setting goal...' : 'Set Goal'}
-                </button>
+                  Set Goal
+                </button>}
+               
               </div>
             </form>
           </Form>

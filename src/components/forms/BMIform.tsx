@@ -29,6 +29,7 @@ import {
   AlertDialogTrigger,
 } from "../ui/alert-dialog";
 import { Activity, ArrowUpRight, X } from "lucide-react";
+import Loader from "../Loader";
 
 type Props = {};
 
@@ -59,6 +60,7 @@ const BMIform = (props: Props) => {
   });
   const onSubmit = async (data: BMISchema) => {
     try {
+      setLoading(true)
       const response = await fetch("/api/Bmi", {
         method: "POST",
         headers: {
@@ -70,12 +72,13 @@ const BMIform = (props: Props) => {
       if (response.ok) {
         toast.success("set BMI successfully");
       }
+      handleClose(); 
     } catch (error) {
       toast.error("Error setting bmi");
       console.error("Could not set bmi", error);
     } finally {
       form.reset();
-      router.push("/SigninPage");
+      setLoading(false)
     }
   };
 
@@ -85,15 +88,16 @@ const BMIform = (props: Props) => {
         <AlertDialog open={open} onOpenChange={setOpen}>
           <div className="grid grid-cols-1 gap-2">
             <AlertDialogTrigger className=" bg-lime-300   font-semibold rounded-[30px]">
-              <h1 className="flex px-4 py-2 text-xl justify-between items-center">Get BMI <Activity size={40} /></h1>
-            
+              <h1 className="flex px-4 py-2 text-xl justify-between items-center">
+                Get BMI <Activity size={40} />
+              </h1>
             </AlertDialogTrigger>
-                <Link
-                href="WorkoutsPage"
-                className="bg-white text-lg font-semibold rounded-[30px] px-4 py-2 flex justify-between items-center "
-              >
-                Start workouts <ArrowUpRight size={40} />
-              </Link>
+            <Link
+              href="WorkoutsPage"
+              className="bg-white text-lg font-semibold rounded-[30px] px-4 py-2 flex justify-between items-center "
+            >
+              Start workouts <ArrowUpRight size={40} />
+            </Link>
           </div>
           <AlertDialogContent className="flex flex-col justify-center items-center">
             <AlertDialogCancel className="rounded-full absolute right-5 top-3">
@@ -105,8 +109,8 @@ const BMIform = (props: Props) => {
                 onSubmit={form.handleSubmit(onSubmit)}
                 className="  text-black"
               >
-                <div className=" gap-5 my-5 ">
-                  <Radio.Group defaultValue="a" size="large">
+                <div className=" gap-5 my-5 flex flex-col items-center ">
+                  <Radio.Group defaultValue="a" className="m-auto" size="large">
                     <Radio.Button value="Male">Male</Radio.Button>
                     <Radio.Button value="Female">Female</Radio.Button>
                   </Radio.Group>
@@ -117,6 +121,7 @@ const BMIform = (props: Props) => {
                       <FormItem>
                         <FormControl>
                           <TextField
+                            className=""
                             id="outlined-basic"
                             variant="outlined"
                             label="Age"
@@ -127,50 +132,51 @@ const BMIform = (props: Props) => {
                       </FormItem>
                     )}
                   />
-                  <div className="flex gap-2">
-                    <FormField
-                      control={form.control}
-                      name="weight"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormControl>
-                            <TextField
-                              id="outlined-basic"
-                              variant="outlined"
-                              label="Weight(lb)"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="height"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormControl>
-                            <TextField
-                              id="outlined-basic"
-                              variant="outlined"
-                              label="Height(feet)"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                </div>
-                <Button
-                  className="border-black text-black hover:border-orange-500 hover:bg-orange-500 "
-                  variant="outlined"
+
+                  <FormField
+                    control={form.control}
+                    name="weight"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <TextField
+                            id="outlined-basic"
+                            variant="outlined"
+                            label="Weight(lb)"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="height"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <TextField
+                            id="outlined-basic"
+                            variant="outlined"
+                            label="Height(feet)"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  /> 
+                  {loading? <Loader/> : <button
+                  className="border-black rounded-[30px] text-white py-2 px-6 bg-indigo-500 "
                   type="submit"
                 >
+                  
                   Calculate BMI
-                </Button>
+                </button>}
+                  
+                </div>
+               
               </form>
             </Form>
           </AlertDialogContent>

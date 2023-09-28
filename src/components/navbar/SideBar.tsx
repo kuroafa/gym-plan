@@ -117,7 +117,7 @@ const SideBar = (props: Props) => {
               <div className="flex items-center gap-5">
                 <GoSignOut className="  text-5xl rounded p-2 cursor-pointer block float-left" />
                 <h1
-                  className={`origin-left font-semibold md:text-3xl text-2xl ${
+                  className={`origin-left font-semibold md:text-2xl text-xl ${
                     !open && "scale-0"
                   }`}
                 >

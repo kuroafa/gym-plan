@@ -895,13 +895,13 @@ const muscleBuildingWorkouts = [
       name: "Baked Chicken Breast",
       description: "Baked chicken breast seasoned with herbs and spices. A lean protein source for chest workouts.",
       fitnessGoal: "CHEST_DAY",
-      image:'bakedchick.jpg'
+      image:'bakedchicken.jpg'
     },
     {
       name: "Quinoa Salad with Avocado",
       description: "Quinoa salad with diced avocado, tomatoes, and a lime dressing. Nutrient-rich fuel for chest day.",
       fitnessGoal: "CHEST_DAY",
-      image:'avosalad.jpg'
+      image:'quinoa.jpg'
     },
     {
       name: "Lean Beef and Green Beans",
