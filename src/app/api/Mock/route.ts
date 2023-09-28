@@ -88,10 +88,16 @@ export async function POST(req: Request, res: Response) {
         fitnessGoals: FitnessGoal.BACK_DAY,
       },
     ];
-    
+    const mappedDemoPlans = demoPlans.map((plan) => ({
+      planName: plan.planName,
+      description: plan.description,
+      day: plan.day,
+      fitnessGoals: plan.fitnessGoals,
+      userId: plan.userId,
+    }));
 
     const createdPlans = await prisma.plan.createMany({
-      data: demoPlans,
+      data: mappedDemoPlans,
     });
     console.log("Plans created successfully");
 

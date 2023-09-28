@@ -69,10 +69,6 @@ export const authOptions: NextAuthOptions = {
           id: existingUser.id,
           username: existingUser.username,
           email: existingUser.email || "",
-          weight: existingUser.weight,
-          height: existingUser.height,
-          age: existingUser.age,
-          gender: existingUser.gender
         };
       },
       
@@ -86,7 +82,7 @@ export const authOptions: NextAuthOptions = {
         ...token,
         username: user.username,
         email: user.email,
-        id: user.id
+        id: user.id,
       }
      }
      return token
@@ -99,6 +95,9 @@ export const authOptions: NextAuthOptions = {
           id: token.id,
           username: token.username,
           email: token.email,
+          weight: token.weight,
+          height: token.height,
+          age: token.age
         }
       }
       

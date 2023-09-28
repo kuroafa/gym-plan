@@ -9,14 +9,18 @@ export const UserCreationSchema = z.object({
   .min(1, 'Password is required')
   .min(8, 'Password must have at least 8 characters').max(100),
   confirmedPassword: z.string().min(1, 'Password confirmation is required'),
-  age: z.string(),
-  height: z.string().min(1, 'Height is Required to provide stats'),
-  weight: z.string().min(1, 'Weight is required to provide stats'),
-  gender: z.enum(["Male", "Female"])
+
 })
 .refine((data)=> data.password === data.confirmedPassword, {
   path: ['confirmedPassword'],
   message: 'Password do not match'
+})
+
+export const BmiCreationSchema = z.object({
+    age: z.string().min(1, 'Age is required'),
+  height: z.string().min(1, 'Height is Required to provide stats'),
+  weight: z.string().min(1, 'Weight is required to provide stats'),
+  gender: z.enum(["Male", "Female"])
 })
 
 
@@ -85,5 +89,6 @@ export type SigninType = z.infer<typeof SigninSchema>
 export type DeleteSchema = z.infer<typeof DeletionSchema>;
 export type TrainerSchema = z.infer<typeof TrainerCreationSchema>;
 export type GoalCreation= z.infer<typeof GoalSchema>;
+export type BMISchema= z.infer<typeof BmiCreationSchema>;
 
 export type PlanCreation = z.infer<typeof PlanCreationSchema>;

@@ -75,7 +75,7 @@ const RecommendedWorkouts = ({ planData }: Props) => {
             );
           })
         ) : (
-          <h1 className="text-3xl rounded-[30px] bg-lime-300 py-3 my-4 -ml-2 w-fit font-semibold px-6">
+          <h1 className="text-xl rounded-[30px] bg-lime-300 py-3 my-4 -ml-2 w-fit font-semibold px-6">
             Create a workout plan for today
           </h1>
         )}

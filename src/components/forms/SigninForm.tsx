@@ -40,7 +40,6 @@ const SigninForm = (props: Props) => {
     if(signinData?.ok){
        toast.success('Successfully logged in')
     } else {
-      toast.error('Signing failed')
     }
     if (signinData?.error) {
       console.log(signinData.error);
@@ -95,7 +94,7 @@ const SigninForm = (props: Props) => {
           </div>
           <div className="flex flex-col gap-2 items-start">
             <Button
-              className="border-black text-black hover:border-indigo-500 hover:text-white hover:bg-indigo-500 w-[320px] "
+              className="border-black text-black hover:border-indigo-500 hover:text-black hover:bg-indigo-500 w-[320px] "
               variant="outlined"
               type="submit"
             >

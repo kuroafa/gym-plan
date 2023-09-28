@@ -29,10 +29,6 @@ const Signupform = (props: Props) => {
   const form = useForm<UserSchema>({
     resolver: zodResolver(UserCreationSchema),
     defaultValues: {
-      gender: "Male",
-      age: "",
-      height: "",
-      weight: "",
       username: "",
       name: "",
       password: "",
@@ -72,12 +68,9 @@ const Signupform = (props: Props) => {
        
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="  text-black">
-            <div className="flex flex-col gap-5 my-5 ">
-              <Radio.Group defaultValue="a" size="large">
-                <Radio.Button value="Male">Male</Radio.Button>
-                <Radio.Button value="Female">Female</Radio.Button>
-              </Radio.Group>
-              <div className="flex gap-2">
+            <div className=" gap-5 my-5 ">
+         
+              <div className="grid grid-cols-2  gap-2 mb-2">
                 <FormField
                   control={form.control}
                   name="name"
@@ -112,9 +105,10 @@ const Signupform = (props: Props) => {
                     </FormItem>
                   )}
                 />
-             
+               
               </div> 
-                <div className="flex gap-2">
+             
+              <div className="mb-2 ">
                   <FormField
                     control={form.control}
                     name="email"
@@ -124,6 +118,7 @@ const Signupform = (props: Props) => {
                           <TextField
                             id="outlined-basic"
                             label="Email"
+                            className="grid grid-cols-1"
                             variant="outlined"
                             {...field}
                           />
@@ -132,61 +127,8 @@ const Signupform = (props: Props) => {
                       </FormItem>
                     )}
                   />
-                  <FormField
-                    control={form.control}
-                    name="age"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <TextField
-                            id="outlined-basic"
-                            variant="outlined"
-                            label="Age"
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                 
                 </div>
-              <div className="flex gap-2">
-                
-                <FormField
-                  control={form.control}
-                  name="weight"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <TextField
-                          id="outlined-basic"
-                          variant="outlined"
-                          label="Weight(lb)"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="height"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <TextField
-                          id="outlined-basic"
-                          variant="outlined"
-                          label="Height(feet)"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
               <div className="flex gap-2">
                 <FormField
                   control={form.control}

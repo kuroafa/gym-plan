@@ -1,7 +1,6 @@
-import { useRouter } from "next/navigation"; // Changed 'next/navigation' to 'next/router'
+
 import React, { useEffect, useState } from "react";
 import { Goal, Plan } from "@prisma/client";
-import { prisma } from "@/lib/db";
 import { getAuthSession } from "@/lib/nextauth";
 import LatestPlan from "./LatestPlan";
 import Workouts from "./Workouts";
@@ -10,6 +9,30 @@ import MotivationalQuotes from "./MotivationalQuotes";
 type Props = {
   planData: Plan[];
   userData: UserData;
+  mockData?: {
+    planName: string;
+    description: string;
+    day:
+      | "MONDAY"
+      | "TUESDAY"
+      | "WEDNESDAY"
+      | "THURSDAY"
+      | "FRIDAY"
+      | "SATURDAY"
+      | "SUNDAY";
+    fitnessGoals:
+      | "LEG_DAY"
+      | "BACK_DAY"
+      | "FLEXIBILITY"
+      | "SHOULDERS_DAY"
+      | "BALANCE_TRAINING"
+      | "BALANCE_TRAINING"
+      | "BALANCE_TRAINING"
+      | "CHEST_DAY"
+      | "ARMS_DAY"
+      | "CARDIO"
+      | "STRENGTH_TRAINING";
+  };
 };
 type UserData = {
   id: string;
@@ -32,13 +55,8 @@ const overlayStyle = {
   zIndex: 1,
 };
 
-const Dashboard = async ({ planData, userData}: Props) => {
+const Dashboard = async ({ planData, userData, mockData}: Props) => {
   const session = await getAuthSession();
-  const getPlanData = await prisma.plan.findMany({
-    where: {
-      userId: session?.user.id,
-    },
-  });
   
   return (
     <div className="grid lg:grid-cols-2 grid-cols-1  ">
@@ -47,7 +65,7 @@ const Dashboard = async ({ planData, userData}: Props) => {
         <h1 className="xl:text-4xl text-3xl my-3  font-medium whitespace-nowrap">
           Here&apos;s today&apos;s pulse.
         </h1>
-        <LatestPlan userData={userData} planData={getPlanData} />
+        <LatestPlan  userData={userData} planData={planData} />
       </div>
 
       <div className="">

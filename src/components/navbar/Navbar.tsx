@@ -39,7 +39,7 @@ const Navbar = async (props: Props) => {
             <button className="text-xl font-semibold rounded-[20px] bg-black text-white  px-6 py-2">
                 Sign in
             </button>
-          </Link> : <SideBar/> }
+          </Link> : <SideBar /> }
          
         </div>
       </div>

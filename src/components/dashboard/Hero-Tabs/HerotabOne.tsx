@@ -1,13 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
+import { Activity, ArrowUpRight } from "lucide-react";
 import GoalForm from "@/components/forms/GoalForm";
-import Bmi from "../Bmi";
+
 import DashboardChart from "../DashboardChart";
-import { Goal, Plan, Trainer, User } from "@prisma/client";
+import { Bmi, Goal, Plan, Trainer, User } from "@prisma/client";
 import GoalDeleteButton from "@/components/buttons/GoalDeleteButton";
 import Link from "next/link";
+import BMIform from "@/components/forms/BMIform";
+import BmiCal from "../BmiCal";
 
 type UserData = {
   id: string;
@@ -33,12 +35,22 @@ type GoalDataItem = {
   userId: string;
   createdAt: Date;
 };
+type Gender = {
+  male: string,
+  female: string
+}
+
+
 type Props = {
   trainerData: Trainer[];
   goalData: GoalDataItem[];
+  bmiData: {
+    height: string;
+    weight: string;
+  } ;
 };
 
-const HerotabOne = ({ trainerData, goalData }: Props) => {
+const HerotabOne = ({ trainerData, goalData, bmiData }: Props) => {
   const [sessionsValue, setSessionsValue] = React.useState("");
   const [sessionsColor, setSessionsColor] = React.useState("");
   const workoutSessions = trainerData.length.toString();
@@ -138,19 +150,17 @@ const HerotabOne = ({ trainerData, goalData }: Props) => {
 
       <div className="grid xl:grid-cols-2 sm:grid-cols-2 col-span-2 gap-5">
         <div className="rounded-[40px] bg-indigo-500 pb-5">
-          {/* <Bmi
-            weight={userData?.weight  }
-            height={userData?.height }
-            age={userData?.age }
-            gender={userData?.gender }
-          /> */}
-          <div className="grid grid-cols-1 px-6 pt-[350px] gap-2">
-            <Link
-              href="WorkoutsPage"
-              className="bg-white text-lg font-semibold rounded-[20px] px-4 py-2 flex justify-between items-center "
-            >
-              Start workouts <ArrowUpRight size={40} />
-            </Link>
+          <BmiCal
+        bmiData={bmiData}
+          />
+         
+          <div className=" grid-cols-1 grid px-6 pt-[100px] gap-1"> 
+          <div className="" >
+            
+          <BMIform/>
+          
+          </div>
+           
           </div>
         </div>
         <div className="rounded-[40px] bg-black px-5 py-5">
@@ -186,7 +196,7 @@ const HerotabOne = ({ trainerData, goalData }: Props) => {
                           {goal.calories}
                         </p>
                       </div>
-                      <div className="grid grid-cols-2 pt-[30px] gap-2 items-center">
+                      <div className="grid grid-cols-2 pt-[55px] gap-2 items-center">
                       <GoalForm />  <GoalDeleteButton id={goal.id} /> 
                       </div>
                     </div>
@@ -209,8 +219,8 @@ const HerotabOne = ({ trainerData, goalData }: Props) => {
                   </p>{" "}
                   <p className="xl:text-6xl text-white text-4xl font-bold"></p>
                 </div>
-                <div className="grid grid-cols-2 pt-[30px] gap-2 items-center">
-                  <GoalForm />
+                <div className="grid grid-cols-1  pt-[30px] gap-2 items-center">
+                  <GoalForm /> 
                 </div>
               </div>
             </div>

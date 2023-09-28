@@ -15,6 +15,7 @@ import DeleteButton from "../buttons/DeleteButton";
 import { Button } from "@mui/material";
 
 
+
 interface DraggableTabPaneProps extends React.HTMLAttributes<HTMLDivElement> {
   "data-node-key": string;
 }
@@ -54,6 +55,7 @@ const overlayStyle = {
 };
 
 const PlanPage = ({ planData }: Props) => {
+
   const [items, setItems] = useState([
     ...planData.map((plan) => ({
       key: plan.id.toString(),
@@ -128,15 +130,7 @@ const PlanPage = ({ planData }: Props) => {
             )}
           />
         ) : (
-          <div className="h-[200px] rounded-lg flex flex-col items-center justify-center ">
-            <h2 className="text-lg mb-2 font-medium">
-              Ready to start taking on your Training journey? Create new workout
-              sessions now!
-            </h2>
-            <Button variant="outlined" className="text-black">
-              Create new session
-            </Button>
-          </div>
+          <h1>No plans available</h1>
         )}
       </div>
     </>

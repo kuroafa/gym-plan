@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import {  Plan, Trainer, User } from "@prisma/client";
+import {  Bmi, Plan, Trainer, User } from "@prisma/client";
 import GoalForm from "../../forms/GoalForm";
 import HerotabOne from "./HerotabOne";
 import HerotabTwo from "./HerotabTwo";
@@ -8,15 +8,7 @@ import HerotabThree from "./HerotabThree";
 import HerotabFour from "./HerotabFour";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-type UserData = {
-  id: string;
-  name: string | null | undefined; // Provide a default value
-  email: string | null | undefined; // Provide a default value
-  height: string | null | undefined; // Provide a default value
-  gender: string | null | undefined; // Provide a default value
-  age: string | null | undefined; // Provide a default value
-  weight: string | null | undefined; // Provide a default value
-};
+
 
 type GoalDataItem = {
   id: string;
@@ -25,15 +17,29 @@ type GoalDataItem = {
   userId: string;
   createdAt: Date;
 };
+type Gender = {
+  male: string,
+  female: string
+}
+
+type BmiDataItem = {
+  weight: string;
+  height: string;
+  createdAt: Date;
+};
 
 type Props = {
   trainerData: Trainer[];
   planData: Plan[];
-  goalData: GoalDataItem[]; // Use the adjusted type here
+  goalData: GoalDataItem[]; 
+ bmiData: {
+    height: string;
+    weight: string;
+  } ;
 };
 
 
-const HeroTabs = ({ trainerData, planData, goalData }: Props) => {
+const HeroTabs = ({ trainerData, planData, goalData, bmiData }: Props) => {
  
 
   return (
@@ -48,6 +54,7 @@ const HeroTabs = ({ trainerData, planData, goalData }: Props) => {
         <TabsContent className="pl-7" value="one">
           {" "}
           <HerotabOne
+          bmiData={bmiData}
             goalData={goalData}
             trainerData={trainerData}
             // userData={userData}

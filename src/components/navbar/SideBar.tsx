@@ -6,8 +6,14 @@ import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { PlanCreation } from "@/lib/type";
+import { toast } from "react-toastify";
+import Loader from "../Loader";
+import { Plan } from "@prisma/client";
+import { ListPlus } from "lucide-react";
 
-type Props = {};
+type Props = {
+};
 
 const SideBar = (props: Props) => {
   const [open, setOpen] = useState(false);
@@ -22,17 +28,21 @@ const SideBar = (props: Props) => {
       document.body.classList.remove("overflow-hidden");
     }
   };
+
+
   return (
-    <div className=" ">
+    <div className=" "> 
+    
       {open && (
         <div
           onClick={toggleSidebar}
           className="fixed top-0 left-0 w-full h-full bg-black opacity-40 z-20"
         ></div>
       )}
-      <div className=" relative   ">
+      <div className=" relative  flex ">
         <Hamburger toggled={open} toggle={toggleSidebar} />
       </div>
+    
       <div>
         {open && (
           <motion.div

@@ -6,7 +6,7 @@ import { UserCreationSchema } from "@/lib/type";
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { email, username, password, name, age, weight, height, gender } =
+    const { email, username, password, name,  } =
       UserCreationSchema.parse(body);
     //check if user exist
 
@@ -40,10 +40,6 @@ export async function POST(req: NextRequest) {
 
     const newUser = await prisma.user.create({
       data: {
-        age,
-        weight,
-        height,
-        gender,
         name,
         username,
         email,
