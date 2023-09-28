@@ -186,7 +186,7 @@ const TrainingAppointmentForm = ({ handleClose }: Props) => {
         <FormLabel>Time</FormLabel>
         <FormControl>
           <TimePicker
-            popupStyle={{ top: '250px' }} // Adjust the top value as needed
+             // Adjust the top value as needed
             className="h-9 relative"
             placeholder="Start Time"
             format="hh:mm a"
