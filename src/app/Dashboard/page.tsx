@@ -28,6 +28,7 @@ const page = async (props: Props) => {
     },
     take: 1,
   });
+
   type GoalDataItem = {
     id: string;
     goal: string;
@@ -43,8 +44,6 @@ const page = async (props: Props) => {
     },
   });
 
-
-
   const getBmiData = await prisma.bmi.findFirst({
     where: {
       userId: session.user.id,
@@ -52,13 +51,31 @@ const page = async (props: Props) => {
     orderBy: {
       createdAt: "desc",
     },
-    select:{
-      height: true,
-      weight: true,
-    },
     take: 1,
-  }) ;
-  
+  });
+
+  // Define a custom type for BMI data matching the structure of GoalDataItem
+  type BmiDataItem = {
+    id: string;
+    height: string; // You can replace this with the appropriate field from your BMI data
+    weight: string; // You can replace this with the appropriate field from your BMI data
+    userId: string;
+    createdAt: Date;
+  };
+
+  // Create an array with BMI data structured like GoalDataItem
+  const bmiData: BmiDataItem[] = getBmiData
+    ? [
+        {
+          id: getBmiData.id,
+          height: getBmiData.height, // Replace "field1" with the actual field from your BMI data
+          weight: getBmiData.weight, // Replace "field2" with the actual field from your BMI data
+          userId: getBmiData.userId,
+          createdAt: getBmiData.createdAt,
+        },
+      ]
+    : [];
+
   const contentStyle2: React.CSSProperties = {
     height: "350px",
     color: "#fff",
@@ -71,12 +88,11 @@ const page = async (props: Props) => {
     zIndex: "200",
   };
 
-
   return (
     <div className="flex flex-col gap-2  ">
       <Dashboard userData={session?.user} planData={getPlanData} />
       <HeroTabs
-        bmiData={getBmiData!}
+        bmiData={bmiData}
         planData={getPlanData}
         trainerData={getTrainerData}
         goalData={goalData}

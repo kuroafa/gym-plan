@@ -8,12 +8,15 @@ type Gender = {
 }
 
 type BmiDataItem = {
-  weight: string;
-  height: string;
+  id: string;
+  height: string; // You can replace this with the appropriate field from your BMI data
+  weight: string; // You can replace this with the appropriate field from your BMI data
+  userId: string;
   createdAt: Date;
 };
 type Props = {
-  bmiData: Pick<Bmi, 'height'|'weight'>
+  bmiData: BmiDataItem[]
+  
 };
 
 const BmiCal = ({ bmiData }: Props) => {
@@ -23,15 +26,15 @@ const BmiCal = ({ bmiData }: Props) => {
 
   useEffect(() => {
     const handleBMI = () => {
-      const userWeight = parseInt(bmiData.weight) * 0.45359237;
-      const heightParts = bmiData.height.split("."); // Split the height into feet and inches
-      const userHeightInFeet = parseInt(heightParts[0]);
-      const userHeightInInches = parseInt(heightParts[1]);
-      const userHeight = (userHeightInFeet * 12 + userHeightInInches) * 0.0254;
-      const calculatedBmi =
-        Math.round((userWeight / userHeight ** 2) * 100) / 100;
-      setBmi(calculatedBmi);
-      if (calculatedBmi < 18.5) {
+      if (bmiData && bmiData.length > 0) {
+        const userWeight = parseFloat(bmiData[0].weight) * 0.45359237; // Convert weight to kg
+        const heightParts = bmiData[0].height.split("."); // Split the height into feet and inches
+        const userHeightInFeet = parseInt(heightParts[0]);
+        const userHeightInInches = parseInt(heightParts[1]);
+        const userHeight = (userHeightInFeet * 12 + userHeightInInches) * 0.0254; // Convert height to meters
+        const calculatedBmi = Math.round((userWeight / userHeight ** 2) * 100) / 100;
+        setBmi(calculatedBmi);
+ if (calculatedBmi < 18.5) {
         setBmiResult("Underweight");
         setBmiColor("bg-yellow-300");
       } else if (calculatedBmi === 18.5 || calculatedBmi < 24.9) {
@@ -50,12 +53,23 @@ const BmiCal = ({ bmiData }: Props) => {
         setBmiResult("Obesity Class 3");
         setBmiColor("bg-red-400");
       }
+      } else {
+
+        setBmi(0); // Set BMI to null or another appropriate default value
+        setBmiResult("No data available"); // Display a message
+        setBmiColor(""); // Clear the color
+      }
+  
+     
     };
     handleBMI();
-  }, [bmiData.height, bmiData.weight]);
+  }, [bmiData]);
 
   return (
     <div>
+      {
+
+      }
       <div className=" grid grid-cols-1 mt-2  ">
         {bmiResult !== undefined ? (
           <div className="text-xl   p-5 flex justify-between items-center  ">

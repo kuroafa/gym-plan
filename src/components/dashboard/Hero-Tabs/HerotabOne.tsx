@@ -36,18 +36,21 @@ type GoalDataItem = {
   createdAt: Date;
 };
 type Gender = {
-  male: string,
-  female: string
-}
-
-
+  male: string;
+  female: string;
+};
+type BmiDataItem = {
+  id: string;
+  height: string; // You can replace this with the appropriate field from your BMI data
+  weight: string; // You can replace this with the appropriate field from your BMI data
+  userId: string;
+  createdAt: Date;
+};
 type Props = {
   trainerData: Trainer[];
   goalData: GoalDataItem[];
-  bmiData: {
-    height: string;
-    weight: string;
-  } ;
+  bmiData:BmiDataItem[]
+  
 };
 
 const HerotabOne = ({ trainerData, goalData, bmiData }: Props) => {
@@ -114,35 +117,53 @@ const HerotabOne = ({ trainerData, goalData, bmiData }: Props) => {
                 alt="up"
                 className="group-hover:-translate-y-1 transition-transform duration-200 ease-in-out transform"
               />
-              {trainerData.some((train) => {
-                const date = new Date(train.date);
-                const DateName = date
-                  .toLocaleDateString("en-US", { weekday: "long" })
-                  .toUpperCase();
-                return DateName === dayName;
-              }) ? (
-                trainerData.map((train) => {
+              <div className="flex flex-col">
+                {trainerData.some((train) => {
                   const date = new Date(train.date);
                   const DateName = date
                     .toLocaleDateString("en-US", { weekday: "long" })
                     .toUpperCase();
-                  if (DateName === dayName) {
-                    return (
-                      <div key={train.date}>
-                        <h1 className="md:text-md font-semibold">
-                          New Workout session with {train.client.toUpperCase()}{" "}
-                          @{train.time} today.
-                        </h1>
-                      </div>
-                    );
-                  }
-                  return null;
-                })
-              ) : (
-                <div>
-                  <h1>No sessions today</h1>
-                </div>
-              )}
+                  return DateName === dayName;
+                }) ? (
+                  (() => {
+                    const latestSession = trainerData
+                      .filter((train) => {
+                        const date = new Date(train.date);
+                        const DateName = date
+                          .toLocaleDateString("en-US", { weekday: "long" })
+                          .toUpperCase();
+                        return DateName === dayName;
+                      })
+                      .sort(
+                        (a, b) =>
+                          new Date(b.date).getTime() -
+                          new Date(a.date).getTime()
+                      )[0]; // Sort by timestamp and get the latest session
+
+                    if (latestSession) {
+                      return (
+                        <div key={latestSession.date}>
+                          <h1 className="md:text-md font-semibold">
+                            New Workout session with{" "}
+                            {latestSession.client.toUpperCase()} @
+                            {latestSession.time} today.
+                          </h1>
+                        </div>
+                      );
+                    } else {
+                      return (
+                        <div>
+                          <h1>No sessions today</h1>
+                        </div>
+                      );
+                    }
+                  })()
+                ) : (
+                  <div>
+                    <h1>No sessions today</h1>
+                  </div>
+                )}
+              </div>
             </div>
           </p>
         </div>
@@ -150,29 +171,18 @@ const HerotabOne = ({ trainerData, goalData, bmiData }: Props) => {
 
       <div className="grid xl:grid-cols-2 sm:grid-cols-2 col-span-2 gap-5">
         <div className="rounded-[40px] bg-indigo-500 pb-5">
-          <BmiCal
-        bmiData={bmiData}
-          />
-         
-          <div className=" grid-cols-1 grid px-6 pt-[100px] gap-1"> 
-          <div className="" >
-            
-          <BMIform/>
-          
-          </div>
-           
+          <BmiCal bmiData={bmiData} />
+
+          <div className=" grid-cols-1 grid px-6 pt-[100px] gap-1">
+            <div className="">
+              <BMIform />
+            </div>
           </div>
         </div>
         <div className="rounded-[40px] bg-black px-5 py-5">
           <div className="flex justify-between items-center">
             <h1 className="text-xl font-bold text-white">Physical Goals</h1>
-            <p className="text-lg font-medium bg-lime-200 rounded-[30px] p-2">
-              W/{" "}
-              <span className="font-bold text-2xl">
-               
-              </span>
-              lb
-            </p>
+           
           </div>
           {goalData.length > 0 ? (
             <div>
@@ -197,7 +207,7 @@ const HerotabOne = ({ trainerData, goalData, bmiData }: Props) => {
                         </p>
                       </div>
                       <div className="grid grid-cols-2 pt-[55px] gap-2 items-center">
-                      <GoalForm />  <GoalDeleteButton id={goal.id} /> 
+                        <GoalForm /> <GoalDeleteButton id={goal.id} />
                       </div>
                     </div>
                   </div>
@@ -211,16 +221,16 @@ const HerotabOne = ({ trainerData, goalData, bmiData }: Props) => {
                   <p className="text-xl font-medium rounded-full w-fit bg-black text-white px-5 py-3">
                     Target
                   </p>{" "}
-                  <p className="xl:text-6xl text-4xl font-bold"></p>
+                  <p className="xl:text-6xl text-4xl font-bold">0</p>
                 </div>
                 <div className="rounded-[40px] grid grid-cols-2 gap-2 mt-4 p-5">
                   <p className="text-xl font-medium rounded-full w-fit bg-white px-4 py-4">
                     Calories
                   </p>{" "}
-                  <p className="xl:text-6xl text-white text-4xl font-bold"></p>
+                  <p className="xl:text-6xl text-white text-4xl font-bold">0</p>
                 </div>
                 <div className="grid grid-cols-1  pt-[30px] gap-2 items-center">
-                  <GoalForm /> 
+                  <GoalForm />
                 </div>
               </div>
             </div>

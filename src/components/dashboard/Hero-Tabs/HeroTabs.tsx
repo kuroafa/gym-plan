@@ -17,25 +17,19 @@ type GoalDataItem = {
   userId: string;
   createdAt: Date;
 };
-type Gender = {
-  male: string,
-  female: string
-}
-
 type BmiDataItem = {
-  weight: string;
-  height: string;
+  id: string;
+  height: string; // You can replace this with the appropriate field from your BMI data
+  weight: string; // You can replace this with the appropriate field from your BMI data
+  userId: string;
   createdAt: Date;
 };
-
 type Props = {
   trainerData: Trainer[];
   planData: Plan[];
   goalData: GoalDataItem[]; 
- bmiData: {
-    height: string;
-    weight: string;
-  } ;
+  bmiData: BmiDataItem[]
+  
 };
 
 
@@ -52,12 +46,10 @@ const HeroTabs = ({ trainerData, planData, goalData, bmiData }: Props) => {
           <TabsTrigger className="sm:text-lg" value="four">Sessions</TabsTrigger>
         </TabsList>
         <TabsContent className="pl-7" value="one">
-          {" "}
           <HerotabOne
           bmiData={bmiData}
             goalData={goalData}
             trainerData={trainerData}
-            // userData={userData}
           />
         </TabsContent>
         <TabsContent className="pl-7" value="two">

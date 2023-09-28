@@ -81,7 +81,7 @@ const BMIform = (props: Props) => {
 
   return (
     <>
-      <div className="   p-5  ">
+      <div className="   ">
         <AlertDialog open={open} onOpenChange={setOpen}>
           <div className="grid grid-cols-1 gap-2">
             <AlertDialogTrigger className=" bg-lime-300   font-semibold rounded-[30px]">
