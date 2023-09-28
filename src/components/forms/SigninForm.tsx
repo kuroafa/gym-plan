@@ -21,7 +21,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 type Props = {};
 
 const SigninForm = (props: Props) => {
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(true);
   const handleShow= () =>{
 setShowPassword(!showPassword)
   }
