@@ -52,7 +52,7 @@ const BmiCal = ({ bmiData }: Props) => {
       }
     };
     handleBMI();
-  }, []);
+  }, [bmiData.height, bmiData.weight]);
 
   return (
     <div>
