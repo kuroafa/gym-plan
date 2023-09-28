@@ -108,17 +108,17 @@ const Signupform = (props: Props) => {
                
               </div> 
              
-              <div className="mb-2 ">
+              <div >
                   <FormField
                     control={form.control}
                     name="email"
                     render={({ field }) => (
-                      <FormItem>
+                      <FormItem className="mb-2 grid grid-cols-1">
                         <FormControl>
                           <TextField
                             id="outlined-basic"
                             label="Email"
-                            className="grid grid-cols-1"
+                            className="1"
                             variant="outlined"
                             {...field}
                           />
