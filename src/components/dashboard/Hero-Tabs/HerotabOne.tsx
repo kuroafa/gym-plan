@@ -229,7 +229,7 @@ const HerotabOne = ({ trainerData, goalData, bmiData }: Props) => {
                   </p>{" "}
                   <p className="xl:text-6xl text-white text-4xl font-bold">0</p>
                 </div>
-                <div className="grid grid-cols-1  pt-[30px] gap-2 items-center">
+                <div className="grid grid-cols-1  pt-[70px] gap-2 items-center">
                   <GoalForm />
                 </div>
               </div>
