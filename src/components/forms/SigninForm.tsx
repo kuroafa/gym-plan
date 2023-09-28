@@ -16,6 +16,7 @@ import { redirect, useRouter } from "next/navigation";
 import SignInButton from "../buttons/SignInButton";
 import { toast } from "react-toastify";
 import { Eye, EyeOff } from "lucide-react";
+import InputAdornment from "@mui/material/InputAdornment";
 
 type Props = {};
 
@@ -71,43 +72,49 @@ setShowPassword(!showPassword)
                         variant="outlined"
                         className="w-80"
                         {...field}
+                        
                       />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem className="relative">
-                    <FormControl>
-                      <TextField
-                      type={showPassword?'text':'password'}
-                        className="w-80"
-                        id="outlined-basic"
-                        label="Password "
-                        variant="outlined"
-                        {...field}
-                      />
-                       
-                    </FormControl> 
-                    <Button
-                      onClick={() => setShowPassword(!showPassword)}
-                      className="cursor-pointer absolute right-1"
-                      aria-label="Toggle password visibility"
-                    >
-                      {showPassword ? (
-                        <EyeOff />
-                      ) : (
-                        <Eye />
-                      )}
-                    </Button>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+                <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem className="relative">
+                  <FormControl>
+                    <TextField
+                      type={showPassword ? "password" : "text"}
+                      className="w-80"
+                      id="outlined-basic"
+                      label="Password"
+                      variant="outlined"
+                      {...field}
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <Button
+                              onClick={() => setShowPassword(!showPassword)}
+                              className="cursor-pointer"
+                              aria-label="Toggle password visibility"
+                            >
+                              {showPassword ? (
+                                <EyeOff />
+                              ) : (
+                                <Eye />
+                              )}
+                            </Button>
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             </div>
           </div>
           <div className="flex flex-col gap-2 items-start">
